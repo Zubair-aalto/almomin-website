@@ -24,19 +24,20 @@
     const items = books.map(bk => `<li class="${bk.pending ? "is-pending" : ""}">${rich(bk.title)}${bk.pending ? " *" : ""}</li>`).join("");
     return `
       <article class="bundle reveal" id="bundle-${b.id}">
-        <div class="bundle__stage">
+        <button class="bundle__stage" type="button" data-open="bundle-${b.id}" aria-label="See the ${n} books in ${esc(b.title)}">
           <span class="bundle__no">BUNDLE ${b.no}</span>
           <span class="bundle__urdu" lang="ur" dir="rtl">${b.urdu}</span>
-          <div class="fan">${fan}</div>
-        </div>
+          <span class="fan">${fan}</span>
+          <span class="bundle__peek" aria-hidden="true">See the books</span>
+        </button>
         <div class="bundle__body">
           <div class="bundle__top">
-            <h3 class="bundle__title">${esc(b.title)}</h3>
+            <h3 class="bundle__title"><button type="button" class="bundle__link" data-open="bundle-${b.id}">${esc(b.title)}</button></h3>
             <p class="bundle__price">${C.currency}${b.price}<small>${n} books</small></p>
           </div>
           <p class="bundle__blurb">${rich(b.blurb)}</p>
           <ul class="bundle__list" aria-label="Books in this bundle">${items}</ul>
-          <button class="btn btn--line" type="button" data-add="bundle-${b.id}">Add to basket · ${C.currency}${b.price}</button>
+          <div class="bundle__btns"><button class="btn btn--gold" type="button" data-add="bundle-${b.id}">Add to basket · ${C.currency}${b.price}</button><button class="btn btn--line" type="button" data-open="bundle-${b.id}">See the books</button></div>
         </div>
       </article>`;
   }).join("");
@@ -44,15 +45,22 @@
   const total = C.bundles.reduce((s, b) => s + b.price, 0);
   $("#setTotal").textContent = C.currency + total;
 
-  // Fan opens a little wider on hover
-  if (!reduce) list.querySelectorAll(".bundle").forEach(card => {
-    const items = card.querySelectorAll(".fan > *");
-    card.addEventListener("pointerenter", () => items.forEach(el => {
-      const o = +el.dataset.i;
-      el.style.transform = `translateX(${o * 62}px) translateY(${-Math.abs(o) * 2 - 10}px) translateZ(${-Math.abs(o) * 24}px) rotateY(${o * -6}deg) rotateZ(${o * 8}deg)`;
-    }));
-    card.addEventListener("pointerleave", () => items.forEach(el => el.style.transform = el.dataset.t));
+  // Books slide apart when the card comes into view, and a little more on hover
+  const spread = (card, k) => card.querySelectorAll(".fan > *").forEach(el => {
+    const o = +el.dataset.i * Math.min(1, card.clientWidth / 520); // narrower spread on phones
+    el.style.transform = k === 0 ? el.dataset.t
+      : `translateX(${o * (54 + 14 * k)}px) translateY(${-Math.abs(o) * 2 - 8 * k}px) translateZ(${-Math.abs(o) * 24}px) rotateY(${o * -6}deg) rotateZ(${o * (6 + 2 * k)}deg)`;
   });
+  if (!reduce) {
+    const cards = list.querySelectorAll(".bundle");
+    cards.forEach(c => c.querySelectorAll(".fan > *").forEach((el, i) => { el.style.transitionDelay = `${i * 60}ms`; }));
+    const seen = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { setTimeout(() => spread(e.target, 1), 250); seen.unobserve(e.target); e.target.dataset.open = "1"; } }), { threshold: .45 });
+    cards.forEach(card => {
+      seen.observe(card);
+      card.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") spread(card, 2); });
+      card.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") spread(card, card.dataset.open ? 1 : 0); });
+    });
+  }
 
   /* ---------- WhatsApp links ---------- */
   document.querySelectorAll(".js-wa").forEach(a => {

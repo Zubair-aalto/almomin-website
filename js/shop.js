@@ -50,6 +50,10 @@
     grid.querySelectorAll("li").forEach(li => li.hidden = !(f === "all" || li.dataset.cat === f));
   };
   chips.addEventListener("click", e => { const b = e.target.closest(".chip"); if (b) select(b); });
+  document.addEventListener("click", e => {
+    const f = e.target.closest("[data-filter]"); if (!f) return;
+    const chip = chips.querySelector(`[data-f="${f.dataset.filter}"]`); if (chip) select(chip);
+  });
   chips.addEventListener("keydown", e => {
     if (!["ArrowRight", "ArrowLeft"].includes(e.key)) return;
     const all = [...chips.querySelectorAll(".chip")]; let i = all.indexOf(document.activeElement);
@@ -95,9 +99,18 @@
   };
   /* ---------- Photo gallery + full-screen viewer ---------- */
   let gal = [], gi = 0;
-  const showPhoto = i => {
+  const showPhoto = (i, dir = 0) => {
+    const prevSrc = gal[gi];
     gi = (i + gal.length) % gal.length;
     const img = $("pd-img");
+    // 3D page turn: the old photo turns away like a page, revealing the new one
+    if (dir && !reduce && pd.open && prevSrc && prevSrc !== gal[gi]) {
+      const page = document.createElement("img");
+      page.src = prevSrc; page.alt = ""; page.className = "gal__page " + (dir > 0 ? "is-fwd" : "is-back");
+      img.parentNode.appendChild(page);
+      page.addEventListener("animationend", () => page.remove());
+      setTimeout(() => page.remove(), 1200);
+    }
     img.classList.remove("is-in"); img.src = gal[gi];
     img.alt = `${cur.title}, photo ${gi + 1} of ${gal.length}`;
     requestAnimationFrame(() => img.classList.add("is-in"));
@@ -109,18 +122,18 @@
     if (lb.open) paintLb();
     [gal[gi + 1], gal[gi - 1]].forEach(src => { if (src) { const p = new Image(); p.src = src; } }); // preload neighbours
   };
-  $("pd-prev").addEventListener("click", () => showPhoto(gi - 1));
-  $("pd-next").addEventListener("click", () => showPhoto(gi + 1));
-  $("pd-thumbs").addEventListener("click", e => { const b = e.target.closest("[data-g]"); if (b) showPhoto(+b.dataset.g); });
+  $("pd-prev").addEventListener("click", () => showPhoto(gi - 1, -1));
+  $("pd-next").addEventListener("click", () => showPhoto(gi + 1, 1));
+  $("pd-thumbs").addEventListener("click", e => { const b = e.target.closest("[data-g]"); if (b) showPhoto(+b.dataset.g, +b.dataset.g > gi ? 1 : -1); });
   pd.addEventListener("keydown", e => {
     if (lb.open || e.target.closest("#pd-opts")) return;
-    if (e.key === "ArrowRight") { showPhoto(gi + 1); e.preventDefault(); }
-    if (e.key === "ArrowLeft") { showPhoto(gi - 1); e.preventDefault(); }
+    if (e.key === "ArrowRight") { showPhoto(gi + 1, 1); e.preventDefault(); }
+    if (e.key === "ArrowLeft") { showPhoto(gi - 1, -1); e.preventDefault(); }
   });
   // swipe on touch screens
   let sx = null;
   $("pd-zoom").addEventListener("touchstart", e => { sx = e.touches[0].clientX; }, { passive: true });
-  $("pd-zoom").addEventListener("touchend", e => { if (sx === null) return; const dx = e.changedTouches[0].clientX - sx; sx = null; if (Math.abs(dx) > 40) { swiped = true; showPhoto(gi + (dx < 0 ? 1 : -1)); } }, { passive: true });
+  $("pd-zoom").addEventListener("touchend", e => { if (sx === null) return; const dx = e.changedTouches[0].clientX - sx; sx = null; if (Math.abs(dx) > 40) { swiped = true; showPhoto(gi + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1); } }, { passive: true });
   let swiped = false;
   const lb = $("lb");
   const paintLb = () => { $("lb-img").src = gal[gi]; $("lb-img").alt = $("pd-img").alt; $("lb-count").textContent = gal.length > 1 ? `${gi + 1} / ${gal.length}` : ""; $("lb-prev").hidden = $("lb-next").hidden = gal.length < 2; };
@@ -210,4 +223,5 @@
   };
 
   renderBag();
+  window.AlmominShop = { open: openProduct, add };
 })();

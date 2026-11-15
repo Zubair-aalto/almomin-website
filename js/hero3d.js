@@ -83,10 +83,19 @@ star.position.z = -1.6; centre.add(star);
 const star2 = star.clone(); star2.rotation.z = Math.PI / 8; star2.scale.setScalar(0.62); star2.position.z = -2.2; if (!LOGO) centre.add(star2);
 if (LOGO) { star.scale.setScalar(1.12); star.position.z = -2.4; }
 
-/* ---------- Ring of books ---------- */
-const C = window.ALMOMIN;
+/* ---------- Ring of books (whole range, each one clickable) ---------- */
+const SHOP = window.SHOP || { items: [] };
 const isSmall = innerWidth < 900;
-const covers = C.books.filter(b => b.cover).slice(0, isSmall ? 12 : 22);
+const singles = SHOP.items.filter(i => i.cat !== "bundles" && /\.jpe?g$/.test(i.cover)).map(i => ({ cover: i.cover, id: i.id }));
+const prophets = SHOP.items.filter(i => i.id.startsWith("bundle-") && i.id !== "bundle-complete")
+  .flatMap(b => (b.includes || []).map(x => ({ cover: x.cover, id: b.id })));
+// interleave: two from the wider range, then one prophet story
+const mix = []; let si = 0, pi = 0;
+while (mix.length < (isSmall ? 14 : 24) && (si < singles.length || pi < prophets.length)) {
+  if (si < singles.length) mix.push(singles[si++]);
+  if (si < singles.length && mix.length % 3 === 1) mix.push(singles[si++]);
+  if (pi < prophets.length && mix.length < (isSmall ? 14 : 24)) { mix.push(prophets[pi]); pi += 3; }
+}
 const ring = new THREE.Group(); world.add(ring);
 const loader = new THREE.TextureLoader();
 const pages = new THREE.MeshStandardMaterial({ color: 0xf1e8d2, roughness: 0.9 });
@@ -99,23 +108,53 @@ let started = false;
 const backTex = new THREE.CanvasTexture(backCanvas); backTex.colorSpace = THREE.SRGBColorSpace;
 const emb = new Image(); emb.onload = () => { bctx.drawImage(emb, 95, 120, 140, 182); backTex.needsUpdate = true; }; emb.src = (LOGO && LOGO.back) || "assets/emblem-gold.svg";
 const backMat = new THREE.MeshStandardMaterial({ map: backTex, roughness: 0.6 });
-const W = 1.55, H = W * 900 / 659, D = 0.09;
-const R = isSmall ? 7.2 : 8.6;
+const spineMat = new THREE.MeshStandardMaterial({ color: 0x0b2e27, roughness: 0.55 });
+const W = 1.6, D = 0.09;
+const R = isSmall ? 6.4 : 8.6;
+const books = [];
 
-covers.forEach((b, i) => {
-  const tex = loader.load(b.cover, t => { t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4; if (reduce && started) renderer.render(scene, camera); });
-  const spine = new THREE.MeshStandardMaterial({ color: new THREE.Color(b.spine || "#0B2E27"), roughness: 0.55 });
-  const front = new THREE.MeshStandardMaterial({ map: tex, roughness: 0.42, metalness: 0.0 });
-  const book = new THREE.Mesh(new THREE.BoxGeometry(W, H, D), [pages, spine, pages, pages, front, backMat]);
-  const a = i / covers.length * Math.PI * 2;
+mix.forEach((b, i) => {
+  const front = new THREE.MeshStandardMaterial({ roughness: 0.42, metalness: 0.0 });
+  const book = new THREE.Mesh(new THREE.BoxGeometry(W, W, D), [pages, spineMat, pages, pages, front, backMat]);
+  book.scale.y = 1.35;
+  loader.load(b.cover, t => {
+    t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
+    front.map = t; front.needsUpdate = true;
+    book.scale.y = Math.min(1.45, Math.max(0.7, t.image.height / t.image.width)); // keep each book's real shape
+    if (reduce && started) renderer.render(scene, camera);
+  });
+  const a = i / mix.length * Math.PI * 2;
   const holder = new THREE.Group();
   holder.position.set(Math.sin(a) * R, Math.sin(a * 2) * 0.6, Math.cos(a) * R);
   holder.rotation.y = a;                 // cover faces outward
   book.rotation.z = (i % 2 ? 1 : -1) * 0.06;
-  book.userData.phase = Math.random() * Math.PI * 2;
-  holder.add(book); ring.add(holder);
+  book.userData = { phase: Math.random() * Math.PI * 2, id: b.id, lift: 0 };
+  holder.add(book); ring.add(holder); books.push(book);
 });
 ring.rotation.x = 0.22;
+
+/* ---------- Click / hover on books ---------- */
+const ray = new THREE.Raycaster(), ndc = new THREE.Vector2();
+let hovered = null, downAt = null;
+const pick = e => {
+  const r = canvas.getBoundingClientRect();
+  ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+  ray.setFromCamera(ndc, camera);
+  const hit = ray.intersectObjects(books, false)[0];
+  // only books facing the viewer (front half of the ring) count
+  return hit && hit.face && hit.object.localToWorld(new THREE.Vector3()).z > -2 ? hit.object : null;
+};
+canvas.addEventListener("pointermove", e => {
+  if (e.pointerType !== "mouse") return;
+  hovered = pick(e); canvas.style.cursor = hovered ? "pointer" : "";
+});
+canvas.addEventListener("pointerleave", () => { hovered = null; canvas.style.cursor = ""; });
+canvas.addEventListener("pointerdown", e => { downAt = [e.clientX, e.clientY]; });
+canvas.addEventListener("pointerup", e => {
+  if (!downAt || Math.hypot(e.clientX - downAt[0], e.clientY - downAt[1]) > 8) return; // ignore scrolls / drags
+  const b = pick(e);
+  if (b && window.AlmominShop) window.AlmominShop.open(b.userData.id);
+});
 
 /* ---------- Gold dust ---------- */
 const N = isSmall ? 260 : 600;
@@ -134,7 +173,7 @@ function layout() {
   renderer.setSize(w, h, false);
   camera.aspect = w / h; camera.updateProjectionMatrix();
   if (w >= 900) { world.position.set(6.2, 0.2, 0); world.scale.setScalar(0.95); camera.position.z = 24; }
-  else { world.position.set(0, 0.6, 0); world.scale.setScalar(w < 520 ? 0.8 : 0.95); camera.position.z = 25; }
+  else { world.position.set(0, 0.3, 0); world.scale.setScalar(w < 520 ? 1.0 : 1.05); camera.position.z = w < 520 ? 19.5 : 22; }
 }
 addEventListener("resize", () => { layout(); if (reduce && started) renderer.render(scene, camera); }); layout();
 
@@ -145,6 +184,7 @@ let visible = true;
 new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(hero);
 
 const clock = new THREE.Clock();
+let ringAngle = 0, speed = 0.12, last = 0;
 function ready() { if (started) return; started = true; canvas.classList.add("is-ready"); reduce ? renderer.render(scene, camera) : loop(); }
 function loop() {
   requestAnimationFrame(loop);
@@ -153,8 +193,17 @@ function loop() {
   const sp = Math.min(scrollY / innerHeight, 1.2);
   cur.x += (target.x - cur.x) * 0.05; cur.y += (target.y - cur.y) * 0.05;
 
-  ring.rotation.y = t * 0.12 + sp * 1.6;
-  ring.children.forEach((h, i) => { const b = h.children[0]; b.position.y = Math.sin(t * 0.9 + b.userData.phase) * 0.18; });
+  const dt = Math.min(t - last, 0.05); last = t;
+  speed += ((hovered ? 0.015 : 0.12) - speed) * 0.06;
+  ringAngle += dt * speed;
+  ring.rotation.y = ringAngle + sp * 1.6;
+  books.forEach(b => {
+    b.userData.lift += ((b === hovered ? 1 : 0) - b.userData.lift) * 0.12;
+    const L = b.userData.lift;
+    b.position.y = Math.sin(t * 0.9 + b.userData.phase) * 0.18 + L * 0.35;
+    b.position.z = L * 0.9;
+    b.scale.x = b.scale.z = 1 + L * 0.12;
+  });
   centre.rotation.y = Math.sin(t * 0.4) * 0.25 + cur.x * 0.6;
   centre.rotation.x = cur.y * 0.3;
   centre.position.y = Math.sin(t * 0.7) * 0.15;

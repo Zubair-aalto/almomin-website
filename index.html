@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Amiri:wght@400;700&family=Manrope:wght@400;500;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?v=8">
-  <link rel="stylesheet" href="css/own-logo.css?v=8">
+  <link rel="stylesheet" href="css/own-logo.css?v=10">
   <script type="importmap">
   { "imports": {
       "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
@@ -58,31 +58,33 @@
     <!-- HERO -->
     <section class="hero" id="top">
       <canvas id="hero3d" aria-hidden="true"></canvas>
+      <p class="hero__tap" aria-hidden="true">Tap a book to open it</p>
       <div class="hero__glow" aria-hidden="true"></div>
       <div class="frame" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
       <div class="wrap hero__in">
         <div class="hero__copy reveal">
-          <p class="eyebrow"><span class="star" aria-hidden="true"></span> Stories from the Holy Quran</p>
-          <h1 class="display">Stories of the Prophets,<br><em>told in light.</em></h1>
-          <p class="hero__lede">Illustrated prophet stories in bundles that follow the prophets from Adam (AS) to Muhammad&nbsp;<span class="saw">ﷺ</span>, plus first books, stories and games for every young believer.</p>
-          <div class="hero__price" role="group" aria-label="Bundle prices">
-            <div><b>5 books</b><span>€10</span></div>
-            <i aria-hidden="true"></i>
-            <div><b>6 books</b><span>€12</span></div>
-          </div>
+          <p class="eyebrow"><span class="star" aria-hidden="true"></span> Islamic books for children</p>
+          <h1 class="display">Books for young believers,<br><em>told in light.</em></h1>
+          <p class="hero__lede">Prophet stories, first board books, picture books, activity books and games, hand-picked to help children love Allah, His Messenger&nbsp;<span class="saw">ﷺ</span> and the Quran. Delivered all over Finland.</p>
+          <ul class="hero__cats" aria-label="Shop by category">
+            <li><a href="#collection" data-filter="baby">Baby &amp; Toddler</a></li>
+            <li><a href="#collection" data-filter="story">Story Books</a></li>
+            <li><a href="#collection" data-filter="bundles">Prophet Stories</a></li>
+            <li><a href="#collection" data-filter="activity">Activities &amp; Games</a></li>
+          </ul>
           <div class="hero__cta">
-            <a href="#bundles" class="btn btn--gold">Choose a bundle</a>
-            <a href="#collection" class="btn btn--ghost">Shop the collection</a>
+            <a href="#collection" class="btn btn--gold" data-filter="all">Shop the collection</a>
+            <a href="#bundles" class="btn btn--ghost">Prophet story bundles</a>
           </div>
         </div>
-        <p class="hero__urdu" lang="ur" dir="rtl" aria-hidden="true">قصص الانبیاء</p>
+        <p class="hero__urdu" lang="ur" dir="rtl" aria-hidden="true">علم و ایمان</p>
       </div>
-      <a href="#bundles" class="hero__scroll" aria-label="Scroll to bundles"><span></span></a>
+      <a href="#collection" class="hero__scroll" aria-label="Scroll to the collection"><span></span></a>
     </section>
 
-    <section class="ticker" aria-label="The prophets in this series">
-      <ul class="ticker__track"><li><span>Adam</span><b lang="ur">آدم</b></li><li><span>Nuh</span><b lang="ur">نوح</b></li><li><span>Hud</span><b lang="ur">ہود</b></li><li><span>Salih</span><b lang="ur">صالح</b></li><li><span>Lut</span><b lang="ur">لوط</b></li><li><span>Ismail</span><b lang="ur">اسماعیل</b></li><li><span>Yaqub</span><b lang="ur">یعقوب</b></li><li><span>Yusuf</span><b lang="ur">یوسف</b></li><li><span>Ayub</span><b lang="ur">ایوب</b></li><li><span>Shuaib</span><b lang="ur">شعیب</b></li><li><span>Musa</span><b lang="ur">موسیٰ</b></li><li><span>Dawud</span><b lang="ur">داؤد</b></li><li><span>Sulaiman</span><b lang="ur">سلیمان</b></li><li><span>Yunus</span><b lang="ur">یونس</b></li><li><span>Zakariya</span><b lang="ur">زکریا</b></li><li><span>Yahya</span><b lang="ur">یحییٰ</b></li><li><span>Isa</span><b lang="ur">عیسیٰ</b></li><li><span>Muhammad ﷺ</span><b lang="ur">محمد ﷺ</b></li></ul>
-      <ul class="ticker__track" aria-hidden="true"><li><span>Adam</span><b lang="ur">آدم</b></li><li><span>Nuh</span><b lang="ur">نوح</b></li><li><span>Hud</span><b lang="ur">ہود</b></li><li><span>Salih</span><b lang="ur">صالح</b></li><li><span>Lut</span><b lang="ur">لوط</b></li><li><span>Ismail</span><b lang="ur">اسماعیل</b></li><li><span>Yaqub</span><b lang="ur">یعقوب</b></li><li><span>Yusuf</span><b lang="ur">یوسف</b></li><li><span>Ayub</span><b lang="ur">ایوب</b></li><li><span>Shuaib</span><b lang="ur">شعیب</b></li><li><span>Musa</span><b lang="ur">موسیٰ</b></li><li><span>Dawud</span><b lang="ur">داؤد</b></li><li><span>Sulaiman</span><b lang="ur">سلیمان</b></li><li><span>Yunus</span><b lang="ur">یونس</b></li><li><span>Zakariya</span><b lang="ur">زکریا</b></li><li><span>Yahya</span><b lang="ur">یحییٰ</b></li><li><span>Isa</span><b lang="ur">عیسیٰ</b></li><li><span>Muhammad ﷺ</span><b lang="ur">محمد ﷺ</b></li></ul>
+    <section class="ticker" aria-label="What our books are about">
+      <ul class="ticker__track"><li><span>Stories</span><b lang="ur">کہانیاں</b></li><li><span>Faith</span><b lang="ur">ایمان</b></li><li><span>Quran</span><b lang="ur">قرآن</b></li><li><span>Duas</span><b lang="ur">دعائیں</b></li><li><span>Prophets</span><b lang="ur">انبیاء</b></li><li><span>Manners</span><b lang="ur">آداب</b></li><li><span>Feelings</span><b lang="ur">احساسات</b></li><li><span>Play</span><b lang="ur">کھیل</b></li><li><span>Learning</span><b lang="ur">علم</b></li><li><span>Salah</span><b lang="ur">نماز</b></li><li><span>Ramadan</span><b lang="ur">رمضان</b></li><li><span>Eid</span><b lang="ur">عید</b></li></ul>
+      <ul class="ticker__track" aria-hidden="true"><li><span>Stories</span><b lang="ur">کہانیاں</b></li><li><span>Faith</span><b lang="ur">ایمان</b></li><li><span>Quran</span><b lang="ur">قرآن</b></li><li><span>Duas</span><b lang="ur">دعائیں</b></li><li><span>Prophets</span><b lang="ur">انبیاء</b></li><li><span>Manners</span><b lang="ur">آداب</b></li><li><span>Feelings</span><b lang="ur">احساسات</b></li><li><span>Play</span><b lang="ur">کھیل</b></li><li><span>Learning</span><b lang="ur">علم</b></li><li><span>Salah</span><b lang="ur">نماز</b></li><li><span>Ramadan</span><b lang="ur">رمضان</b></li><li><span>Eid</span><b lang="ur">عید</b></li></ul>
     </section>
 
     <!-- BUNDLES -->
@@ -306,10 +308,10 @@
 
   <script src="js/catalog.js?v=4"></script>
   <script>window.ALMOMIN_LOGO = { paths: "assets/own/mark-paths.json", back: "assets/own/mark-gold.png", height: 7.6 };</script>
-  <script src="js/main.js?v=4"></script>
+  <script src="js/main.js?v=6"></script>
   <script src="js/contact.js?v=1"></script>
   <script src="js/shop-data.js?v=2"></script>
-  <script src="js/shop.js?v=2"></script>
-  <script type="module" src="js/hero3d.js?v=4"></script>
+  <script src="js/shop.js?v=3"></script>
+  <script type="module" src="js/hero3d.js?v=5"></script>
 </body>
 </html>

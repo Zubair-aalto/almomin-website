@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Almo’min Book House</title>
+  <meta name="description" content="Almo’min: illustrated Stories from the Holy Quran for young believers, in four bundles. 5 books for €10, 6 books for €12.">
+  <meta name="theme-color" content="#0B2E27">
+  <link rel="icon" href="assets/own/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Amiri:wght@400;700&family=Manrope:wght@400;500;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=8">
+  <link rel="stylesheet" href="css/own-logo.css?v=8">
+  <script type="importmap">
+  { "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  } }
+  </script>
+</head>
+<body>
+  <div class="intro" id="intro" aria-hidden="true">
+    <div class="intro__in">
+      <img src="assets/own/mark-gold.png" alt="" class="intro__cal intro__cal--own">
+      <span class="intro__rule"></span>
+      <img src="assets/own/word-gold.png" alt="" class="intro__word intro__word--own">
+    </div>
+  </div>
+  <noscript><style>.intro{display:none}</style></noscript>
+  <script>
+    (function(){var el=document.getElementById('intro'),seen=false;
+      try{seen=sessionStorage.getItem('am-intro-own')==='1';sessionStorage.setItem('am-intro-own','1')}catch(e){}
+      if(seen||matchMedia('(prefers-reduced-motion: reduce)').matches){el.remove();return}
+      document.documentElement.classList.add('is-intro');
+      setTimeout(function(){el.classList.add('is-done');document.documentElement.classList.remove('is-intro');setTimeout(function(){el.remove()},1300)},2300);
+    })();
+  </script>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav" id="nav">
+    <div class="wrap nav__in">
+      <a href="#top" class="nav__logo" aria-label="Almo’min home">
+        <span class="own-lock"><img src="assets/own/mark-gold.png" alt="" width="40" height="50"><img src="assets/own/word-gold.png" alt="Almo’min" width="120" height="19"></span>
+      </a>
+      <nav class="nav__links" aria-label="Main">
+        <a href="#bundles">Bundles</a>
+        <a href="#collection">Collection</a>
+        <a href="#order">How to order</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="btn btn--gold btn--sm bag-btn" type="button" id="bagBtn" aria-haspopup="dialog"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span>Basket</span><span class="bag-btn__n" id="bagCount" aria-label="items in basket">0</span></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <canvas id="hero3d" aria-hidden="true"></canvas>
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="frame" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="wrap hero__in">
+        <div class="hero__copy reveal">
+          <p class="eyebrow"><span class="star" aria-hidden="true"></span> Stories from the Holy Quran</p>
+          <h1 class="display">Stories of the Prophets,<br><em>told in light.</em></h1>
+          <p class="hero__lede">Illustrated prophet stories in bundles that follow the prophets from Adam (AS) to Muhammad&nbsp;<span class="saw">ﷺ</span>, plus first books, stories and games for every young believer.</p>
+          <div class="hero__price" role="group" aria-label="Bundle prices">
+            <div><b>5 books</b><span>€10</span></div>
+            <i aria-hidden="true"></i>
+            <div><b>6 books</b><span>€12</span></div>
+          </div>
+          <div class="hero__cta">
+            <a href="#bundles" class="btn btn--gold">Choose a bundle</a>
+            <a href="#collection" class="btn btn--ghost">Shop the collection</a>
+          </div>
+        </div>
+        <p class="hero__urdu" lang="ur" dir="rtl" aria-hidden="true">قصص الانبیاء</p>
+      </div>
+      <a href="#bundles" class="hero__scroll" aria-label="Scroll to bundles"><span></span></a>
+    </section>
+
+    <section class="ticker" aria-label="The prophets in this series">
+      <ul class="ticker__track"><li><span>Adam</span><b lang="ur">آدم</b></li><li><span>Nuh</span><b lang="ur">نوح</b></li><li><span>Hud</span><b lang="ur">ہود</b></li><li><span>Salih</span><b lang="ur">صالح</b></li><li><span>Lut</span><b lang="ur">لوط</b></li><li><span>Ismail</span><b lang="ur">اسماعیل</b></li><li><span>Yaqub</span><b lang="ur">یعقوب</b></li><li><span>Yusuf</span><b lang="ur">یوسف</b></li><li><span>Ayub</span><b lang="ur">ایوب</b></li><li><span>Shuaib</span><b lang="ur">شعیب</b></li><li><span>Musa</span><b lang="ur">موسیٰ</b></li><li><span>Dawud</span><b lang="ur">داؤد</b></li><li><span>Sulaiman</span><b lang="ur">سلیمان</b></li><li><span>Yunus</span><b lang="ur">یونس</b></li><li><span>Zakariya</span><b lang="ur">زکریا</b></li><li><span>Yahya</span><b lang="ur">یحییٰ</b></li><li><span>Isa</span><b lang="ur">عیسیٰ</b></li><li><span>Muhammad ﷺ</span><b lang="ur">محمد ﷺ</b></li></ul>
+      <ul class="ticker__track" aria-hidden="true"><li><span>Adam</span><b lang="ur">آدم</b></li><li><span>Nuh</span><b lang="ur">نوح</b></li><li><span>Hud</span><b lang="ur">ہود</b></li><li><span>Salih</span><b lang="ur">صالح</b></li><li><span>Lut</span><b lang="ur">لوط</b></li><li><span>Ismail</span><b lang="ur">اسماعیل</b></li><li><span>Yaqub</span><b lang="ur">یعقوب</b></li><li><span>Yusuf</span><b lang="ur">یوسف</b></li><li><span>Ayub</span><b lang="ur">ایوب</b></li><li><span>Shuaib</span><b lang="ur">شعیب</b></li><li><span>Musa</span><b lang="ur">موسیٰ</b></li><li><span>Dawud</span><b lang="ur">داؤد</b></li><li><span>Sulaiman</span><b lang="ur">سلیمان</b></li><li><span>Yunus</span><b lang="ur">یونس</b></li><li><span>Zakariya</span><b lang="ur">زکریا</b></li><li><span>Yahya</span><b lang="ur">یحییٰ</b></li><li><span>Isa</span><b lang="ur">عیسیٰ</b></li><li><span>Muhammad ﷺ</span><b lang="ur">محمد ﷺ</b></li></ul>
+    </section>
+
+    <!-- BUNDLES -->
+    <section class="section" id="bundles">
+      <div class="wrap">
+        <header class="head">
+          <p class="eyebrow">Four bundles · One journey</p>
+          <h2 class="h1">From the first man to the final Messenger&nbsp;<span class="saw">ﷺ</span></h2>
+          <p class="head__sub">Each bundle is a chapter of the story. Collect them in order and your child will meet the prophets in sequence.</p>
+        </header>
+        <div class="bundles" id="bundleList"></div>
+
+        <aside class="complete reveal">
+          <img src="assets/own/full-gold.png" alt="" width="120" height="156" class="complete__emblem">
+          <div>
+            <p class="eyebrow eyebrow--gold">The complete set</p>
+            <h3 class="h2">All four bundles · 22 books</h3>
+            <p>The whole <em>Stories from the Holy Quran</em> series, from Adam (AS) to Muhammad <span class="saw">ﷺ</span>.</p>
+          </div>
+          <div class="complete__buy">
+            <p class="price"><span id="setTotal">€44</span></p>
+            <button class="btn btn--gold" type="button" data-add="bundle-complete">Add the complete set to basket</button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- COLLECTION -->
+    <section class="section section--alt shop" id="collection">
+      <div class="wrap">
+        <header class="head head--row">
+          <div>
+            <p class="eyebrow">The collection</p>
+            <h2 class="h1">Every book, bundle &amp; game</h2>
+            <p class="head__sub">Prophet-story bundles, board books for little hands, stories about feelings and faith, and activities that make learning a joy.</p>
+          </div>
+          <div class="chips" role="tablist" aria-label="Filter the collection" id="shopChips"></div>
+        </header>
+        <ul class="shop__grid" id="shopGrid"></ul>
+        <p class="shop__note">Prices in euros. Delivery anywhere in Finland: Matkahuolto €6.90, Posti €7.90, or free pickup in Espoo.</p>
+      </div>
+    </section>
+
+    <dialog class="pd" id="pd" aria-labelledby="pd-title">
+      <form method="dialog" class="pd__close"><button aria-label="Close" value="close">&times;</button></form>
+      <div class="pd__in">
+        <div class="pd__img">
+          <div class="gal">
+            <button class="gal__main" type="button" id="pd-zoom" aria-label="View photo full screen"><img id="pd-img" alt=""><span class="gal__hint" aria-hidden="true">⤢</span></button>
+            <button class="gal__nav gal__nav--prev" type="button" id="pd-prev" aria-label="Previous photo">‹</button>
+            <button class="gal__nav gal__nav--next" type="button" id="pd-next" aria-label="Next photo">›</button>
+            <p class="gal__count" id="pd-count" aria-live="polite"></p>
+          </div>
+          <ul class="gal__thumbs" id="pd-thumbs" aria-label="Product photos"></ul>
+        </div>
+        <div class="pd__body">
+          <p class="eyebrow" id="pd-cat"></p>
+          <h3 class="pd__title" id="pd-title"></h3>
+          <p class="pd__price" id="pd-price"></p>
+          <p class="pd__desc" id="pd-desc"></p>
+          <p class="pd__specs" id="pd-specs"></p>
+          <div class="pd__opts" id="pd-opts" role="radiogroup" aria-label="Choose an option"></div>
+          <div class="pd__inc" id="pd-inc" hidden><p class="pd__inc-h">In this bundle</p><ul id="pd-inc-list"></ul></div>
+          <div class="pd__buy">
+            <button class="btn btn--gold" type="button" id="pd-add">Add to basket</button>
+            <a class="btn btn--line" id="pd-wa" target="_blank" rel="noopener">Ask on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="lb" id="lb" aria-label="Photo viewer">
+      <img id="lb-img" alt="">
+      <button class="lb__x" type="button" id="lb-x" aria-label="Close photo viewer">&times;</button>
+      <button class="lb__nav lb__nav--prev" type="button" id="lb-prev" aria-label="Previous photo">‹</button>
+      <button class="lb__nav lb__nav--next" type="button" id="lb-next" aria-label="Next photo">›</button>
+      <p class="lb__count" id="lb-count"></p>
+    </dialog>
+
+    <dialog class="bag" id="bag" aria-labelledby="bag-title">
+      <div class="bag__head">
+        <h2 class="bag__title" id="bag-title">Your basket</h2>
+        <form method="dialog"><button class="bag__x" aria-label="Close basket" value="close">&times;</button></form>
+      </div>
+      <div class="bag__body">
+        <p class="bag__empty" id="bagEmpty">Your basket is empty. <a href="#collection" data-close-bag>Browse the collection</a>.</p>
+        <ul class="bag__list" id="bagList"></ul>
+      </div>
+      <div class="bag__foot" id="bagFoot">
+        <p class="bag__sum"><span>Subtotal</span><b id="bagSubtotal">€0.00</b></p>
+        <p class="bag__ship">Delivery: Matkahuolto €6.90 · Posti €7.90 · Pickup in Espoo free. Choose at checkout.</p>
+        <button class="btn btn--gold btn--lg" type="button" id="bagCheckout">Checkout securely</button>
+        <p class="bag__pay">Card · MobilePay · Apple Pay · Google Pay</p>
+        <p class="bag__msg" id="bagMsg" role="status"></p>
+        <a class="bag__wa" id="bagWa" target="_blank" rel="noopener">Or send this order on WhatsApp</a>
+      </div>
+    </dialog>
+
+    <!-- WHY -->
+    <section class="section why">
+      <div class="wrap why__in">
+        <div class="why__art reveal" aria-hidden="true">
+          <picture><source srcset="assets/own/mark-gold.png" media="(prefers-color-scheme: dark)"><img src="assets/own/mark-color.png" alt="" class="why__cal why__cal--own"></picture>
+          <span class="why__ring"></span>
+        </div>
+        <div class="why__copy">
+          <p class="eyebrow">Why Almo’min</p>
+          <h2 class="h1">A bookshelf that brings them closer to their Deen</h2>
+          <p class="lead"><span lang="ar">المؤمن</span> (Al-Mu’min) means <em>the believer</em>. Every book we carry is chosen to help a child grow into one.</p>
+          <ol class="why__list">
+            <li><b>A journey in order.</b> The bundles follow the prophets in sequence, so each story builds on the one before.</li>
+            <li><b>Pictures they’ll return to.</b> Full-colour painted covers and illustrations that make bedtime reading something they ask for.</li>
+            <li><b>Simple to order.</b> Pay securely online with card or MobilePay, or message us on WhatsApp. Delivered all over Finland.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ORDER -->
+    <section class="section section--night" id="order">
+      <div class="wrap">
+        <header class="head head--center">
+          <p class="eyebrow eyebrow--gold">How to order</p>
+          <h2 class="h1">Three steps to their next bedtime story</h2>
+        </header>
+        <ol class="steps">
+          <li class="reveal"><span class="steps__n">١</span><h3>Fill your basket</h3><p>Choose bundles, single books or the complete set of 22 prophet stories.</p></li>
+          <li class="reveal"><span class="steps__n">٢</span><h3>Pay securely</h3><p>Check out with card, MobilePay, Apple Pay or Google Pay. You’ll get a receipt by email.</p></li>
+          <li class="reveal"><span class="steps__n">٣</span><h3>We deliver</h3><p>Anywhere in Finland with Matkahuolto (€6.90) or Posti (€7.90), or pick up free in Espoo.</p></li>
+        </ol>
+        <div class="order__cta">
+          <a class="btn btn--gold btn--lg" href="#collection">Shop the collection</a>
+          <p class="order__alt">Prefer to talk first? <a class="js-wa" data-msg="Assalamu alaikum! I’d like to order from Almo’min." href="#order">Order on WhatsApp</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="wrap faq">
+        <header class="head">
+          <p class="eyebrow">Questions</p>
+          <h2 class="h1">Good to know</h2>
+        </header>
+        <div class="faq__list">
+          <details><summary>Can I buy a single book?</summary><p>Yes, most titles are sold one by one. The <em>Stories from the Holy Quran</em> prophet series comes in bundles: 5 books for €10 or 6 books for €12.</p></details>
+          <details><summary>How do I pay?</summary><p>Online at checkout with card, MobilePay, Apple Pay or Google Pay. If you pick up your order in Espoo, you can also pay in cash. Just message us on WhatsApp.</p></details>
+          <details><summary>Where do you deliver, and what does it cost?</summary><p>All over Finland. Matkahuolto costs €6.90 and Posti €7.90 per order, or you can pick up your order in Espoo for free. You choose at checkout.</p></details>
+          <details><summary>Can I place a custom order?</summary><p>Yes. Need a particular title, several copies for a school or masjid, or a gift set? Send us the details with the <a href="#contact">contact form</a>.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section section--alt" id="contact">
+      <div class="wrap contact">
+        <div class="contact__intro">
+          <p class="eyebrow">Contact &amp; custom orders</p>
+          <h2 class="h1">Write to us</h2>
+          <p class="lead">A question about a book, a gift set, or copies for a school or masjid? Tell us what you need and we’ll reply in shā’ Allāh.</p>
+          <ul class="contact__facts">
+            <li><b>Delivery</b>All over Finland: Matkahuolto €6.90, Posti €7.90, or free pickup in Espoo</li>
+            <li><b>Payment</b>Card, MobilePay, Apple Pay or Google Pay online, and cash when you pick up</li>
+            <li><b>Email</b><a href="mailto:almomin.eu@gmail.com">almomin.eu@gmail.com</a></li>
+            <li><b>WhatsApp</b><a class="js-wa" data-msg="Assalamu alaikum!" href="https://wa.me/358417225258">+358 41 722 5258</a></li>
+            <li><b>Instagram</b><a href="https://www.instagram.com/almomin.eu" target="_blank" rel="noopener">@almomin.eu</a></li>
+          </ul>
+        </div>
+
+        <form class="cform" id="cform" novalidate>
+          <fieldset class="cform__type">
+            <legend>What is this about?</legend>
+            <label><input type="radio" name="type" value="Question" checked><span>A question</span></label>
+            <label><input type="radio" name="type" value="Custom order"><span>A custom order</span></label>
+          </fieldset>
+          <div class="cform__row">
+            <div class="field"><label for="cf-name">Your name</label><input id="cf-name" name="name" autocomplete="name" required><p class="field__err" id="cf-name-err" hidden>Please tell us your name.</p></div>
+            <div class="field"><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" autocomplete="email" required><p class="field__err" id="cf-email-err" hidden>Please enter a valid email so we can reply.</p></div>
+          </div>
+          <div class="cform__row">
+            <div class="field"><label for="cf-phone">Phone <span class="opt">(optional)</span></label><input id="cf-phone" name="phone" type="tel" autocomplete="tel"></div>
+            <div class="field field--order"><label for="cf-city">City <span class="opt">(for delivery)</span></label><input id="cf-city" name="city" autocomplete="address-level2"></div>
+          </div>
+          <div class="field field--order"><label for="cf-books">Which books or bundles, and how many?</label><input id="cf-books" name="books" placeholder="e.g. 3 × Bundle I for a school"></div>
+          <div class="field"><label for="cf-msg">Message</label><textarea id="cf-msg" name="message" rows="5" required></textarea><p class="field__err" id="cf-msg-err" hidden>Please write a short message.</p></div>
+          <div class="cform__send">
+            <button class="btn btn--gold" type="submit" value="wa"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg><span>Send on WhatsApp</span></button>
+            <button class="btn btn--line" type="submit" value="mail">Send by email</button>
+          </div>
+          <p class="cform__note" id="cf-status" role="status">Your message opens in WhatsApp or your email app, ready to send.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot__in">
+      <img src="assets/own/full-gold.png" alt="Almo’min logo" width="130" height="169" class="foot__emblem">
+      <div class="foot__cols">
+        <div>
+          <h4>Shop</h4>
+          <a href="#bundles">Bundles</a><a href="#collection">The collection</a><a href="#order">How to order</a><a href="#contact">Contact &amp; custom orders</a>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <a class="js-wa" data-msg="Assalamu alaikum!" href="https://wa.me/358417225258">WhatsApp · +358 41 722 5258</a>
+          <a href="mailto:almomin.eu@gmail.com">almomin.eu@gmail.com</a>
+          <a href="https://www.instagram.com/almomin.eu" target="_blank" rel="noopener">Instagram · @almomin.eu</a>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <address>Decent Enterprises Oy<br>Kilonrinne 10 B<br>02610 Espoo, Finland</address>
+          <span>Business ID (Y-tunnus) 2800683-4</span>
+        </div>
+      </div>
+      <p class="foot__ayah" lang="ar" dir="rtl">رَّبِّ زِدْنِي عِلْمًا</p>
+      <p class="foot__ayah-t">“My Lord, increase me in knowledge.” · Ta-Ha 20:114</p>
+      <p class="foot__legal">© <span id="yr">2026</span> Almo’min is a trading name of Decent Enterprises Oy · Y-tunnus 2800683-4 · Kilonrinne 10 B, 02610 Espoo, Finland.</p>
+    </div>
+  </footer>
+
+  <script src="js/catalog.js?v=4"></script>
+  <script>window.ALMOMIN_LOGO = { paths: "assets/own/mark-paths.json", back: "assets/own/mark-gold.png", height: 7.6 };</script>
+  <script src="js/main.js?v=4"></script>
+  <script src="js/contact.js?v=1"></script>
+  <script src="js/shop-data.js?v=2"></script>
+  <script src="js/shop.js?v=2"></script>
+  <script type="module" src="js/hero3d.js?v=4"></script>
+</body>
+</html>

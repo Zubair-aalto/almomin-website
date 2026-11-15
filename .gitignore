@@ -1,0 +1,9 @@
+# Working files that stay on this Mac and are not published
+dist/
+*.zip
+_versions/
+brand/
+.claude/
+DESIGN.md
+SETUP-GUIDE.txt
+.DS_Store

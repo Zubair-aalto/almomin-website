@@ -2,8 +2,6 @@
 dist/
 *.zip
 _versions/
-brand/
 .claude/
-DESIGN.md
 SETUP-GUIDE.txt
 .DS_Store

@@ -54,11 +54,11 @@
   if (!reduce) {
     const cards = list.querySelectorAll(".bundle");
     cards.forEach(c => c.querySelectorAll(".fan > *").forEach((el, i) => { el.style.transitionDelay = `${i * 60}ms`; }));
-    const seen = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { setTimeout(() => spread(e.target, 1), 250); seen.unobserve(e.target); e.target.dataset.open = "1"; } }), { threshold: .45 });
+    const seen = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { setTimeout(() => spread(e.target, 1), 250); seen.unobserve(e.target); e.target.dataset.spread = "1"; } }), { threshold: .45 });
     cards.forEach(card => {
       seen.observe(card);
       card.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") spread(card, 2); });
-      card.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") spread(card, card.dataset.open ? 1 : 0); });
+      card.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") spread(card, card.dataset.spread ? 1 : 0); });
     });
   }
 

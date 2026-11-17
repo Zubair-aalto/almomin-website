@@ -252,3 +252,24 @@
 @media (prefers-reduced-motion:reduce){.gal__page{display:none}}
 .hero .display{font-size:clamp(44px,6.1vw,94px)} .hero__copy{max-width:640px}
 .btn--line{background:transparent} .section--night .btn--line,.bundle .btn--line{color:var(--ink)}
+
+/* ---- Legal pages (terms, privacy) ---- */
+.legal__top{background:var(--night)}
+.legal__bar{display:flex; align-items:center; justify-content:space-between; gap:16px; padding-block:14px}
+.legal__home img{width:44px; height:auto}
+.legal__nav{display:flex; gap:20px; flex-wrap:wrap; font-size:14px}
+.legal__nav a{color:var(--cream); text-decoration:none; opacity:.8}
+.legal__nav a:hover,.legal__nav a[aria-current]{opacity:1; color:var(--gold-on-dark)}
+.legal__in{max-width:760px; padding-block:64px 96px}
+.legal__in .h1{margin-bottom:18px}
+.legal__lede{font-size:19px; color:var(--ink-2); margin-bottom:12px}
+.legal__in h2{font:600 26px/1.2 var(--f-display); margin:44px 0 12px; padding-top:20px; border-top:1px solid var(--line)}
+.legal__in p+p{margin-top:12px}
+.legal__in ul{margin:12px 0 0; padding-left:20px} .legal__in li+li{margin-top:8px}
+.legal__in a{text-decoration-color:var(--gold); text-underline-offset:3px}
+.legal__form{border:1px dashed var(--line); border-radius:14px; padding:20px 22px; background:var(--paper-2); font-size:15px}
+.legal__foot{background:var(--night); color:rgb(243 236 220 / .6); font-size:13px; padding:28px 0; text-align:center}
+.legal__foot a{color:var(--gold-on-dark)}
+.foot__links{display:flex; gap:20px; justify-content:center; flex-wrap:wrap; font-size:14px; margin-bottom:14px}
+.foot__links a{color:var(--cream); opacity:.75} .foot__links a:hover{opacity:1}
+.bag__terms{font-size:12px; color:var(--ink-2); margin-top:8px} .bag__terms a{color:inherit}

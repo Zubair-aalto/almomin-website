@@ -9,15 +9,15 @@ cat = (root / "netlify/functions/checkout/catalog.mjs").read_text()
 images = {i["id"]: i["image"] for i in json.loads(cat[cat.index("["): cat.rindex("]") + 1])}
 cats = {c["id"]: c["label"] for c in data["categories"]}
 
-def offer(price):
+def offer(price, ITEM_ID):
     return {"@type": "Offer", "price": f"{price:.2f}", "priceCurrency": "EUR",
             "availability": "https://schema.org/InStock", "itemCondition": "https://schema.org/NewCondition",
-            "url": SITE + "#collection", "seller": {"@id": SITE + "#store"}}
+            "url": SITE + "books/" + ITEM_ID + "/", "seller": {"@id": SITE + "#store"}}
 
 products = []
 for i, it in enumerate(data["items"], 1):
     prices = sorted(o["price"] for o in it["options"])
-    p = {"@type": "Product", "name": it["title"], "category": cats.get(it["cat"], ""),
+    p = {"@type": "Product", "name": it["title"], "url": SITE + "books/" + it["id"] + "/", "category": cats.get(it["cat"], ""),
          "description": re.sub(r"\s+", " ", it.get("desc", ""))[:500],
          "image": SITE + images.get(it["id"], it["cover"]),
          "brand": {"@type": "Brand", "name": "Almo’min"}}
@@ -25,7 +25,7 @@ for i, it in enumerate(data["items"], 1):
         p["offers"] = {"@type": "AggregateOffer", "lowPrice": f"{prices[0]:.2f}", "highPrice": f"{prices[-1]:.2f}",
                        "priceCurrency": "EUR", "offerCount": len(prices), "availability": "https://schema.org/InStock"}
     else:
-        p["offers"] = offer(prices[0])
+        p["offers"] = offer(prices[0], it["id"])
     products.append({"@type": "ListItem", "position": i, "item": p})
 
 graph = {"@context": "https://schema.org", "@graph": [

@@ -32,14 +32,14 @@
   const grid = $("shopGrid"), chips = $("shopChips");
   grid.innerHTML = SHOP.items.map(it => `
     <li data-cat="${it.cat}">
-      <button class="pc${it.cat === "bundles" ? " pc--bundle" : ""}" type="button" data-open="${it.id}" aria-haspopup="dialog">
-        <span class="pc__stage"><img src="${it.cover}" alt="" loading="lazy">${it.isNew ? '<span class="pc__new">New</span>' : ""}</span>
+      <a class="pc${it.cat === "bundles" ? " pc--bundle" : ""}" href="/books/${it.id}/" data-open="${it.id}">
+        <span class="pc__stage"><img src="${it.cover}" alt="${esc(it.title)}" loading="lazy">${it.isNew ? '<span class="pc__new">New</span>' : ""}</span>
         <span class="pc__meta">
           <span class="pc__cat">${esc(catLabel(it.cat))}</span>
           <span class="pc__title">${rich(it.title)}</span>
           <span class="pc__price">${it.options.length > 1 ? "from " : ""}${money(fromPrice(it))}</span>
         </span>
-      </button>
+      </a>
     </li>`).join("");
 
   const opts = [{ id: "all", label: `All ${SHOP.items.length}` }, ...SHOP.categories];
@@ -87,6 +87,7 @@
     $("pd-title").innerHTML = rich(cur.title);
     $("pd-desc").innerHTML = rich(cur.desc);
     $("pd-specs").textContent = cur.specs || "";
+    $("pd-page").href = `/books/${cur.id}/`;
     const op = $("pd-opts");
     op.hidden = cur.options.length < 2;
     op.innerHTML = cur.options.length < 2 ? "" : cur.options.map((o, k) => `<button type="button" role="radio" data-k="${k}">${esc(o.label)} <span>${money(o.price)}</span></button>`).join("");
@@ -157,7 +158,11 @@
   pd.addEventListener("click", e => { if (e.target === pd) pd.close(); });
 
   document.addEventListener("click", e => {
-    const o = e.target.closest("[data-open]"); if (o) { openProduct(o.dataset.open); return; }
+    const o = e.target.closest("[data-open]");
+    if (o) {
+      if (o.tagName === "A" && (e.metaKey || e.ctrlKey || e.shiftKey || e.button)) return; // let new-tab clicks open the product page
+      e.preventDefault(); openProduct(o.dataset.open); return;
+    }
     const a = e.target.closest("[data-add]"); if (a) { add(a.dataset.add); }
   });
 
@@ -223,5 +228,6 @@
   };
 
   renderBag();
+  if (location.hash === "#bag") { bagDlg.showModal(); history.replaceState(null, "", location.pathname + location.search); }
   window.AlmominShop = { open: openProduct, add };
 })();

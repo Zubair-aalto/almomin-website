@@ -273,3 +273,10 @@
 .foot__links{display:flex; gap:20px; justify-content:center; flex-wrap:wrap; font-size:14px; margin-bottom:14px}
 .foot__links a{color:var(--cream); opacity:.75} .foot__links a:hover{opacity:1}
 .bag__terms{font-size:12px; color:var(--ink-2); margin-top:8px} .bag__terms a{color:inherit}
+
+a.pc{text-decoration:none}
+.pd__page{display:inline-block; margin-top:14px; font-size:14px; color:var(--ink-2); text-decoration-color:var(--gold); text-underline-offset:3px}
+.nav__lang{border:1px solid rgb(212 175 90 / .4); border-radius:999px; padding:5px 12px!important; font-size:13px!important}
+.nav__lang::after{display:none}
+.foot__seo{display:flex; flex-wrap:wrap; justify-content:center; gap:10px 22px; font-size:14px; margin:0 auto 18px; max-width:900px}
+.foot__seo a{color:var(--cream); opacity:.7} .foot__seo a:hover{opacity:1}

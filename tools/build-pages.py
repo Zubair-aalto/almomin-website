@@ -43,7 +43,12 @@ def crumbs(pairs):
     return {"@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": i + 1, "name": n, "item": SITE + u} for i, (n, u) in enumerate(pairs)]}
 
-CATS = C.CATS  # id -> dict(en_slug, fi_slug, ...)
+CATS = C.CATS
+
+def sku_of(pid):
+    # Google allows at most 50 characters; keep it short and readable, e.g. AM-allah-made-the-world-around-me
+    s = "AM-" + pid
+    return s if len(s) <= 40 else s[:40].rstrip("-")  # id -> dict(en_slug, fi_slug, ...)
 
 # ---------------------------------------------------------------- layout
 def head(title, desc, path, lang="en", image=None, alt_en=None, alt_fi=None, extra=""):
@@ -205,7 +210,7 @@ def product_page(it):
                                            "merchantReturnDays": 14, "returnMethod": "https://schema.org/ReturnByMail", "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"},
                "seller": {"@type": "Organization", "name": "Almo’min"}})
     data = [{"@context": "https://schema.org", "@type": "Product", "name": title, "description": re.sub(r"\s+", " ", it["desc"]),
-             "image": [SITE + ab(s) for s in gal[:6]] if gal else [img_abs], "sku": it["id"], "category": cat["en_h1"],
+             "image": [SITE + ab(s) for s in gal[:6]] if gal else [img_abs], "sku": sku_of(it["id"]), "category": cat["en_h1"],
              "brand": {"@type": "Brand", "name": "Almo’min"}, "offers": offers},
             {"@context": "https://schema.org", **crumbs([("Home", "/"), (cat["en_h1"], f"/shop/{cat['en_slug']}/"), (title, f"/books/{it['id']}/")])}]
     body = f"""{head(t, desc, f"/books/{it['id']}/", image=ab(JPG.get(it['id'], it['cover'])), extra=ld(data))}{header()}

@@ -57,12 +57,144 @@ export const ITEMS = [
  },
  {
   "id": "set-of-10-prophet-stories-for-children",
-  "title": "Prophet Stories (Set of 10)",
+  "title": "Prophet Stories: Complete Set of 10",
   "image": "assets/shop/set-of-10-prophet-stories-for-children.jpg",
   "options": [
    {
     "label": null,
-    "price": 33.5
+    "price": 50.0
+   }
+  ]
+ },
+ {
+  "id": "prophet-stories-set-1",
+  "title": "Prophet Stories Set 1: Adam to Ismail",
+  "image": "assets/shop/prophet-adam.jpg",
+  "options": [
+   {
+    "label": null,
+    "price": 30.0
+   }
+  ]
+ },
+ {
+  "id": "prophet-stories-set-2",
+  "title": "Prophet Stories Set 2: Yusuf to Muhammad ﷺ",
+  "image": "assets/shop/prophet-yusuf.jpg",
+  "options": [
+   {
+    "label": null,
+    "price": 30.0
+   }
+  ]
+ },
+ {
+  "id": "prophet-adam-story-book",
+  "title": "Prophet Adam (AS)",
+  "image": "assets/shop/prophet-adam.jpg",
+  "options": [
+   {
+    "label": null,
+    "price": 6.95
+   }
+  ]
+ },
+ {
+  "id": "prophet-nuh-story-book",
+  "title": "Prophet Nuh (AS)",
+  "image": "assets/shop/prophet-nuh.jpg",
+  "options": [
+   {
+    "label": null,
+    "price": 6.95
+   }
+  ]
+ },
+ {
+  "id": "prophet-salih-story-book",
+  "title": "Prophet Salih (AS)",
+  "image": "assets/shop/prophet-salih.jpg",
+  "options": [
+   {
+    "label": null,
+    "price": 6.95
+   }
+  ]
+ },
+ {
+  "id": "prophet-ibrahim-story-book",
+  "title": "Prophet Ibrahim (AS)",
+  "image": "assets/shop/prophet-ibrahim.jpg",
+  "options": [
+   {
+    "label": null,
+    "price": 6.95
+   }
+  ]
+ },
+ {
+  "id": "prophet-ismail-story-book",
+  "title": "Prophet Ismail (AS)",
+  "image": "assets/shop/prophet-ismail.jpg",
+  "options": [
+   {
+    "label": null,
+    "price": 6.95
+   }
+  ]
+ },
+ {
+  "id": "prophet-yusuf-story-book",
+  "title": "Prophet Yusuf (AS)",
+  "image": "assets/shop/prophet-yusuf.jpg",
+  "options": [
+   {
+    "label": null,
+    "price": 6.95
+   }
+  ]
+ },
+ {
+  "id": "prophet-musa-story-book",
+  "title": "Prophet Musa (AS)",
+  "image": "assets/shop/prophet-musa.jpg",
+  "options": [
+   {
+    "label": null,
+    "price": 6.95
+   }
+  ]
+ },
+ {
+  "id": "prophet-sulaiman-story-book",
+  "title": "Prophet Sulaiman (AS)",
+  "image": "assets/shop/prophet-sulaiman.jpg",
+  "options": [
+   {
+    "label": null,
+    "price": 6.95
+   }
+  ]
+ },
+ {
+  "id": "prophet-yunus-story-book",
+  "title": "Prophet Yunus (AS)",
+  "image": "assets/shop/prophet-yunus.jpg",
+  "options": [
+   {
+    "label": null,
+    "price": 6.95
+   }
+  ]
+ },
+ {
+  "id": "prophet-muhammad-story-book",
+  "title": "Prophet Muhammad ﷺ",
+  "image": "assets/shop/prophet-muhammad.jpg",
+  "options": [
+   {
+    "label": null,
+    "price": 6.95
    }
   ]
  },

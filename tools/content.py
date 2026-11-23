@@ -12,13 +12,15 @@ CATS = {
   en_h1="Prophet stories for kids", fi_h1="Profeettatarinat lapsille",
   fi_tile="Koraanin tarinat sarjoina, alk. 10 €",
   en_title="Prophet Stories for Kids – Quran Story Book Bundles | Almo’min",
-  en_desc="Illustrated stories of the prophets from the Holy Quran in bundles: 5 books €10, 6 books €12, all 22 for €44. Delivery across Finland.",
+  en_desc="Illustrated prophet stories for kids: Quran story bundles from €10, single prophet books €6.95, sets of 5 for €30. Delivery across Finland.",
   fi_title="Profeettatarinat lapsille – Koraanin tarinat kirjasarjoina | Almo’min",
   fi_desc="Kuvitetut profeettatarinat Koraanista lapsille: 5 kirjaa 10 €, 6 kirjaa 12 €, kaikki 22 kirjaa 44 €. Toimitus koko Suomeen.",
   en_intro="""<p>The stories of the prophets are the first stories many Muslim children fall in love with. Our illustrated <b>Stories from the Holy Quran</b> follow them in order, from Adam (AS) and the Garden to the life of the final Messenger, Muhammad ﷺ, in four bundles you can collect one by one.</p>
-<p>Each bundle is priced as a set: <b>5 books for €10</b> or <b>6 books for €12</b>, and the <b>complete collection of 22 books is €44</b>. Short chapters and bright pictures make them ideal bedtime stories for ages 4–10, and easy first readers for older children. We also stock a set of 10 prophet stories and a series on the beautiful names of Allah.</p>""",
+<p>Each bundle is priced as a set: <b>5 books for €10</b> or <b>6 books for €12</b>, and the <b>complete collection of 22 books is €44</b>. Short chapters and bright pictures make them ideal bedtime stories for ages 4–10, and easy first readers for older children. We also stock a set of 10 prophet stories and a series on the beautiful names of Allah.</p>
+<p>Our second series, <b>Our Prophets: Our Heroes</b>, has a square picture book for each of ten prophets, from Adam (AS) to Muhammad ﷺ, with the prophet’s dua, names of Allah and fun facts. Buy them <b>one at a time for €6.95</b>, in two <b>sets of 5 for €30</b>, or <b>all 10 for €50</b>.</p>""",
   fi_intro="""<p>Profeettojen tarinat ovat monelle muslimilapselle ensimmäiset rakkaat tarinat. Kuvitettu <b>Stories from the Holy Quran</b> -sarja kulkee järjestyksessä Aadamista (AS) viimeiseen profeettaan Muhammadiin ﷺ, neljänä kirjasarjana, jotka voi kerätä yksi kerrallaan.</p>
-<p>Hinnat ovat sarjahintoja: <b>5 kirjaa 10 €</b> tai <b>6 kirjaa 12 €</b>, ja <b>koko 22 kirjan kokoelma 44 €</b>. Lyhyet luvut ja värikkäät kuvat sopivat iltasaduiksi 4–10-vuotiaille ja ensimmäisiksi omiksi lukukirjoiksi. Valikoimassa on myös 10 profeettatarinan setti ja sarja Allahin kauniista nimistä.</p>""",
+<p>Hinnat ovat sarjahintoja: <b>5 kirjaa 10 €</b> tai <b>6 kirjaa 12 €</b>, ja <b>koko 22 kirjan kokoelma 44 €</b>. Lyhyet luvut ja värikkäät kuvat sopivat iltasaduiksi 4–10-vuotiaille ja ensimmäisiksi omiksi lukukirjoiksi. Valikoimassa on myös sarja Allahin kauniista nimistä.</p>
+<p>Toisessa sarjassamme, <b>Our Prophets: Our Heroes</b>, on oma kuvakirja kymmenelle profeetalle Aadamista (AS) Muhammadiin ﷺ, profeetan duan, Allahin nimien ja hauskojen faktojen kera. Kirjat saa <b>yksittäin 6,95 €</b>, kahtena <b>5 kirjan settinä 30 €</b> tai <b>kaikki 10 kirjaa 50 €</b>.</p>""",
   en_faq=[("What age are the prophet story books for?", "They are best for ages 4–10. Younger children enjoy them read aloud; children from about 7 can read them on their own."),
           ("In what order should we read the prophet stories?", "Start with Bundle I (Adam, Cain and Abel, Nuh, Hud, Salih) and continue to Bundle IV, which ends with the life of Muhammad ﷺ. Our <a href=\"/guides/prophet-stories-for-kids-in-order/\">reading guide</a> lists every book in order."),
           ("What language are the books in?", "The books are in English, with Islamic names and phrases explained in the text."),
@@ -145,7 +147,7 @@ GUIDES_EN = [
 <li><b>Connect to the Quran.</b> Older children can find the story’s surah and listen to the recitation.</li></ul>
 <h2>Prices</h2>
 <p>Bundles I and II are <b>5 books for €10</b>, Bundles III and IV are <b>6 books for €12</b>, and the <b>complete collection of all 22 books is €44</b>. We deliver across Finland, and pickup in Espoo is free.</p>
-[[products:bundle-complete,set-of-10-prophet-stories-for-children]]
+[[products:bundle-complete,set-of-10-prophet-stories-for-children,prophet-stories-set-1,prophet-stories-set-2]]
 <p>See all <a href="/shop/prophet-stories/">prophet story books</a>.</p>"""),
  dict(slug="ramadan-and-eid-books-for-kids", short="Ramadan & Eid for kids",
   title="Ramadan & Eid Books and Activities for Kids | Almo’min",

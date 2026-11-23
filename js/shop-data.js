@@ -4,7 +4,7 @@ window.SHOP = {
  "categories": [
   {
    "id": "bundles",
-   "label": "Bundles & Sets"
+   "label": "Prophet Stories & Sets"
   },
   {
    "id": "baby",
@@ -386,16 +386,16 @@ window.SHOP = {
   },
   {
    "id": "set-of-10-prophet-stories-for-children",
-   "title": "Prophet Stories (Set of 10)",
+   "title": "Prophet Stories: Complete Set of 10",
    "cat": "bundles",
    "isNew": true,
-   "desc": "Ten illustrated storybooks on the lives of Adam, Nuh, Salih, Ibrahim, Ismail, Musa, Yusuf, Yunus and Sulaiman (peace be upon them) and Muhammad ﷺ. Each story highlights a value like patience, gratitude or trust in Allah.",
-   "specs": "10 books",
+   "desc": "All ten stories in one set, in order: Adam, Nuh, Salih, Ibrahim, Ismail, Yusuf, Musa, Sulaiman and Yunus (peace be upon them) and Muhammad ﷺ. Each illustrated book highlights a value like patience, gratitude or trust in Allah, with the prophet’s dua and fun facts.",
+   "specs": "10 illustrated storybooks · Ages 4–8",
    "cover": "assets/shop/set-of-10-prophet-stories-for-children.jpg",
    "options": [
     {
      "label": null,
-     "price": 33.5
+     "price": 50.0
     }
    ],
    "gallery": [
@@ -413,6 +413,362 @@ window.SHOP = {
     "assets/shop/gallery/set-of-10-prophet-stories-for-children-12.webp",
     "assets/shop/gallery/set-of-10-prophet-stories-for-children-13.webp",
     "assets/shop/gallery/set-of-10-prophet-stories-for-children-14.webp"
+   ],
+   "includes": [
+    {
+     "title": "Prophet Adam (AS)",
+     "cover": "assets/shop/prophet-adam.jpg",
+     "hi": "assets/shop/gallery/prophet-adam-1.webp"
+    },
+    {
+     "title": "Prophet Nuh (AS)",
+     "cover": "assets/shop/prophet-nuh.jpg",
+     "hi": "assets/shop/gallery/prophet-nuh-1.webp"
+    },
+    {
+     "title": "Prophet Salih (AS)",
+     "cover": "assets/shop/prophet-salih.jpg",
+     "hi": "assets/shop/gallery/prophet-salih-1.webp"
+    },
+    {
+     "title": "Prophet Ibrahim (AS)",
+     "cover": "assets/shop/prophet-ibrahim.jpg",
+     "hi": "assets/shop/gallery/prophet-ibrahim-1.webp"
+    },
+    {
+     "title": "Prophet Ismail (AS)",
+     "cover": "assets/shop/prophet-ismail.jpg",
+     "hi": "assets/shop/gallery/prophet-ismail-1.webp"
+    },
+    {
+     "title": "Prophet Yusuf (AS)",
+     "cover": "assets/shop/prophet-yusuf.jpg",
+     "hi": "assets/shop/gallery/prophet-yusuf-1.webp"
+    },
+    {
+     "title": "Prophet Musa (AS)",
+     "cover": "assets/shop/prophet-musa.jpg",
+     "hi": "assets/shop/gallery/prophet-musa-1.webp"
+    },
+    {
+     "title": "Prophet Sulaiman (AS)",
+     "cover": "assets/shop/prophet-sulaiman.jpg",
+     "hi": "assets/shop/gallery/prophet-sulaiman-1.webp"
+    },
+    {
+     "title": "Prophet Yunus (AS)",
+     "cover": "assets/shop/prophet-yunus.jpg",
+     "hi": "assets/shop/gallery/prophet-yunus-1.webp"
+    },
+    {
+     "title": "Prophet Muhammad ﷺ",
+     "cover": "assets/shop/prophet-muhammad.jpg",
+     "hi": "assets/shop/gallery/prophet-muhammad-1.webp"
+    }
+   ]
+  },
+  {
+   "id": "prophet-stories-set-1",
+   "title": "Prophet Stories Set 1: Adam to Ismail",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "The first five stories, in order: Adam, Nuh, Salih, Ibrahim and Ismail (peace be upon them). From the creation of humankind to the building of the Kaaba. Each book includes the prophet’s dua, names of Allah and fun facts.",
+   "specs": "5 illustrated storybooks · Ages 4–8",
+   "cover": "assets/shop/prophet-set-1.webp",
+   "options": [
+    {
+     "label": null,
+     "price": 30.0
+    }
+   ],
+   "gallery": [
+    "assets/shop/prophet-set-1.webp",
+    "assets/shop/gallery/prophet-adam-1.webp",
+    "assets/shop/gallery/prophet-nuh-1.webp",
+    "assets/shop/gallery/prophet-salih-1.webp",
+    "assets/shop/gallery/prophet-ibrahim-1.webp",
+    "assets/shop/gallery/prophet-ismail-1.webp"
+   ],
+   "includes": [
+    {
+     "title": "Prophet Adam (AS)",
+     "cover": "assets/shop/prophet-adam.jpg",
+     "hi": "assets/shop/gallery/prophet-adam-1.webp"
+    },
+    {
+     "title": "Prophet Nuh (AS)",
+     "cover": "assets/shop/prophet-nuh.jpg",
+     "hi": "assets/shop/gallery/prophet-nuh-1.webp"
+    },
+    {
+     "title": "Prophet Salih (AS)",
+     "cover": "assets/shop/prophet-salih.jpg",
+     "hi": "assets/shop/gallery/prophet-salih-1.webp"
+    },
+    {
+     "title": "Prophet Ibrahim (AS)",
+     "cover": "assets/shop/prophet-ibrahim.jpg",
+     "hi": "assets/shop/gallery/prophet-ibrahim-1.webp"
+    },
+    {
+     "title": "Prophet Ismail (AS)",
+     "cover": "assets/shop/prophet-ismail.jpg",
+     "hi": "assets/shop/gallery/prophet-ismail-1.webp"
+    }
+   ]
+  },
+  {
+   "id": "prophet-stories-set-2",
+   "title": "Prophet Stories Set 2: Yusuf to Muhammad ﷺ",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "The next five stories, in order: Yusuf, Musa, Sulaiman and Yunus (peace be upon them), ending with the life of Prophet Muhammad ﷺ. Each book includes the prophet’s dua, names of Allah and fun facts.",
+   "specs": "5 illustrated storybooks · Ages 4–8",
+   "cover": "assets/shop/prophet-set-2.webp",
+   "options": [
+    {
+     "label": null,
+     "price": 30.0
+    }
+   ],
+   "gallery": [
+    "assets/shop/prophet-set-2.webp",
+    "assets/shop/gallery/prophet-yusuf-1.webp",
+    "assets/shop/gallery/prophet-musa-1.webp",
+    "assets/shop/gallery/prophet-sulaiman-1.webp",
+    "assets/shop/gallery/prophet-yunus-1.webp",
+    "assets/shop/gallery/prophet-muhammad-1.webp"
+   ],
+   "includes": [
+    {
+     "title": "Prophet Yusuf (AS)",
+     "cover": "assets/shop/prophet-yusuf.jpg",
+     "hi": "assets/shop/gallery/prophet-yusuf-1.webp"
+    },
+    {
+     "title": "Prophet Musa (AS)",
+     "cover": "assets/shop/prophet-musa.jpg",
+     "hi": "assets/shop/gallery/prophet-musa-1.webp"
+    },
+    {
+     "title": "Prophet Sulaiman (AS)",
+     "cover": "assets/shop/prophet-sulaiman.jpg",
+     "hi": "assets/shop/gallery/prophet-sulaiman-1.webp"
+    },
+    {
+     "title": "Prophet Yunus (AS)",
+     "cover": "assets/shop/prophet-yunus.jpg",
+     "hi": "assets/shop/gallery/prophet-yunus-1.webp"
+    },
+    {
+     "title": "Prophet Muhammad ﷺ",
+     "cover": "assets/shop/prophet-muhammad.jpg",
+     "hi": "assets/shop/gallery/prophet-muhammad-1.webp"
+    }
+   ]
+  },
+  {
+   "id": "prophet-adam-story-book",
+   "title": "Prophet Adam (AS)",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "The story of Prophet Adam (AS), the first human and the first prophet: how Allah created him, taught him the names of all things and forgave him when he turned back to Him. A gentle first lesson in where we come from and how to say sorry to Allah.",
+   "specs": "Illustrated storybook · Ages 4–8 · Includes the prophet’s dua, names of Allah and fun facts",
+   "cover": "assets/shop/prophet-adam.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 6.95
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/prophet-adam-1.webp",
+    "assets/shop/gallery/prophet-adam-2.webp",
+    "assets/shop/gallery/prophet-adam-3.webp"
+   ]
+  },
+  {
+   "id": "prophet-nuh-story-book",
+   "title": "Prophet Nuh (AS)",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "Prophet Nuh (AS) called his people to Allah for hundreds of years, then built the Ark when Allah commanded him. A story of patience, perseverance and trust in Allah, told simply for young readers.",
+   "specs": "Illustrated storybook · Ages 4–8 · Includes the prophet’s dua, names of Allah and fun facts",
+   "cover": "assets/shop/prophet-nuh.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 6.95
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/prophet-nuh-1.webp",
+    "assets/shop/gallery/prophet-nuh-2.webp",
+    "assets/shop/gallery/prophet-nuh-3.webp"
+   ]
+  },
+  {
+   "id": "prophet-salih-story-book",
+   "title": "Prophet Salih (AS)",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "Prophet Salih (AS) was sent to the people of Thamud, who carved their homes into the mountains. Children learn about the she-camel, a sign from Allah, and why gratitude and obedience matter.",
+   "specs": "Illustrated storybook · Ages 4–8 · Includes the prophet’s dua, names of Allah and fun facts",
+   "cover": "assets/shop/prophet-salih.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 6.95
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/prophet-salih-1.webp",
+    "assets/shop/gallery/prophet-salih-2.webp",
+    "assets/shop/gallery/prophet-salih-3.webp"
+   ]
+  },
+  {
+   "id": "prophet-ibrahim-story-book",
+   "title": "Prophet Ibrahim (AS)",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "Prophet Ibrahim (AS) searched for the truth, stood up to idol worship and was kept safe in the fire by Allah. A brave, beautiful story of faith and courage.",
+   "specs": "Illustrated storybook · Ages 4–8 · Includes the prophet’s dua, names of Allah and fun facts",
+   "cover": "assets/shop/prophet-ibrahim.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 6.95
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/prophet-ibrahim-1.webp",
+    "assets/shop/gallery/prophet-ibrahim-2.webp",
+    "assets/shop/gallery/prophet-ibrahim-3.webp"
+   ]
+  },
+  {
+   "id": "prophet-ismail-story-book",
+   "title": "Prophet Ismail (AS)",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "Prophet Ismail (AS), the obedient son of Ibrahim (AS): the gift of Zamzam, the great test of sacrifice, and building the Kaaba with his father. A story of devotion, patience and family.",
+   "specs": "Illustrated storybook · Ages 4–8 · Includes the prophet’s dua, names of Allah and fun facts",
+   "cover": "assets/shop/prophet-ismail.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 6.95
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/prophet-ismail-1.webp",
+    "assets/shop/gallery/prophet-ismail-2.webp",
+    "assets/shop/gallery/prophet-ismail-3.webp"
+   ]
+  },
+  {
+   "id": "prophet-yusuf-story-book",
+   "title": "Prophet Yusuf (AS)",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "From the bottom of a well to the palace of Egypt: the story of Prophet Yusuf (AS), his brothers and his dreams. Children learn about patience, honesty and forgiveness, and that Allah’s plan is always best.",
+   "specs": "Illustrated storybook · Ages 4–8 · Includes the prophet’s dua, names of Allah and fun facts",
+   "cover": "assets/shop/prophet-yusuf.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 6.95
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/prophet-yusuf-1.webp",
+    "assets/shop/gallery/prophet-yusuf-2.webp",
+    "assets/shop/gallery/prophet-yusuf-3.webp",
+    "assets/shop/gallery/prophet-yusuf-4.webp"
+   ]
+  },
+  {
+   "id": "prophet-musa-story-book",
+   "title": "Prophet Musa (AS)",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "Protected by Allah as a baby on the river, Prophet Musa (AS) grew up to stand before Pharaoh and lead his people to freedom. A story of courage and complete trust in Allah.",
+   "specs": "Illustrated storybook · Ages 4–8 · Includes the prophet’s dua, names of Allah and fun facts",
+   "cover": "assets/shop/prophet-musa.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 6.95
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/prophet-musa-1.webp",
+    "assets/shop/gallery/prophet-musa-2.webp",
+    "assets/shop/gallery/prophet-musa-3.webp"
+   ]
+  },
+  {
+   "id": "prophet-sulaiman-story-book",
+   "title": "Prophet Sulaiman (AS)",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "Prophet Sulaiman (AS) was given wisdom, a great kingdom and the gift of understanding animals, from the ants to the hoopoe bird. A story about justice and being thankful for Allah’s blessings.",
+   "specs": "Illustrated storybook · Ages 4–8 · Includes the prophet’s dua, names of Allah and fun facts",
+   "cover": "assets/shop/prophet-sulaiman.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 6.95
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/prophet-sulaiman-1.webp",
+    "assets/shop/gallery/prophet-sulaiman-2.webp",
+    "assets/shop/gallery/prophet-sulaiman-3.webp",
+    "assets/shop/gallery/prophet-sulaiman-4.webp"
+   ]
+  },
+  {
+   "id": "prophet-yunus-story-book",
+   "title": "Prophet Yunus (AS)",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "Prophet Yunus (AS) in the belly of the great fish, and the dua that saved him. Children learn that Allah always hears us when we turn to Him and ask for forgiveness.",
+   "specs": "Illustrated storybook · Ages 4–8 · Includes the prophet’s dua, names of Allah and fun facts",
+   "cover": "assets/shop/prophet-yunus.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 6.95
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/prophet-yunus-1.webp",
+    "assets/shop/gallery/prophet-yunus-2.webp",
+    "assets/shop/gallery/prophet-yunus-3.webp",
+    "assets/shop/gallery/prophet-yunus-4.webp"
+   ]
+  },
+  {
+   "id": "prophet-muhammad-story-book",
+   "title": "Prophet Muhammad ﷺ",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "The life of our beloved Prophet Muhammad ﷺ, the final Messenger: his kindness, honesty and love for others, from Makkah to Madinah. A first Seerah that helps children love and follow the Sunnah.",
+   "specs": "Illustrated storybook · Ages 4–8 · Includes the prophet’s dua, names of Allah and fun facts",
+   "cover": "assets/shop/prophet-muhammad.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 6.95
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/prophet-muhammad-1.webp",
+    "assets/shop/gallery/prophet-muhammad-2.webp",
+    "assets/shop/gallery/prophet-muhammad-3.webp",
+    "assets/shop/gallery/prophet-muhammad-4.webp"
    ]
   },
   {

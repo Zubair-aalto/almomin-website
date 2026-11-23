@@ -16,7 +16,7 @@ import content as C  # noqa: E402
 
 SITE = "https://almomin.eu"
 TODAY = date.today().isoformat()
-V = "15"  # css cache version
+V = "16"  # css cache version
 
 shop = (ROOT / "js/shop-data.js").read_text()
 DATA = json.loads(shop[shop.index("{"): shop.rindex("}") + 1])
@@ -101,6 +101,7 @@ def header(lang="en", other=None):
       <a href="{home}" class="pg__logo" aria-label="Almo’min {'etusivu' if lang == 'fi' else 'home'}"><span class="own-lock"><img src="/assets/own/mark-gold.png" alt="" width="34" height="42"><img src="/assets/own/word-gold.png" alt="Almo’min" width="104" height="16"></span></a>
       <nav class="pg__nav" aria-label="{'Kategoriat' if lang == 'fi' else 'Categories'}">{nav}</nav>
       <div class="pg__tools">
+        <a class="pg__bag pg__search" href="/#search" aria-label="{'Hae kirjoja' if lang == 'fi' else 'Search books'}"><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></a>
         <a class="pg__lang" href="{sw}" hreflang="{'en' if lang == 'fi' else 'fi'}">{swl}</a>
         <a class="pg__bag" href="/#bag" aria-label="{bag}"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 7h12l-1 13H7L6 7Z M9 7a3 3 0 0 1 6 0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg><span class="pg__count" data-bag-count hidden>0</span></a>
       </div>

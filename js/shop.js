@@ -30,9 +30,13 @@
 
   /* ---------- Collection grid ---------- */
   const grid = $("shopGrid"), chips = $("shopChips");
-  const GROUPS = SHOP.groups || {}, shownGroups = new Set();
-  const groupCard = g => `
-    <li data-cat="bundles">
+  const GROUPS = SHOP.groups || {};
+  // Search: lower-case, no accents, straight apostrophes, so "yunus", "Yūnus" and "Yunus’" all match
+  const norm = t => String(t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[’‘`]/g, "'").toLowerCase();
+  const textOf = it => norm([it.title, it.desc, it.specs, catLabel(it.cat), (it.includes || []).map(b => b.title).join(" "),
+    it.group && GROUPS[it.group] ? GROUPS[it.group].title : "", it.options.map(o => o.label || "").join(" ")].join(" "));
+  const groupCard = (id, g) => `
+    <li data-cat="bundles" data-group-card="${id}" data-text="${esc(norm(g.title + " " + g.sub))}">
       <a class="pc pc--bundle pc--group" href="${g.url}">
         <span class="pc__stage"><img src="${g.cover}" alt="${esc(g.title)}" loading="lazy"></span>
         <span class="pc__meta">
@@ -43,9 +47,8 @@
         </span>
       </a>
     </li>`;
-  const listed = SHOP.items.filter(it => !it.group || (!shownGroups.has(it.group) && shownGroups.add(it.group)));
-  grid.innerHTML = listed.map(it => it.group && GROUPS[it.group] ? groupCard(GROUPS[it.group]) : `
-    <li data-cat="${it.cat}">
+  const card = it => `
+    <li data-cat="${it.cat}"${it.group ? ` data-in-group="${it.group}"` : ""} data-text="${esc(textOf(it))}">
       <a class="pc${it.cat === "bundles" ? " pc--bundle" : ""}" href="/books/${it.id}/" data-open="${it.id}">
         <span class="pc__stage"><img src="${it.cover}" alt="${esc(it.title)}" loading="lazy">${it.isNew ? '<span class="pc__new">New</span>' : ""}</span>
         <span class="pc__meta">
@@ -54,15 +57,60 @@
           <span class="pc__price">${it.options.length > 1 ? "from " : ""}${money(fromPrice(it))}</span>
         </span>
       </a>
-    </li>`).join("");
+    </li>`;
+  // Every product is in the grid. Books in a series show as one card while browsing, and one by one when searching.
+  const seen = new Set();
+  grid.innerHTML = SHOP.items.map(it => {
+    if (it.group && GROUPS[it.group] && !seen.has(it.group)) { seen.add(it.group); return groupCard(it.group, GROUPS[it.group]) + card(it); }
+    return card(it);
+  }).join("");
+  const browseCount = grid.querySelectorAll("li:not([data-in-group])").length;
 
-  const opts = [{ id: "all", label: `All ${listed.length}` }, ...SHOP.categories];
+  const opts = [{ id: "all", label: `All ${browseCount}` }, ...SHOP.categories];
   chips.innerHTML = opts.map((o, i) => `<button class="chip" role="tab" type="button" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}" data-f="${o.id}">${esc(o.label)}</button>`).join("");
+
+  const search = $("shopSearch"), status = $("shopStatus"), empty = $("shopEmpty");
+  let cat = "all";
+  const apply = () => {
+    // "duas" also finds "dua"; if no book has every word, show books with any of them
+    const words = norm(search ? search.value : "").split(/\s+/).filter(Boolean).map(w => w.length > 3 ? w.replace(/s$/, "") : w);
+    const has = (li, w) => li.dataset.text.includes(w);
+    const lis = [...grid.querySelectorAll("li")];
+    const all = words.length && lis.some(li => !li.dataset.groupCard && (cat === "all" || li.dataset.cat === cat) && words.every(w => has(li, w)));
+    let n = 0;
+    lis.forEach(li => {
+      const inCat = cat === "all" || li.dataset.cat === cat;
+      const hit = all ? words.every(w => has(li, w)) : words.some(w => has(li, w));
+      const show = words.length
+        ? inCat && hit && !li.dataset.groupCard          // searching: show matching books one by one
+        : inCat && !li.dataset.inGroup;                   // browsing: series shown as one card
+      li.hidden = !show; if (show) n++;
+    });
+    if (status) status.textContent = words.length ? (n ? `${n} result${n === 1 ? "" : "s"} for “${search.value.trim()}”` : "") : "";
+    if (empty) empty.hidden = !(words.length && n === 0);
+  };
   const select = btn => {
     chips.querySelectorAll(".chip").forEach(c => { c.setAttribute("aria-selected", c === btn); c.tabIndex = c === btn ? 0 : -1; });
-    const f = btn.dataset.f;
-    grid.querySelectorAll("li").forEach(li => li.hidden = !(f === "all" || li.dataset.cat === f));
+    cat = btn.dataset.f; apply();
   };
+  if (search) {
+    search.addEventListener("input", apply);
+    search.addEventListener("keydown", e => { if (e.key === "Escape") { search.value = ""; apply(); } });
+    $("shopSearchClear").addEventListener("click", () => { search.value = ""; apply(); search.focus(); });
+    // /?q=yunus or /#search (from the search button on other pages)
+    const q = new URLSearchParams(location.search).get("q");
+    if (q || location.hash === "#search") {
+      if (q) search.value = q;
+      apply();
+  document.addEventListener("click", e => {
+    const a = e.target.closest("[data-search]"); if (!a || !search) return;
+    e.preventDefault(); $("collection").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+    setTimeout(() => search.focus({ preventScroll: true }), reduce ? 0 : 450);
+  });
+      requestAnimationFrame(() => { $("collection").scrollIntoView({ block: "start" }); search.focus({ preventScroll: true }); });
+    }
+  }
+  apply();
   chips.addEventListener("click", e => { const b = e.target.closest(".chip"); if (b) select(b); });
   document.addEventListener("click", e => {
     const f = e.target.closest("[data-filter]"); if (!f) return;

@@ -1162,13 +1162,7 @@ window.SHOP = {
    ],
    "gallery": [
     "assets/shop/gallery/my-emotions-connect-me-to-allah-1.webp",
-    "assets/shop/gallery/my-emotions-connect-me-to-allah-2.webp",
-    "assets/shop/gallery/my-emotions-connect-me-to-allah-3.webp",
     "assets/shop/gallery/my-emotions-connect-me-to-allah-4.webp",
-    "assets/shop/gallery/my-emotions-connect-me-to-allah-5.webp",
-    "assets/shop/gallery/my-emotions-connect-me-to-allah-6.webp",
-    "assets/shop/gallery/my-emotions-connect-me-to-allah-7.webp",
-    "assets/shop/gallery/my-emotions-connect-me-to-allah-8.webp",
     "assets/shop/gallery/my-emotions-connect-me-to-allah-9.webp"
    ]
   },

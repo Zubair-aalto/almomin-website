@@ -400,18 +400,7 @@ window.SHOP = {
    ],
    "gallery": [
     "assets/shop/prophet-set-10.webp",
-    "assets/shop/gallery/set-of-10-prophet-stories-for-children-2.webp",
-    "assets/shop/gallery/set-of-10-prophet-stories-for-children-3.webp",
-    "assets/shop/gallery/set-of-10-prophet-stories-for-children-4.webp",
-    "assets/shop/gallery/set-of-10-prophet-stories-for-children-5.webp",
-    "assets/shop/gallery/set-of-10-prophet-stories-for-children-6.webp",
-    "assets/shop/gallery/set-of-10-prophet-stories-for-children-7.webp",
-    "assets/shop/gallery/set-of-10-prophet-stories-for-children-8.webp",
-    "assets/shop/gallery/set-of-10-prophet-stories-for-children-9.webp",
-    "assets/shop/gallery/set-of-10-prophet-stories-for-children-10.webp",
-    "assets/shop/gallery/set-of-10-prophet-stories-for-children-11.webp",
     "assets/shop/gallery/set-of-10-prophet-stories-for-children-12.webp",
-    "assets/shop/gallery/set-of-10-prophet-stories-for-children-13.webp",
     "assets/shop/gallery/set-of-10-prophet-stories-for-children-14.webp"
    ],
    "includes": [
@@ -692,8 +681,7 @@ window.SHOP = {
    "gallery": [
     "assets/shop/gallery/prophet-yusuf-1.webp",
     "assets/shop/gallery/prophet-yusuf-2.webp",
-    "assets/shop/gallery/prophet-yusuf-3.webp",
-    "assets/shop/gallery/prophet-yusuf-4.webp"
+    "assets/shop/gallery/prophet-yusuf-3.webp"
    ],
    "group": "heroes"
   },
@@ -735,8 +723,7 @@ window.SHOP = {
    "gallery": [
     "assets/shop/gallery/prophet-sulaiman-1.webp",
     "assets/shop/gallery/prophet-sulaiman-2.webp",
-    "assets/shop/gallery/prophet-sulaiman-3.webp",
-    "assets/shop/gallery/prophet-sulaiman-4.webp"
+    "assets/shop/gallery/prophet-sulaiman-3.webp"
    ],
    "group": "heroes"
   },
@@ -757,8 +744,7 @@ window.SHOP = {
    "gallery": [
     "assets/shop/gallery/prophet-yunus-1.webp",
     "assets/shop/gallery/prophet-yunus-2.webp",
-    "assets/shop/gallery/prophet-yunus-3.webp",
-    "assets/shop/gallery/prophet-yunus-4.webp"
+    "assets/shop/gallery/prophet-yunus-3.webp"
    ],
    "group": "heroes"
   },
@@ -779,8 +765,7 @@ window.SHOP = {
    "gallery": [
     "assets/shop/gallery/prophet-muhammad-1.webp",
     "assets/shop/gallery/prophet-muhammad-2.webp",
-    "assets/shop/gallery/prophet-muhammad-3.webp",
-    "assets/shop/gallery/prophet-muhammad-4.webp"
+    "assets/shop/gallery/prophet-muhammad-3.webp"
    ],
    "group": "heroes"
   },
@@ -800,12 +785,8 @@ window.SHOP = {
    ],
    "gallery": [
     "assets/shop/gallery/asma-ul-husna-series-1.webp",
-    "assets/shop/gallery/asma-ul-husna-series-2.webp",
     "assets/shop/gallery/asma-ul-husna-series-3.webp",
-    "assets/shop/gallery/asma-ul-husna-series-4.webp",
-    "assets/shop/gallery/asma-ul-husna-series-5.webp",
-    "assets/shop/gallery/asma-ul-husna-series-6.webp",
-    "assets/shop/gallery/asma-ul-husna-series-7.webp"
+    "assets/shop/gallery/asma-ul-husna-series-4.webp"
    ]
   },
   {
@@ -824,9 +805,7 @@ window.SHOP = {
    ],
    "gallery": [
     "assets/shop/gallery/our-ummah-across-continents-1.webp",
-    "assets/shop/gallery/our-ummah-across-continents-2.webp",
     "assets/shop/gallery/our-ummah-across-continents-3.webp",
-    "assets/shop/gallery/our-ummah-across-continents-4.webp",
     "assets/shop/gallery/our-ummah-across-continents-5.webp"
    ]
   },
@@ -867,8 +846,7 @@ window.SHOP = {
    "gallery": [
     "assets/shop/gallery/eid-on-a-giant-glider-1.webp",
     "assets/shop/gallery/eid-on-a-giant-glider-2.webp",
-    "assets/shop/gallery/eid-on-a-giant-glider-3.webp",
-    "assets/shop/gallery/eid-on-a-giant-glider-4.webp"
+    "assets/shop/gallery/eid-on-a-giant-glider-3.webp"
    ]
   },
   {
@@ -887,9 +865,7 @@ window.SHOP = {
    ],
    "gallery": [
     "assets/shop/gallery/i-say-bismillah-sunnah-foods-1.webp",
-    "assets/shop/gallery/i-say-bismillah-sunnah-foods-2.webp",
     "assets/shop/gallery/i-say-bismillah-sunnah-foods-3.webp",
-    "assets/shop/gallery/i-say-bismillah-sunnah-foods-4.webp",
     "assets/shop/gallery/i-say-bismillah-sunnah-foods-5.webp"
    ]
   },
@@ -910,10 +886,7 @@ window.SHOP = {
    "gallery": [
     "assets/shop/gallery/the-world-around-me-from-the-quran-1.webp",
     "assets/shop/gallery/the-world-around-me-from-the-quran-2.webp",
-    "assets/shop/gallery/the-world-around-me-from-the-quran-3.webp",
-    "assets/shop/gallery/the-world-around-me-from-the-quran-4.webp",
-    "assets/shop/gallery/the-world-around-me-from-the-quran-5.webp",
-    "assets/shop/gallery/the-world-around-me-from-the-quran-6.webp"
+    "assets/shop/gallery/the-world-around-me-from-the-quran-5.webp"
    ]
   },
   {
@@ -953,8 +926,7 @@ window.SHOP = {
    "gallery": [
     "assets/shop/gallery/i-am-my-first-book-of-postive-affirmations-mirror-book-1.webp",
     "assets/shop/gallery/i-am-my-first-book-of-postive-affirmations-mirror-book-2.webp",
-    "assets/shop/gallery/i-am-my-first-book-of-postive-affirmations-mirror-book-3.webp",
-    "assets/shop/gallery/i-am-my-first-book-of-postive-affirmations-mirror-book-4.webp"
+    "assets/shop/gallery/i-am-my-first-book-of-postive-affirmations-mirror-book-3.webp"
    ]
   },
   {
@@ -974,10 +946,7 @@ window.SHOP = {
    "gallery": [
     "assets/shop/gallery/five-senses-five-blessings-board-book-1.webp",
     "assets/shop/gallery/five-senses-five-blessings-board-book-2.webp",
-    "assets/shop/gallery/five-senses-five-blessings-board-book-3.webp",
-    "assets/shop/gallery/five-senses-five-blessings-board-book-4.webp",
-    "assets/shop/gallery/five-senses-five-blessings-board-book-5.webp",
-    "assets/shop/gallery/five-senses-five-blessings-board-book-6.webp"
+    "assets/shop/gallery/five-senses-five-blessings-board-book-5.webp"
    ]
   },
   {
@@ -997,8 +966,7 @@ window.SHOP = {
    "gallery": [
     "assets/shop/gallery/my-dada-and-dadi-love-me-1.webp",
     "assets/shop/gallery/my-dada-and-dadi-love-me-2.webp",
-    "assets/shop/gallery/my-dada-and-dadi-love-me-3.webp",
-    "assets/shop/gallery/my-dada-and-dadi-love-me-4.webp"
+    "assets/shop/gallery/my-dada-and-dadi-love-me-3.webp"
    ]
   },
   {
@@ -1018,8 +986,7 @@ window.SHOP = {
    "gallery": [
     "assets/shop/gallery/my-nana-and-nani-love-me-board-book-1.webp",
     "assets/shop/gallery/my-nana-and-nani-love-me-board-book-2.webp",
-    "assets/shop/gallery/my-nana-and-nani-love-me-board-book-3.webp",
-    "assets/shop/gallery/my-nana-and-nani-love-me-board-book-4.webp"
+    "assets/shop/gallery/my-nana-and-nani-love-me-board-book-3.webp"
    ]
   },
   {
@@ -1077,8 +1044,7 @@ window.SHOP = {
    "gallery": [
     "assets/shop/gallery/it-is-sunnah-to-say-so-1.webp",
     "assets/shop/gallery/it-is-sunnah-to-say-so-2.webp",
-    "assets/shop/gallery/it-is-sunnah-to-say-so-3.webp",
-    "assets/shop/gallery/it-is-sunnah-to-say-so-4.webp"
+    "assets/shop/gallery/it-is-sunnah-to-say-so-3.webp"
    ]
   },
   {
@@ -1097,11 +1063,8 @@ window.SHOP = {
    ],
    "gallery": [
     "assets/shop/gallery/gift-of-salah-a-lift-the-flap-book-1.webp",
-    "assets/shop/gallery/gift-of-salah-a-lift-the-flap-book-2.webp",
-    "assets/shop/gallery/gift-of-salah-a-lift-the-flap-book-3.webp",
     "assets/shop/gallery/gift-of-salah-a-lift-the-flap-book-4.webp",
-    "assets/shop/gallery/gift-of-salah-a-lift-the-flap-book-5.webp",
-    "assets/shop/gallery/gift-of-salah-a-lift-the-flap-book-6.webp"
+    "assets/shop/gallery/gift-of-salah-a-lift-the-flap-book-5.webp"
    ]
   },
   {
@@ -1121,9 +1084,7 @@ window.SHOP = {
    "gallery": [
     "assets/shop/gallery/my-aqeedah-bilingual-board-book-english-and-arabic-1.webp",
     "assets/shop/gallery/my-aqeedah-bilingual-board-book-english-and-arabic-2.webp",
-    "assets/shop/gallery/my-aqeedah-bilingual-board-book-english-and-arabic-3.webp",
-    "assets/shop/gallery/my-aqeedah-bilingual-board-book-english-and-arabic-4.webp",
-    "assets/shop/gallery/my-aqeedah-bilingual-board-book-english-and-arabic-5.webp"
+    "assets/shop/gallery/my-aqeedah-bilingual-board-book-english-and-arabic-3.webp"
    ]
   },
   {
@@ -1183,12 +1144,7 @@ window.SHOP = {
    "gallery": [
     "assets/shop/gallery/what-i-say-to-feel-okay-1.webp",
     "assets/shop/gallery/what-i-say-to-feel-okay-2.webp",
-    "assets/shop/gallery/what-i-say-to-feel-okay-3.webp",
-    "assets/shop/gallery/what-i-say-to-feel-okay-4.webp",
-    "assets/shop/gallery/what-i-say-to-feel-okay-5.webp",
-    "assets/shop/gallery/what-i-say-to-feel-okay-6.webp",
-    "assets/shop/gallery/what-i-say-to-feel-okay-7.webp",
-    "assets/shop/gallery/what-i-say-to-feel-okay-8.webp"
+    "assets/shop/gallery/what-i-say-to-feel-okay-5.webp"
    ]
   },
   {
@@ -1207,11 +1163,7 @@ window.SHOP = {
    ],
    "gallery": [
     "assets/shop/gallery/why-are-my-feelings-so-big-islamic-kids-book-1.webp",
-    "assets/shop/gallery/why-are-my-feelings-so-big-islamic-kids-book-2.webp",
     "assets/shop/gallery/why-are-my-feelings-so-big-islamic-kids-book-3.webp",
-    "assets/shop/gallery/why-are-my-feelings-so-big-islamic-kids-book-4.webp",
-    "assets/shop/gallery/why-are-my-feelings-so-big-islamic-kids-book-5.webp",
-    "assets/shop/gallery/why-are-my-feelings-so-big-islamic-kids-book-6.webp",
     "assets/shop/gallery/why-are-my-feelings-so-big-islamic-kids-book-7.webp"
    ]
   },
@@ -1232,11 +1184,7 @@ window.SHOP = {
    "gallery": [
     "assets/shop/gallery/did-you-know-incredible-muslim-inventions-1.webp",
     "assets/shop/gallery/did-you-know-incredible-muslim-inventions-2.webp",
-    "assets/shop/gallery/did-you-know-incredible-muslim-inventions-3.webp",
-    "assets/shop/gallery/did-you-know-incredible-muslim-inventions-4.webp",
-    "assets/shop/gallery/did-you-know-incredible-muslim-inventions-5.webp",
-    "assets/shop/gallery/did-you-know-incredible-muslim-inventions-6.webp",
-    "assets/shop/gallery/did-you-know-incredible-muslim-inventions-7.webp"
+    "assets/shop/gallery/did-you-know-incredible-muslim-inventions-4.webp"
    ]
   },
   {
@@ -1256,11 +1204,7 @@ window.SHOP = {
    "gallery": [
     "assets/shop/gallery/tiny-tummies-big-benefits-1.webp",
     "assets/shop/gallery/tiny-tummies-big-benefits-2.webp",
-    "assets/shop/gallery/tiny-tummies-big-benefits-3.webp",
-    "assets/shop/gallery/tiny-tummies-big-benefits-4.webp",
-    "assets/shop/gallery/tiny-tummies-big-benefits-5.webp",
-    "assets/shop/gallery/tiny-tummies-big-benefits-6.webp",
-    "assets/shop/gallery/tiny-tummies-big-benefits-7.webp"
+    "assets/shop/gallery/tiny-tummies-big-benefits-4.webp"
    ]
   },
   {
@@ -1280,7 +1224,6 @@ window.SHOP = {
    "gallery": [
     "assets/shop/gallery/a-scarf-for-noor-children-storybook-1.webp",
     "assets/shop/gallery/a-scarf-for-noor-children-storybook-2.webp",
-    "assets/shop/gallery/a-scarf-for-noor-children-storybook-3.webp",
     "assets/shop/gallery/a-scarf-for-noor-children-storybook-4.webp"
    ]
   },
@@ -1301,7 +1244,6 @@ window.SHOP = {
    "gallery": [
     "assets/shop/gallery/fasting-or-feasting-1.webp",
     "assets/shop/gallery/fasting-or-feasting-2.webp",
-    "assets/shop/gallery/fasting-or-feasting-3.webp",
     "assets/shop/gallery/fasting-or-feasting-4.webp"
    ]
   },
@@ -1322,8 +1264,6 @@ window.SHOP = {
    "gallery": [
     "assets/shop/gallery/eid-catastrophe-1.webp",
     "assets/shop/gallery/eid-catastrophe-2.webp",
-    "assets/shop/gallery/eid-catastrophe-3.webp",
-    "assets/shop/gallery/eid-catastrophe-4.webp",
     "assets/shop/gallery/eid-catastrophe-5.webp"
    ]
   },
@@ -1343,10 +1283,8 @@ window.SHOP = {
    ],
    "gallery": [
     "assets/shop/gallery/manha-khan-is-not-a-troublemaker-1.webp",
-    "assets/shop/gallery/manha-khan-is-not-a-troublemaker-2.webp",
     "assets/shop/gallery/manha-khan-is-not-a-troublemaker-3.webp",
-    "assets/shop/gallery/manha-khan-is-not-a-troublemaker-4.webp",
-    "assets/shop/gallery/manha-khan-is-not-a-troublemaker-5.webp"
+    "assets/shop/gallery/manha-khan-is-not-a-troublemaker-4.webp"
    ]
   },
   {
@@ -1365,7 +1303,6 @@ window.SHOP = {
    ],
    "gallery": [
     "assets/shop/gallery/manha-khan-hikes-in-the-himalayas-1.webp",
-    "assets/shop/gallery/manha-khan-hikes-in-the-himalayas-2.webp",
     "assets/shop/gallery/manha-khan-hikes-in-the-himalayas-3.webp",
     "assets/shop/gallery/manha-khan-hikes-in-the-himalayas-4.webp"
    ]
@@ -1387,14 +1324,7 @@ window.SHOP = {
    "gallery": [
     "assets/shop/gallery/more-than-a-scarf-1.webp",
     "assets/shop/gallery/more-than-a-scarf-2.webp",
-    "assets/shop/gallery/more-than-a-scarf-3.webp",
-    "assets/shop/gallery/more-than-a-scarf-4.webp",
-    "assets/shop/gallery/more-than-a-scarf-5.webp",
-    "assets/shop/gallery/more-than-a-scarf-6.webp",
-    "assets/shop/gallery/more-than-a-scarf-7.webp",
-    "assets/shop/gallery/more-than-a-scarf-8.webp",
-    "assets/shop/gallery/more-than-a-scarf-9.webp",
-    "assets/shop/gallery/more-than-a-scarf-10.webp"
+    "assets/shop/gallery/more-than-a-scarf-7.webp"
    ]
   },
   {
@@ -1414,8 +1344,7 @@ window.SHOP = {
    "gallery": [
     "assets/shop/gallery/my-first-islamic-wipe-and-clean-activity-book-1.webp",
     "assets/shop/gallery/my-first-islamic-wipe-and-clean-activity-book-2.webp",
-    "assets/shop/gallery/my-first-islamic-wipe-and-clean-activity-book-3.webp",
-    "assets/shop/gallery/my-first-islamic-wipe-and-clean-activity-book-4.webp"
+    "assets/shop/gallery/my-first-islamic-wipe-and-clean-activity-book-3.webp"
    ]
   },
   {
@@ -1435,9 +1364,7 @@ window.SHOP = {
    "gallery": [
     "assets/shop/gallery/50-awesome-islamic-puzzles-book-activity-book-1.webp",
     "assets/shop/gallery/50-awesome-islamic-puzzles-book-activity-book-2.webp",
-    "assets/shop/gallery/50-awesome-islamic-puzzles-book-activity-book-3.webp",
-    "assets/shop/gallery/50-awesome-islamic-puzzles-book-activity-book-4.webp",
-    "assets/shop/gallery/50-awesome-islamic-puzzles-book-activity-book-5.webp"
+    "assets/shop/gallery/50-awesome-islamic-puzzles-book-activity-book-4.webp"
    ]
   },
   {
@@ -1456,14 +1383,8 @@ window.SHOP = {
    ],
    "gallery": [
     "assets/shop/gallery/dua-quest-cards-1.webp",
-    "assets/shop/gallery/dua-quest-cards-2.webp",
     "assets/shop/gallery/dua-quest-cards-3.webp",
-    "assets/shop/gallery/dua-quest-cards-4.webp",
-    "assets/shop/gallery/dua-quest-cards-5.webp",
-    "assets/shop/gallery/dua-quest-cards-6.webp",
-    "assets/shop/gallery/dua-quest-cards-7.webp",
-    "assets/shop/gallery/dua-quest-cards-8.webp",
-    "assets/shop/gallery/dua-quest-cards-9.webp"
+    "assets/shop/gallery/dua-quest-cards-7.webp"
    ]
   },
   {
@@ -1499,9 +1420,6 @@ window.SHOP = {
    "gallery": [
     "assets/shop/gallery/quiz-bundle-seerah-hadith-sahabah-sahabiyat-quiz-cards-1.webp",
     "assets/shop/gallery/quiz-bundle-seerah-hadith-sahabah-sahabiyat-quiz-cards-2.webp",
-    "assets/shop/gallery/quiz-bundle-seerah-hadith-sahabah-sahabiyat-quiz-cards-3.webp",
-    "assets/shop/gallery/quiz-bundle-seerah-hadith-sahabah-sahabiyat-quiz-cards-4.webp",
-    "assets/shop/gallery/quiz-bundle-seerah-hadith-sahabah-sahabiyat-quiz-cards-5.webp",
     "assets/shop/gallery/quiz-bundle-seerah-hadith-sahabah-sahabiyat-quiz-cards-6.webp"
    ]
   },
@@ -1582,7 +1500,6 @@ window.SHOP = {
    ],
    "gallery": [
     "assets/shop/gallery/living-by-the-quran-surah-al-hujurat-1.webp",
-    "assets/shop/gallery/living-by-the-quran-surah-al-hujurat-2.webp",
     "assets/shop/gallery/living-by-the-quran-surah-al-hujurat-3.webp",
     "assets/shop/gallery/living-by-the-quran-surah-al-hujurat-4.webp"
    ]
@@ -1604,9 +1521,7 @@ window.SHOP = {
    "gallery": [
     "assets/shop/gallery/hadith-cards-1.webp",
     "assets/shop/gallery/hadith-cards-2.webp",
-    "assets/shop/gallery/hadith-cards-3.webp",
-    "assets/shop/gallery/hadith-cards-4.webp",
-    "assets/shop/gallery/hadith-cards-5.webp"
+    "assets/shop/gallery/hadith-cards-4.webp"
    ]
   },
   {
@@ -1626,11 +1541,6 @@ window.SHOP = {
    "gallery": [
     "assets/shop/gallery/allah-loves-you-affirmation-cards-1.webp",
     "assets/shop/gallery/allah-loves-you-affirmation-cards-2.webp",
-    "assets/shop/gallery/allah-loves-you-affirmation-cards-3.webp",
-    "assets/shop/gallery/allah-loves-you-affirmation-cards-4.webp",
-    "assets/shop/gallery/allah-loves-you-affirmation-cards-5.webp",
-    "assets/shop/gallery/allah-loves-you-affirmation-cards-6.webp",
-    "assets/shop/gallery/allah-loves-you-affirmation-cards-7.webp",
     "assets/shop/gallery/allah-loves-you-affirmation-cards-8.webp"
    ]
   },

@@ -391,7 +391,7 @@ window.SHOP = {
    "isNew": true,
    "desc": "All ten stories in one set, in order: Adam, Nuh, Salih, Ibrahim, Ismail, Yusuf, Musa, Sulaiman and Yunus (peace be upon them) and Muhammad ﷺ. Each illustrated book highlights a value like patience, gratitude or trust in Allah, with the prophet’s dua and fun facts.",
    "specs": "10 illustrated storybooks · Ages 4–8",
-   "cover": "assets/shop/set-of-10-prophet-stories-for-children.jpg",
+   "cover": "assets/shop/prophet-set-10.webp",
    "options": [
     {
      "label": null,
@@ -399,7 +399,7 @@ window.SHOP = {
     }
    ],
    "gallery": [
-    "assets/shop/gallery/set-of-10-prophet-stories-for-children-1.webp",
+    "assets/shop/prophet-set-10.webp",
     "assets/shop/gallery/set-of-10-prophet-stories-for-children-2.webp",
     "assets/shop/gallery/set-of-10-prophet-stories-for-children-3.webp",
     "assets/shop/gallery/set-of-10-prophet-stories-for-children-4.webp",
@@ -841,7 +841,7 @@ window.SHOP = {
    "options": [
     {
      "label": null,
-     "price": 9.0
+     "price": 11.95
     }
    ],
    "gallery": [

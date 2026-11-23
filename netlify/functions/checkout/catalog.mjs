@@ -227,7 +227,7 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 9.0
+    "price": 11.95
    }
   ]
  },

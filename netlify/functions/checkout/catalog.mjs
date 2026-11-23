@@ -62,7 +62,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 50.0
+    "price": 50.0,
+    "stock": 5
    }
   ]
  },
@@ -205,7 +206,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 18.0
+    "price": 18.0,
+    "stock": 5
    }
   ]
  },
@@ -216,7 +218,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 14.3
+    "price": 14.3,
+    "stock": 5
    }
   ]
  },
@@ -227,7 +230,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 11.95
+    "price": 11.95,
+    "stock": 5
    }
   ]
  },
@@ -238,7 +242,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 10.0
+    "price": 10.0,
+    "stock": 5
    }
   ]
  },
@@ -249,7 +254,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 7.8
+    "price": 7.8,
+    "stock": 5
    }
   ]
  },
@@ -260,7 +266,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 7.8
+    "price": 7.8,
+    "stock": 5
    }
   ]
  },
@@ -271,7 +278,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 7.8
+    "price": 7.8,
+    "stock": 2
    }
   ]
  },
@@ -282,7 +290,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 9.6
+    "price": 9.6,
+    "stock": 2
    }
   ]
  },
@@ -293,7 +302,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 8.0
+    "price": 8.0,
+    "stock": 5
    }
   ]
  },
@@ -304,7 +314,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 8.4
+    "price": 8.4,
+    "stock": 5
    }
   ]
  },
@@ -315,7 +326,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 8.4
+    "price": 8.4,
+    "stock": 5
    }
   ]
  },
@@ -326,7 +338,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 9.0
+    "price": 9.0,
+    "stock": 5
    }
   ]
  },
@@ -337,7 +350,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 9.0
+    "price": 9.0,
+    "stock": 5
    }
   ]
  },
@@ -348,7 +362,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 9.6
+    "price": 9.6,
+    "stock": 5
    }
   ]
  },
@@ -359,7 +374,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 9.6
+    "price": 9.6,
+    "stock": 5
    }
   ]
  },
@@ -370,7 +386,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 7.0
+    "price": 7.0,
+    "stock": 5
    }
   ]
  },
@@ -381,7 +398,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 9.0
+    "price": 9.0,
+    "stock": 5
    }
   ]
  },
@@ -392,7 +410,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 7.4
+    "price": 7.4,
+    "stock": 5
    }
   ]
  },
@@ -403,7 +422,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 6.0
+    "price": 6.0,
+    "stock": 5
    }
   ]
  },
@@ -414,7 +434,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 9.6
+    "price": 9.6,
+    "stock": 3
    }
   ]
  },
@@ -425,7 +446,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 9.5
+    "price": 9.5,
+    "stock": 5
    }
   ]
  },
@@ -436,7 +458,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 9.0
+    "price": 9.0,
+    "stock": 5
    }
   ]
  },
@@ -447,7 +470,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 9.6
+    "price": 9.6,
+    "stock": 5
    }
   ]
  },
@@ -458,7 +482,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 7.8
+    "price": 7.8,
+    "stock": 5
    }
   ]
  },
@@ -469,7 +494,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 7.8
+    "price": 7.8,
+    "stock": 5
    }
   ]
  },
@@ -480,7 +506,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 8.4
+    "price": 8.4,
+    "stock": 5
    }
   ]
  },
@@ -491,7 +518,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 7.3
+    "price": 7.3,
+    "stock": 5
    }
   ]
  },
@@ -502,7 +530,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 6.0
+    "price": 6.0,
+    "stock": 5
    }
   ]
  },
@@ -513,7 +542,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 9.0
+    "price": 9.0,
+    "stock": 5
    }
   ]
  },
@@ -524,7 +554,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 4.8
+    "price": 4.8,
+    "stock": 5
    }
   ]
  },
@@ -535,7 +566,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 9.6
+    "price": 9.6,
+    "stock": 5
    }
   ]
  },
@@ -550,19 +582,23 @@ export const ITEMS = [
    },
    {
     "label": "Sahabah deck",
-    "price": 6.6
+    "price": 6.6,
+    "stock": 5
    },
    {
     "label": "Sahabiyat deck",
-    "price": 6.6
+    "price": 6.6,
+    "stock": 5
    },
    {
     "label": "Seerah deck",
-    "price": 6.6
+    "price": 6.6,
+    "stock": 5
    },
    {
     "label": "Hadith deck",
-    "price": 6.6
+    "price": 6.6,
+    "stock": 5
    }
   ]
  },
@@ -573,7 +609,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 3.0
+    "price": 3.0,
+    "stock": 5
    }
   ]
  },
@@ -584,7 +621,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 4.2
+    "price": 4.2,
+    "stock": 2
    }
   ]
  },
@@ -595,11 +633,13 @@ export const ITEMS = [
   "options": [
    {
     "label": "Girls",
-    "price": 6.0
+    "price": 6.0,
+    "stock": 2
    },
    {
     "label": "Boys",
-    "price": 6.0
+    "price": 6.0,
+    "stock": 2
    }
   ]
  },
@@ -610,7 +650,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 3.99
+    "price": 3.99,
+    "stock": 5
    }
   ]
  },
@@ -621,7 +662,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 2.4
+    "price": 2.4,
+    "stock": 5
    }
   ]
  },
@@ -632,7 +674,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 24.0
+    "price": 24.0,
+    "stock": 3
    }
   ]
  },
@@ -643,7 +686,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 30.0
+    "price": 30.0,
+    "stock": 3
    }
   ]
  },
@@ -654,7 +698,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 3.6
+    "price": 3.6,
+    "stock": 2
    }
   ]
  },
@@ -665,7 +710,8 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 6.0
+    "price": 6.0,
+    "stock": 2
    }
   ]
  }

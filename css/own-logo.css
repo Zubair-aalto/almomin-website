@@ -301,3 +301,12 @@ a.pc{text-decoration:none}
 .nav__search:hover{color:var(--gold-on-dark); border-color:var(--gold-on-dark)}
 .nav__links + .nav__search{margin-left:0}
 @media (max-width:820px){.nav__links + .nav__search{margin-left:auto} .nav__search{margin-right:-16px}}
+
+/* ---- Stock ---- */
+.pc__stock{font-size:13px; font-weight:600; color:#2F7A4B} .pc__stock.is-low{color:var(--rose)}
+.pc__new--out{background:var(--ink-2)!important}
+.pd__stock{margin:6px 0 0; font-weight:700; font-size:14.5px; color:#2F7A4B} .pd__stock.is-low{color:var(--rose)} .pd__stock.is-out{color:var(--ink-2)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pc__stock:not(.is-low),:root:not([data-theme="light"]) .pd__stock:not(.is-low):not(.is-out){color:#5FBF85}}
+#pd-add:disabled{opacity:.55; cursor:not-allowed; transform:none}
+.qty button:disabled{opacity:.35; cursor:not-allowed}
+.bag__max{display:block; margin-top:4px; font-size:12.5px; color:var(--rose)}

@@ -102,3 +102,5 @@
 .pg__sec{margin-top:8px}
 .pg__lede--s{font-size:16px; margin:-12px 0 24px}
 .pg__head .pg__cta{margin-top:26px}
+.pp__stock{margin-top:8px}
+#pp-add:disabled{opacity:.55; cursor:not-allowed}

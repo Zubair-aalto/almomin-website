@@ -15,17 +15,27 @@
   /* ---------- SKUs: "id" or "id~optionIndex" ---------- */
   const skuOf = (it, k) => it.options.length > 1 ? `${it.id}~${k}` : it.id;
   const parse = sku => { const [id, k] = sku.split("~"); const it = byId[id]; if (!it) return null; const o = it.options[+k || 0]; return o ? { it, o } : null; };
+  /* ---------- Stock (set in the admin; no number = not tracked) ---------- */
+  const stockOfSku = sku => { const p = parse(sku); return p && Number.isFinite(p.o.stock) ? p.o.stock : Infinity; };
+  const maxQty = sku => Math.min(20, stockOfSku(sku));
+  const soldOut = it => it.options.every(o => o.stock === 0);
+  const lowest = it => { const s = it.options.map(o => o.stock).filter(Number.isFinite); return s.length === it.options.length ? Math.max(...s) : Infinity; };
+  const stockText = n => !Number.isFinite(n) ? "" : n <= 0 ? "Sold out" : n <= 3 ? `Only ${n} left` : `In stock: ${n}`;
   const nameOf = sku => { const p = parse(sku); return p ? p.it.title + (p.o.label ? ` (${p.o.label})` : "") : sku; };
 
   /* ---------- Basket state (saved in this browser) ---------- */
   let bag = [];
   try { bag = JSON.parse(localStorage.getItem("almomin-bag") || "[]").filter(l => parse(l.sku)); } catch (e) { bag = []; }
+  // keep the saved basket within today's stock
+  bag = bag.map(l => ({ ...l, qty: Math.min(l.qty, stockOfSku(l.sku), 20) })).filter(l => l.qty > 0);
   const save = () => { try { localStorage.setItem("almomin-bag", JSON.stringify(bag)); } catch (e) {} };
   const count = () => bag.reduce((s, l) => s + l.qty, 0);
   const subtotal = () => bag.reduce((s, l) => s + parse(l.sku).o.price * l.qty, 0);
   const add = (sku, qty = 1) => {
-    const l = bag.find(x => x.sku === sku);
-    if (l) l.qty = Math.min(20, l.qty + qty); else bag.push({ sku, qty });
+    const max = maxQty(sku), l = bag.find(x => x.sku === sku), have = l ? l.qty : 0;
+    if (max <= 0) return toast(nameOf(sku), "Sold out:");
+    if (have >= max) return toast(nameOf(sku), `Only ${max} in stock:`);
+    if (l) l.qty = Math.min(max, l.qty + qty); else bag.push({ sku, qty: Math.min(max, qty) });
     save(); renderBag(); toast(nameOf(sku));
   };
 
@@ -51,11 +61,12 @@
   const card = it => `
     <li data-cat="${it.cat}"${it.group ? ` data-in-group="${it.group}"` : ""} data-text="${esc(textOf(it))}">
       <a class="pc${it.cat === "bundles" ? " pc--bundle" : ""}" href="/books/${it.id}/" data-open="${it.id}">
-        <span class="pc__stage"><img src="${it.cover}" alt="${esc(it.title)}" loading="lazy">${it.isNew ? '<span class="pc__new">New</span>' : ""}</span>
+        <span class="pc__stage"><img src="${it.cover}" alt="${esc(it.title)}" loading="lazy">${soldOut(it) ? '<span class="pc__new pc__new--out">Sold out</span>' : it.isNew ? '<span class="pc__new">New</span>' : ""}</span>
         <span class="pc__meta">
           <span class="pc__cat">${esc(catLabel(it.cat))}</span>
           <span class="pc__title">${rich(it.title)}</span>
           <span class="pc__price">${it.options.length > 1 ? "from " : ""}${money(fromPrice(it))}</span>
+          ${Number.isFinite(lowest(it)) && lowest(it) > 0 ? `<span class="pc__stock${lowest(it) <= 3 ? " is-low" : ""}">${stockText(lowest(it))}</span>` : ""}
         </span>
       </a>
     </li>`;
@@ -137,6 +148,9 @@
   const paint = () => {
     const o = cur.options[opt];
     $("pd-price").textContent = money(o.price);
+    const n = Number.isFinite(o.stock) ? o.stock : Infinity;
+    $("pd-stock").textContent = stockText(n); $("pd-stock").className = "pd__stock" + (n <= 0 ? " is-out" : n <= 3 ? " is-low" : "");
+    $("pd-add").disabled = n <= 0; $("pd-add").textContent = n <= 0 ? "Sold out" : "Add to basket";
     $("pd-wa").href = WA(`Assalamu alaikum! I have a question about “${cur.title}”${o.label ? ` (${o.label})` : ""}, ${money(o.price)}.`);
     $("pd-opts").querySelectorAll("button").forEach((b, i) => { b.setAttribute("aria-checked", i === opt); b.tabIndex = i === opt ? 0 : -1; });
   };
@@ -227,7 +241,7 @@
       if (o.tagName === "A" && (e.metaKey || e.ctrlKey || e.shiftKey || e.button)) return; // let new-tab clicks open the product page
       e.preventDefault(); openProduct(o.dataset.open); return;
     }
-    const a = e.target.closest("[data-add]"); if (a) { add(a.dataset.add); }
+    const a = e.target.closest("[data-add]"); if (a && !a.disabled) { add(a.dataset.add); }
   });
 
   /* ---------- Basket dialog ---------- */
@@ -238,12 +252,13 @@
     $("bagEmpty").hidden = n > 0; $("bagFoot").hidden = n === 0;
     $("bagList").innerHTML = bag.map((l, i) => {
       const { it, o } = parse(l.sku);
+      const max = maxQty(l.sku);
       return `<li>
         <img src="${it.cover}" alt="">
         <div class="bag__info"><p class="bag__name">${rich(it.title)}${o.label ? ` <small>${esc(o.label)}</small>` : ""}</p>
           <div class="qty" role="group" aria-label="Quantity">
-            <button type="button" data-q="${i}" data-d="-1" aria-label="One fewer">−</button><span aria-live="polite">${l.qty}</span><button type="button" data-q="${i}" data-d="1" aria-label="One more">+</button>
-          </div></div>
+            <button type="button" data-q="${i}" data-d="-1" aria-label="One fewer">−</button><span aria-live="polite">${l.qty}</span><button type="button" data-q="${i}" data-d="1" aria-label="One more"${l.qty >= max ? " disabled" : ""}>+</button>
+          </div>${Number.isFinite(max) && l.qty >= max ? `<small class="bag__max">${max <= 0 ? "Sold out, please remove" : `Only ${max} in stock`}</small>` : ""}</div>
         <div class="bag__right"><b>${money(o.price * l.qty)}</b><button type="button" class="bag__rm" data-rm="${i}">Remove</button></div>
       </li>`;
     }).join("");
@@ -253,7 +268,7 @@
   };
   $("bagList").addEventListener("click", e => {
     const q = e.target.closest("[data-q]"), r = e.target.closest("[data-rm]");
-    if (q) { const l = bag[+q.dataset.q]; l.qty = Math.max(1, Math.min(20, l.qty + +q.dataset.d)); }
+    if (q) { const l = bag[+q.dataset.q]; l.qty = Math.max(1, Math.min(maxQty(l.sku), l.qty + +q.dataset.d)); }
     if (r) bag.splice(+r.dataset.rm, 1);
     if (q || r) { save(); renderBag(); }
   });
@@ -273,7 +288,9 @@
       if (r.ok && data.url) { location.href = data.url; return; }
       throw new Error(data.error || "unavailable");
     } catch (err) {
-      msg.textContent = "Online payment isn’t available right now. You can send this order on WhatsApp instead and pay by MobilePay or card.";
+      const m = /^(sold_out|not_enough):(.*)$/.exec(err.message);
+      msg.textContent = m ? `Sorry, “${m[2]}” ${m[1] === "sold_out" ? "has just sold out" : "doesn’t have that many in stock"}. Please change your basket and try again.`
+        : "Online payment isn’t available right now. You can send this order on WhatsApp instead and pay by MobilePay or card.";
       msg.classList.add("is-err");
     }
     btn.disabled = false; btn.textContent = "Checkout securely";
@@ -284,8 +301,8 @@
   t.className = "toast"; t.setAttribute("role", "status");
   document.body.appendChild(t);
   let tt;
-  const toast = name => {
-    t.innerHTML = `<span><b>Added:</b> ${rich(name)}</span><button type="button" class="toast__btn">View basket</button>`;
+  const toast = (name, head = "Added:") => {
+    t.innerHTML = `<span><b>${esc(head)}</b> ${rich(name)}</span><button type="button" class="toast__btn">View basket</button>`;
     t.classList.add("is-on"); clearTimeout(tt); tt = setTimeout(() => t.classList.remove("is-on"), 3800);
     t.querySelector("button").onclick = () => { t.classList.remove("is-on"); renderBag(); bagDlg.showModal(); };
     $("bagBtn").classList.remove("is-bump"); void $("bagBtn").offsetWidth; $("bagBtn").classList.add("is-bump");

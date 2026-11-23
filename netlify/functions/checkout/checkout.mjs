@@ -24,6 +24,19 @@ export function buildSession(items, origin, shipping) {
   p.set("shipping_address_collection[allowed_countries][0]", "FI");
   p.set("phone_number_collection[enabled]", "true");
   p.set("billing_address_collection", "auto");
+  // Stock check: never sell more than the stock saved in the admin (no number = not tracked)
+  const wanted = {};
+  items.forEach(({ sku, qty }) => { wanted[sku] = (wanted[sku] || 0) + Math.floor(Number(qty)); });
+  for (const [sku, q] of Object.entries(wanted)) {
+    const [id, k] = String(sku).split("~"); const it = byId[id]; const o = it && it.options[Number(k) || 0];
+    if (o && Number.isInteger(o.stock) && q > o.stock) {
+      const name = it.title + (o.label ? ` (${o.label})` : "");
+      throw new Error((o.stock <= 0 ? "sold_out:" : "not_enough:") + name);
+    }
+  }
+  // What was bought, so the stock can be lowered after payment (see stripe-webhook)
+  const cart = Object.entries(wanted).map(([sku, q]) => `${sku}*${q}`).join(",");
+  for (let c = 0; c * 480 < cart.length && c < 20; c++) p.set(`metadata[cart_${c}]`, cart.slice(c * 480, c * 480 + 480));
   items.forEach(({ sku, qty }, i) => {
     const [id, k] = String(sku).split("~");
     const it = byId[id]; const o = it && it.options[Number(k) || 0];

@@ -15,6 +15,7 @@ function check(data) {
     ids.add(it.id);
     if (!it.title || typeof it.title !== "string" || !cats.has(it.cat)) throw Object.assign(new Error("bad_item: " + it.id), { status: 400 });
     if (!Array.isArray(it.options) || !it.options.length || it.options.some(o => !(o.price > 0 && o.price < 1000))) throw Object.assign(new Error("bad_price: " + it.id), { status: 400 });
+    if (it.options.some(o => "stock" in o && !(Number.isInteger(o.stock) && o.stock >= 0 && o.stock < 10000))) throw Object.assign(new Error("bad_stock: " + it.id), { status: 400 });
   }
 }
 

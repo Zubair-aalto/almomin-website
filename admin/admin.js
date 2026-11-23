@@ -154,21 +154,24 @@
     $("prodMsg").textContent = "Loading products…";
     try {
       const d = await api("admin-products"); products = d.data; base = d.base; $("prodMsg").textContent = "";
-      $("prodCat").innerHTML = `<option value="">All categories</option>` + products.categories.map(c => `<option value="${c.id}">${esc(c.label)}</option>`).join("");
+      $("prodCat").innerHTML = `<option value="">All categories</option><option value="__low">Low stock / sold out</option>` + products.categories.map(c => `<option value="${c.id}">${esc(c.label)}</option>`).join("");
       $("edCat").innerHTML = products.categories.map(c => `<option value="${c.id}">${esc(c.label)}</option>`).join("");
       renderProducts();
     } catch (e) { $("prodMsg").textContent = e.message; }
   }
+  const stockSum = it => it.options.every(o => Number.isInteger(o.stock)) ? it.options.reduce((s, o) => s + o.stock, 0) : null;
+  const stockBadge = it => { const n = stockSum(it); return n === null ? '<span class="sb">Stock not tracked</span>' : n === 0 ? '<span class="sb sb--out">Sold out</span>' : `<span class="sb${n <= 3 ? " sb--low" : ""}">In stock: ${n}</span>`; };
   const priceText = it => it.options.length > 1 ? "from " + money(Math.min(...it.options.map(o => o.price))) : money(it.options[0].price);
   const catName = id => (products.categories.find(c => c.id === id) || {}).label || id;
   function renderProducts() {
     const q = $("prodSearch").value.trim().toLowerCase(), c = $("prodCat").value;
-    $("plist").innerHTML = products.items.filter(it => (!c || it.cat === c) && (!q || (it.title + " " + it.desc).toLowerCase().includes(q))).map(it => `
+    const low = c === "__low";
+    $("plist").innerHTML = products.items.filter(it => (low ? it.options.some(o => Number.isInteger(o.stock) && o.stock <= 3) : (!c || it.cat === c)) && (!q || (it.title + " " + it.desc).toLowerCase().includes(q))).map(it => `
       <button type="button" class="prod${it.hidden ? " prod--hidden" : ""}" data-id="${it.id}">
         <img src="/${esc(it.cover)}" alt="" loading="lazy">
         <span class="prod__t">${esc(it.title)}</span>
         <span class="prod__m">${esc(catName(it.cat))}${it.hidden ? ' · <b>Hidden</b>' : ""}${it.isNew ? " · New" : ""}</span>
-        <span class="prod__p">${priceText(it)}</span>
+        <span class="prod__p">${priceText(it)}</span>${stockBadge(it)}
       </button>`).join("");
   }
   $("prodSearch").oninput = renderProducts; $("prodCat").onchange = renderProducts;
@@ -192,10 +195,16 @@
     const many = draft.options.length > 1;
     $("edOpts").innerHTML = draft.options.map((o, k) => `<div class="opt" data-k="${k}">
       ${many ? `<input class="opt__l" value="${esc(o.label || "")}" placeholder="Option name" aria-label="Option name" required>` : ""}
-      <input class="opt__p" type="number" min="0.5" max="999" step="0.01" value="${o.price}" aria-label="Price in euros" required>
+      <label class="opt__f">€<input class="opt__p" type="number" min="0.5" max="999" step="0.01" value="${o.price}" aria-label="Price in euros" required></label>
+      <label class="opt__f">In stock<input class="opt__s" type="number" min="0" max="9999" step="1" value="${Number.isInteger(o.stock) ? o.stock : ""}" placeholder="not tracked" aria-label="Quantity in stock"></label>
       ${many ? `<button type="button" class="link opt__x" aria-label="Remove option">Remove</button>` : ""}</div>`).join("");
   }
-  const readOpts = () => [...$("edOpts").children].map(r => ({ label: r.querySelector(".opt__l")?.value.trim() || null, price: Math.round(Number(r.querySelector(".opt__p").value) * 100) / 100 }));
+  const readOpts = () => [...$("edOpts").children].map(r => {
+    const o = { label: r.querySelector(".opt__l")?.value.trim() || null, price: Math.round(Number(r.querySelector(".opt__p").value) * 100) / 100 };
+    const st = r.querySelector(".opt__s").value.trim();
+    if (st !== "") o.stock = Math.max(0, Math.floor(Number(st)));   // empty = not tracked (always available)
+    return o;
+  });
   $("edAddOpt").onclick = () => { draft.options = readOpts(); if (draft.options.length === 1) draft.options[0].label = draft.options[0].label || "Standard"; draft.options.push({ label: "", price: draft.options[0].price }); renderOpts(); };
   $("edOpts").onclick = e => { if (!e.target.closest(".opt__x")) return; draft.options = readOpts(); draft.options.splice(+e.target.closest(".opt").dataset.k, 1); if (draft.options.length === 1) draft.options[0].label = null; renderOpts(); };
 

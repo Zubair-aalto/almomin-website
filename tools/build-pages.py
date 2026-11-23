@@ -16,7 +16,7 @@ import content as C  # noqa: E402
 
 SITE = "https://almomin.eu"
 TODAY = date.today().isoformat()
-V = "16"  # css cache version
+V = "17"  # css cache version
 
 shop = (ROOT / "js/shop-data.js").read_text()
 DATA = json.loads(shop[shop.index("{"): shop.rindex("}") + 1])
@@ -35,6 +35,26 @@ def frm_fi(it):
     p = min(o["price"] for o in it["options"])
     return ("alk. " if len(it["options"]) > 1 else "") + f"{p:.2f} €".replace(".", ",")
 def ab(p): return "/" + p.lstrip("/")
+def stock_of(o): return o.get("stock") if isinstance(o.get("stock"), int) else None
+def stock_text(n):
+    if n is None: return ""
+    return "Sold out" if n <= 0 else (f"Only {n} left" if n <= 3 else f"In stock: {n}")
+def sd(o): return "" if stock_of(o) is None else str(stock_of(o))
+def sold_badge(it, lang="en"):
+    if not sold_out(it): return ""
+    return '<span class="pc__new pc__new--out">' + ("Loppuunmyyty" if lang == "fi" else "Sold out") + "</span>"
+def stock_line(it):
+    n = stock_of(it["options"][0])
+    cls = " is-out" if n == 0 else (" is-low" if n is not None and n <= 3 else "")
+    return f'<p class="pd__stock pp__stock{cls}" id="pp-stock" data-stock="{sd(it["options"][0])}">{stock_text(n)}</p>'
+def add_button(it):
+    out = stock_of(it["options"][0]) == 0
+    return '<button class="btn btn--gold" type="button" id="pp-add"' + (" disabled>Sold out" if out else ">Add to basket") + "</button>"
+def sold_out(it): return all(stock_of(o) == 0 for o in it["options"])
+def card_stock(it):
+    s = [stock_of(o) for o in it["options"]]
+    if any(x is None for x in s): return None
+    return max(s)
 def plain(s, n=158):
     s = re.sub(r"\s+", " ", s).strip()
     return s if len(s) <= n else s[:n - 1].rsplit(" ", 1)[0] + "…"
@@ -149,8 +169,8 @@ def card(it, lang="en"):
     price = frm_fi(it) if lang == "fi" else frm(it)
     b = " pc--bundle" if it["cat"] == "bundles" else ""
     return f"""<li><a class="pc{b}" href="/books/{it['id']}/">
-  <span class="pc__stage"><img src="{ab(it['cover'])}" alt="{esc(it['title'])}" loading="lazy" width="300" height="300"></span>
-  <span class="pc__meta"><span class="pc__cat">{esc(cat)}</span><span class="pc__title">{rich(it['title'])}</span><span class="pc__price">{price}</span></span>
+  <span class="pc__stage"><img src="{ab(it['cover'])}" alt="{esc(it['title'])}" loading="lazy" width="300" height="300">{sold_badge(it, lang)}</span>
+  <span class="pc__meta"><span class="pc__cat">{esc(cat)}</span><span class="pc__title">{rich(it['title'])}</span><span class="pc__price">{price}</span>{stock_badge(it, lang)}</span>
 </a></li>"""
 
 GROUPS = DATA.get("groups", {})
@@ -163,6 +183,12 @@ def group_card(gid, lang="en"):
   <span class="pc__stage"><img src="{ab(g['cover'])}" alt="{esc(g['title'])}" loading="lazy" width="300" height="300"></span>
   <span class="pc__meta"><span class="pc__cat">{esc(cat)}</span><span class="pc__title">{esc(g['title'])}: {esc(sub)}</span><span class="pc__price">{price}</span><span class="pc__more">{'Tutustu kirjoihin' if lang == 'fi' else 'Explore each book'} →</span></span>
 </a></li>"""
+
+def stock_badge(it, lang="en"):
+    n = card_stock(it)
+    if n is None or n <= 0: return ""
+    t = (f"Vain {n} jäljellä" if n <= 3 else f"Varastossa: {n}") if lang == "fi" else stock_text(n)
+    return f'<span class="pc__stock{" is-low" if n <= 3 else ""}">{t}</span>'
 
 def grid(items, lang="en", grouped=False):
     out, seen = [], set()
@@ -207,7 +233,7 @@ def product_page(it):
     opts = ""
     if len(it["options"]) > 1:
         opts = '<div class="pd__opts pp__opts" role="radiogroup" aria-label="Choose an option">' + "".join(
-            f'<button type="button" role="radio" aria-checked="{str(k == 0).lower()}" data-k="{k}" data-price="{o["price"]}">{esc(o["label"])} <span>{money(o["price"])}</span></button>'
+            f'<button type="button" role="radio" aria-checked="{str(k == 0).lower()}" data-k="{k}" data-price="{o["price"]}" data-stock="{sd(o)}">{esc(o["label"])} <span>{money(o["price"])}</span></button>'
             for k, o in enumerate(it["options"])) + "</div>"
     inc = ""
     if it.get("includes"):
@@ -226,7 +252,7 @@ def product_page(it):
     img_abs = SITE + ab(JPG.get(it["id"], it["cover"]))
     offers = ({"@type": "AggregateOffer", "lowPrice": f"{min(prices):.2f}", "highPrice": f"{max(prices):.2f}", "offerCount": len(prices), "priceCurrency": "EUR", "availability": "https://schema.org/InStock"}
               if len(prices) > 1 else
-              {"@type": "Offer", "price": f"{prices[0]:.2f}", "priceCurrency": "EUR", "availability": "https://schema.org/InStock",
+              {"@type": "Offer", "price": f"{prices[0]:.2f}", "priceCurrency": "EUR", "availability": "https://schema.org/" + ("OutOfStock" if sold_out(it) else "InStock"),
                "itemCondition": "https://schema.org/NewCondition", "url": f"{SITE}/books/{it['id']}/",
                "shippingDetails": {"@type": "OfferShippingDetails", "shippingRate": {"@type": "MonetaryAmount", "value": "6.90", "currency": "EUR"},
                                    "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "FI"},
@@ -251,11 +277,12 @@ def product_page(it):
         <p class="eyebrow">{esc(cat['en_nav'])}{' · New' if it.get('isNew') else ''}</p>
         <h1 class="pp__title">{rich(title)}</h1>
         <p class="pp__price" id="pp-price">{money(prices[0])}</p>
+        {stock_line(it)}
         <p class="pp__desc">{rich(it['desc'])}</p>
         {f'<p class="pp__specs">{esc(it["specs"])}</p>' if it.get('specs') else ''}
         {opts}
         <div class="pp__buy">
-          <button class="btn btn--gold" type="button" id="pp-add">Add to basket</button>
+          {add_button(it)}
           <a class="btn btn--line" href="https://wa.me/358417225258?text={quote('Assalamu alaikum! I have a question about “' + title + '”.')}" target="_blank" rel="noopener">Ask on WhatsApp</a>
         </div>
         {explore}

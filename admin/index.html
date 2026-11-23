@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/admin/admin.css?v=1">
+  <link rel="stylesheet" href="/admin/admin.css?v=2">
 </head>
 <body>
   <!-- Login -->
@@ -91,7 +91,7 @@
         <label class="ed__check"><input type="checkbox" name="isNew"> Show “New” badge</label>
         <label class="ed__check"><input type="checkbox" name="hidden"> Hidden (out of stock)</label>
       </div>
-      <fieldset class="ed__opts"><legend>Price (€)</legend>
+      <fieldset class="ed__opts"><legend>Price &amp; stock <small>Leave “In stock” empty if you don’t count it. It goes down by itself after each paid order.</small></legend>
         <div id="edOpts"></div>
         <button type="button" class="link" id="edAddOpt">+ Add an option (e.g. Girls / Boys)</button>
       </fieldset>
@@ -110,6 +110,6 @@
     </form>
   </dialog>
 
-  <script src="/admin/admin.js?v=1"></script>
+  <script src="/admin/admin.js?v=3"></script>
 </body>
 </html>

@@ -30,7 +30,21 @@
 
   /* ---------- Collection grid ---------- */
   const grid = $("shopGrid"), chips = $("shopChips");
-  grid.innerHTML = SHOP.items.map(it => `
+  const GROUPS = SHOP.groups || {}, shownGroups = new Set();
+  const groupCard = g => `
+    <li data-cat="bundles">
+      <a class="pc pc--bundle pc--group" href="${g.url}">
+        <span class="pc__stage"><img src="${g.cover}" alt="${esc(g.title)}" loading="lazy"></span>
+        <span class="pc__meta">
+          <span class="pc__cat">Prophet stories</span>
+          <span class="pc__title">${esc(g.title)}: ${esc(g.sub)}</span>
+          <span class="pc__price">${esc(g.price)}</span>
+          <span class="pc__more">Explore each book →</span>
+        </span>
+      </a>
+    </li>`;
+  const listed = SHOP.items.filter(it => !it.group || (!shownGroups.has(it.group) && shownGroups.add(it.group)));
+  grid.innerHTML = listed.map(it => it.group && GROUPS[it.group] ? groupCard(GROUPS[it.group]) : `
     <li data-cat="${it.cat}">
       <a class="pc${it.cat === "bundles" ? " pc--bundle" : ""}" href="/books/${it.id}/" data-open="${it.id}">
         <span class="pc__stage"><img src="${it.cover}" alt="${esc(it.title)}" loading="lazy">${it.isNew ? '<span class="pc__new">New</span>' : ""}</span>
@@ -42,7 +56,7 @@
       </a>
     </li>`).join("");
 
-  const opts = [{ id: "all", label: `All ${SHOP.items.length}` }, ...SHOP.categories];
+  const opts = [{ id: "all", label: `All ${listed.length}` }, ...SHOP.categories];
   chips.innerHTML = opts.map((o, i) => `<button class="chip" role="tab" type="button" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}" data-f="${o.id}">${esc(o.label)}</button>`).join("");
   const select = btn => {
     chips.querySelectorAll(".chip").forEach(c => { c.setAttribute("aria-selected", c === btn); c.tabIndex = c === btn ? 0 : -1; });
@@ -88,6 +102,7 @@
     $("pd-desc").innerHTML = rich(cur.desc);
     $("pd-specs").textContent = cur.specs || "";
     $("pd-page").href = `/books/${cur.id}/`;
+    $("pd-explore").hidden = !cur.explore;
     const op = $("pd-opts");
     op.hidden = cur.options.length < 2;
     op.innerHTML = cur.options.length < 2 ? "" : cur.options.map((o, k) => `<button type="button" role="radio" data-k="${k}">${esc(o.label)} <span>${money(o.price)}</span></button>`).join("");

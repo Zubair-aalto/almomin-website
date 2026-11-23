@@ -465,7 +465,8 @@ window.SHOP = {
      "cover": "assets/shop/prophet-muhammad.jpg",
      "hi": "assets/shop/gallery/prophet-muhammad-1.webp"
     }
-   ]
+   ],
+   "explore": true
   },
   {
    "id": "prophet-stories-set-1",
@@ -515,7 +516,8 @@ window.SHOP = {
      "cover": "assets/shop/prophet-ismail.jpg",
      "hi": "assets/shop/gallery/prophet-ismail-1.webp"
     }
-   ]
+   ],
+   "explore": true
   },
   {
    "id": "prophet-stories-set-2",
@@ -565,7 +567,8 @@ window.SHOP = {
      "cover": "assets/shop/prophet-muhammad.jpg",
      "hi": "assets/shop/gallery/prophet-muhammad-1.webp"
     }
-   ]
+   ],
+   "explore": true
   },
   {
    "id": "prophet-adam-story-book",
@@ -585,7 +588,8 @@ window.SHOP = {
     "assets/shop/gallery/prophet-adam-1.webp",
     "assets/shop/gallery/prophet-adam-2.webp",
     "assets/shop/gallery/prophet-adam-3.webp"
-   ]
+   ],
+   "group": "heroes"
   },
   {
    "id": "prophet-nuh-story-book",
@@ -605,7 +609,8 @@ window.SHOP = {
     "assets/shop/gallery/prophet-nuh-1.webp",
     "assets/shop/gallery/prophet-nuh-2.webp",
     "assets/shop/gallery/prophet-nuh-3.webp"
-   ]
+   ],
+   "group": "heroes"
   },
   {
    "id": "prophet-salih-story-book",
@@ -625,7 +630,8 @@ window.SHOP = {
     "assets/shop/gallery/prophet-salih-1.webp",
     "assets/shop/gallery/prophet-salih-2.webp",
     "assets/shop/gallery/prophet-salih-3.webp"
-   ]
+   ],
+   "group": "heroes"
   },
   {
    "id": "prophet-ibrahim-story-book",
@@ -645,7 +651,8 @@ window.SHOP = {
     "assets/shop/gallery/prophet-ibrahim-1.webp",
     "assets/shop/gallery/prophet-ibrahim-2.webp",
     "assets/shop/gallery/prophet-ibrahim-3.webp"
-   ]
+   ],
+   "group": "heroes"
   },
   {
    "id": "prophet-ismail-story-book",
@@ -665,7 +672,8 @@ window.SHOP = {
     "assets/shop/gallery/prophet-ismail-1.webp",
     "assets/shop/gallery/prophet-ismail-2.webp",
     "assets/shop/gallery/prophet-ismail-3.webp"
-   ]
+   ],
+   "group": "heroes"
   },
   {
    "id": "prophet-yusuf-story-book",
@@ -686,7 +694,8 @@ window.SHOP = {
     "assets/shop/gallery/prophet-yusuf-2.webp",
     "assets/shop/gallery/prophet-yusuf-3.webp",
     "assets/shop/gallery/prophet-yusuf-4.webp"
-   ]
+   ],
+   "group": "heroes"
   },
   {
    "id": "prophet-musa-story-book",
@@ -706,7 +715,8 @@ window.SHOP = {
     "assets/shop/gallery/prophet-musa-1.webp",
     "assets/shop/gallery/prophet-musa-2.webp",
     "assets/shop/gallery/prophet-musa-3.webp"
-   ]
+   ],
+   "group": "heroes"
   },
   {
    "id": "prophet-sulaiman-story-book",
@@ -727,7 +737,8 @@ window.SHOP = {
     "assets/shop/gallery/prophet-sulaiman-2.webp",
     "assets/shop/gallery/prophet-sulaiman-3.webp",
     "assets/shop/gallery/prophet-sulaiman-4.webp"
-   ]
+   ],
+   "group": "heroes"
   },
   {
    "id": "prophet-yunus-story-book",
@@ -748,7 +759,8 @@ window.SHOP = {
     "assets/shop/gallery/prophet-yunus-2.webp",
     "assets/shop/gallery/prophet-yunus-3.webp",
     "assets/shop/gallery/prophet-yunus-4.webp"
-   ]
+   ],
+   "group": "heroes"
   },
   {
    "id": "prophet-muhammad-story-book",
@@ -769,7 +781,8 @@ window.SHOP = {
     "assets/shop/gallery/prophet-muhammad-2.webp",
     "assets/shop/gallery/prophet-muhammad-3.webp",
     "assets/shop/gallery/prophet-muhammad-4.webp"
-   ]
+   ],
+   "group": "heroes"
   },
   {
    "id": "asma-ul-husna-series",
@@ -1683,5 +1696,14 @@ window.SHOP = {
     "assets/shop/gallery/ramadan-calendar-1.webp"
    ]
   }
- ]
+ ],
+ "groups": {
+  "heroes": {
+   "title": "Our Prophets: Our Heroes",
+   "sub": "10 single prophet books",
+   "price": "€6.95 each",
+   "url": "/shop/our-prophets-our-heroes/",
+   "cover": "assets/shop/prophet-singles.webp"
+  }
+ }
 };

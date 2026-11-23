@@ -190,3 +190,12 @@ GUIDES_FI = [
 <h2>Tilaaminen</h2>
 <p>Toimitamme koko Suomeen: Matkahuolto 6,90 €, Posti 7,90 € tai maksuton nouto Espoosta. Maksu kortilla tai MobilePaylla. Katso kaikki <a href="/fi/profeettatarinat/">profeettatarinat</a>, <a href="/fi/vauvakirjat/">vauvakirjat</a>, <a href="/fi/tarinakirjat/">tarinakirjat</a> ja <a href="/fi/puuhakirjat-ja-pelit/">puuhat ja pelit</a>.</p>"""),
 ]
+
+HEROES = dict(
+ sets=["prophet-stories-set-1", "prophet-stories-set-2", "set-of-10-prophet-stories-for-children"],
+ title="Our Prophets: Our Heroes – 10 Prophet Story Books for Kids | Almo’min",
+ desc="Ten square picture books on the prophets, from Adam (AS) to Muhammad ﷺ: €6.95 each, two sets of 5 for €30, or all 10 for €50. Delivery across Finland.",
+ h1="Our Prophets: Our Heroes",
+ intro="""<p>Ten bright, square picture books, one for each prophet: <b>Adam, Nuh, Salih, Ibrahim, Ismail, Yusuf, Musa, Sulaiman and Yunus (peace be upon them) and Muhammad ﷺ</b>. Each story is told simply for ages 4–8 and includes the prophet’s dua, names of Allah and fun facts.</p>
+<p>Choose the prophets your child loves at <b>€6.95 each</b>, or save with <b>a set of 5 for €30</b> or <b>all 10 for €50</b>.</p>""",
+ singles_note="Listed in order, from the first prophet to the final Messenger ﷺ.")

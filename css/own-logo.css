@@ -280,3 +280,7 @@ a.pc{text-decoration:none}
 .nav__lang::after{display:none}
 .foot__seo{display:flex; flex-wrap:wrap; justify-content:center; gap:10px 22px; font-size:14px; margin:0 auto 18px; max-width:900px}
 .foot__seo a{color:var(--cream); opacity:.7} .foot__seo a:hover{opacity:1}
+
+.pc__more{font-size:13.5px; font-weight:700; color:var(--gold); margin-top:2px}
+.pc--group .pc__stage{background:radial-gradient(80% 80% at 50% 45%, color-mix(in srgb,var(--gold) 16%,var(--paper-2)), var(--paper-2))}
+.pd__explore{margin-top:12px; background:transparent} .pd__explore[hidden]{display:none}

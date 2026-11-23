@@ -16,7 +16,7 @@ import content as C  # noqa: E402
 
 SITE = "https://almomin.eu"
 TODAY = date.today().isoformat()
-V = "14"  # css cache version
+V = "15"  # css cache version
 
 shop = (ROOT / "js/shop-data.js").read_text()
 DATA = json.loads(shop[shop.index("{"): shop.rindex("}") + 1])
@@ -152,8 +152,27 @@ def card(it, lang="en"):
   <span class="pc__meta"><span class="pc__cat">{esc(cat)}</span><span class="pc__title">{rich(it['title'])}</span><span class="pc__price">{price}</span></span>
 </a></li>"""
 
-def grid(items, lang="en"):
-    return '<ul class="shop__grid pg__grid">' + "".join(card(i, lang) for i in items) + "</ul>"
+GROUPS = DATA.get("groups", {})
+def group_card(gid, lang="en"):
+    g = GROUPS[gid]
+    sub = "10 profeettakirjaa yksittäin" if lang == "fi" else g["sub"]
+    price = "6,95 € / kirja" if lang == "fi" else g["price"]
+    cat = "Profeettatarinat" if lang == "fi" else "Prophet stories"
+    return f"""<li><a class="pc pc--bundle pc--group" href="{g['url']}">
+  <span class="pc__stage"><img src="{ab(g['cover'])}" alt="{esc(g['title'])}" loading="lazy" width="300" height="300"></span>
+  <span class="pc__meta"><span class="pc__cat">{esc(cat)}</span><span class="pc__title">{esc(g['title'])}: {esc(sub)}</span><span class="pc__price">{price}</span><span class="pc__more">{'Tutustu kirjoihin' if lang == 'fi' else 'Explore each book'} →</span></span>
+</a></li>"""
+
+def grid(items, lang="en", grouped=False):
+    out, seen = [], set()
+    for i in items:
+        g = i.get("group")
+        if grouped and g:
+            if g not in seen:
+                seen.add(g); out.append(group_card(g, lang))
+            continue
+        out.append(card(i, lang))
+    return '<ul class="shop__grid pg__grid">' + "".join(out) + "</ul>"
 
 def write(path, text):
     p = ROOT / path.lstrip("/")
@@ -195,7 +214,13 @@ def product_page(it):
             f'<li><img src="{ab(b["cover"])}" alt="" loading="lazy" width="60" height="60"><span>{rich(b["title"])}</span></li>' for b in it["includes"]) + "</ul></div>"
     thumbs = "" if len(gal) < 2 else '<ul class="gal__thumbs pp__thumbs" aria-label="Product photos">' + "".join(
         f'<li><button type="button" data-src="{ab(s)}" aria-label="Photo {i + 1} of {len(gal)}" aria-current="{str(i == 0).lower()}"><img src="{ab(s)}" alt="" loading="lazy" width="80" height="80"></button></li>' for i, s in enumerate(gal)) + "</ul>"
-    related = [i for i in ITEMS if i["cat"] == it["cat"] and i["id"] != it["id"]][:4]
+    explore = ""
+    if it.get("explore"):
+        explore = '<a class="btn btn--line pp__explore" href="/shop/our-prophets-our-heroes/">Explore each book separately →</a>'
+    elif it.get("group"):
+        explore = '<a class="pp__series" href="/shop/our-prophets-our-heroes/">See all 10 books in this series, and the sets of 5 and 10 →</a>'
+    same = (lambda i: i.get("group") == it.get("group")) if it.get("group") else (lambda i: not i.get("group"))
+    related = [i for i in ITEMS if i["cat"] == it["cat"] and i["id"] != it["id"] and same(i)][:4]
     if len(related) < 4: related += [i for i in ITEMS if i["cat"] == "bundles" and i not in related and i["id"] != it["id"]][:4 - len(related)]
     img_abs = SITE + ab(JPG.get(it["id"], it["cover"]))
     offers = ({"@type": "AggregateOffer", "lowPrice": f"{min(prices):.2f}", "highPrice": f"{max(prices):.2f}", "offerCount": len(prices), "priceCurrency": "EUR", "availability": "https://schema.org/InStock"}
@@ -232,6 +257,7 @@ def product_page(it):
           <button class="btn btn--gold" type="button" id="pp-add">Add to basket</button>
           <a class="btn btn--line" href="https://wa.me/358417225258?text={quote('Assalamu alaikum! I have a question about “' + title + '”.')}" target="_blank" rel="noopener">Ask on WhatsApp</a>
         </div>
+        {explore}
         <p class="pp__added" id="pp-added" role="status" hidden>Added to your basket. <a href="/#bag">View basket and check out →</a></p>
         {SHIP_EN}
         {inc}
@@ -262,7 +288,7 @@ for cid in C.ORDER:
   <main id="main" class="wrap pg__main">
     <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><span aria-current="page">{esc(c['en_h1'])}</span></nav>
     <header class="pg__head"><p class="eyebrow">Islamic books for children · Finland</p><h1 class="h1">{esc(c['en_h1'])}</h1><div class="pg__intro">{c['en_intro']}</div></header>
-    {grid(items)}
+    {grid(items, grouped=True)}
     <section class="pg__more"><h2 class="pg__h2">Questions parents ask</h2>{faq_html(c['en_faq'])}</section>
     <nav class="pg__chips" aria-label="Other categories">{others}</nav>
   </main>
@@ -272,12 +298,28 @@ for cid in C.ORDER:
   <main id="main" class="wrap pg__main">
     <nav class="crumbs" aria-label="Murupolku"><a href="/fi/">Etusivu</a><span>›</span><span aria-current="page">{esc(c['fi_h1'])}</span></nav>
     <header class="pg__head"><p class="eyebrow">Islamilaiset lastenkirjat · Suomi</p><h1 class="h1">{esc(c['fi_h1'])}</h1><div class="pg__intro">{c['fi_intro']}</div></header>
-    {grid(items, "fi")}
+    {grid(items, "fi", grouped=True)}
     <p class="pg__note">Kirjat ovat englanninkielisiä, osa kaksikielisiä (arabia–englanti). Tuotesivut ovat englanniksi.</p>
     <section class="pg__more"><h2 class="pg__h2">Usein kysyttyä</h2>{faq_html(c['fi_faq'])}</section>
     <nav class="pg__chips" aria-label="Muut kategoriat">{othersfi}</nav>
   </main>
 {footer("fi")}""")
+
+# ---------------------------------------------------------------- series page: Our Prophets: Our Heroes
+H = C.HEROES
+sets = [BY_ID[i] for i in H["sets"]]
+singles = [i for i in ITEMS if i.get("group") == "heroes"]
+hp = "/shop/our-prophets-our-heroes/"
+write(hp, f"""{head(H['title'], H['desc'], hp, image="/assets/shop/prophet-set-1.webp", extra=ld([itemlist(sets + singles), {"@context": "https://schema.org", **crumbs([("Home", "/"), (CATS['bundles']['en_h1'], "/shop/prophet-stories/"), ("Our Prophets: Our Heroes", hp)])}]))}{header()}
+  <main id="main" class="wrap pg__main">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/shop/prophet-stories/">{esc(CATS['bundles']['en_h1'])}</a><span>›</span><span aria-current="page">Our Prophets: Our Heroes</span></nav>
+    <header class="pg__head"><p class="eyebrow">Prophet stories · 10 books</p><h1 class="h1">{esc(H['h1'])}</h1><div class="pg__intro">{H['intro']}</div>
+      <div class="pg__cta"><a class="btn btn--gold" href="#singles">Explore each book separately</a><a class="btn btn--line" href="#sets">Save with a set</a></div></header>
+    <section id="sets" class="pg__sec"><h2 class="pg__h2">Buy as a set</h2>{grid(sets)}</section>
+    <section id="singles" class="pg__more"><h2 class="pg__h2">Each book separately · €6.95</h2><p class="pg__lede pg__lede--s">{H['singles_note']}</p>{grid(singles)}</section>
+    <nav class="pg__chips" aria-label="More"><a class="chip" href="/shop/prophet-stories/">All prophet stories</a><a class="chip" href="/guides/prophet-stories-for-kids-in-order/">Reading guide: prophets in order</a></nav>
+  </main>
+{footer()}""")
 
 # ---------------------------------------------------------------- Finnish landing
 F = C.FI_HOME

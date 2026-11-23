@@ -1570,7 +1570,7 @@ window.SHOP = {
    "options": [
     {
      "label": null,
-     "price": 2.4
+     "price": 3.99
     }
    ],
    "gallery": [

@@ -1262,7 +1262,7 @@ window.SHOP = {
    "options": [
     {
      "label": null,
-     "price": 7.8,
+     "price": 9.6,
      "stock": 5
     }
    ],

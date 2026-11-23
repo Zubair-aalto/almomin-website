@@ -22,7 +22,7 @@ export function buildSession(items, origin, shipping) {
   const p = new URLSearchParams();
   p.set("mode", "payment");
   p.set("locale", "auto");
-  p.set("success_url", `${origin}/thanks.html?session_id={CHECKOUT_SESSION_ID}`);
+  p.set("success_url", `${origin}/thanks?session_id={CHECKOUT_SESSION_ID}`);
   p.set("cancel_url", `${origin}/#collection`);
   p.set("shipping_address_collection[allowed_countries][0]", "FI");
   p.set("phone_number_collection[enabled]", "true");

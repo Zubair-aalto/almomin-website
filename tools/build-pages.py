@@ -137,7 +137,7 @@ def footer(lang="en"):
       <div class="foot__cols">
         <div><h4>Kauppa</h4>{cats}<a href="/fi/oppaat/islamilaiset-lastenkirjat/">Opas: islamilaiset lastenkirjat</a></div>
         <div><h4>Yhteystiedot</h4><a href="https://wa.me/358417225258">WhatsApp · +358 41 722 5258</a><a href="mailto:almomin.eu@gmail.com">almomin.eu@gmail.com</a><a href="https://www.instagram.com/almomin.eu" rel="noopener">Instagram · @almomin.eu</a></div>
-        <div><h4>Yritys</h4><address>Decent Enterprises Oy<br>Kilonrinne 10 B<br>02610 Espoo</address><span>Y-tunnus 2800683-4</span><a href="/terms.html">Toimitusehdot (englanniksi)</a><a href="/privacy.html">Tietosuoja (englanniksi)</a></div>
+        <div><h4>Yritys</h4><address>Decent Enterprises Oy<br>Kilonrinne 10 B<br>02610 Espoo</address><span>Y-tunnus 2800683-4</span><a href="/terms">Toimitusehdot (englanniksi)</a><a href="/privacy">Tietosuoja (englanniksi)</a></div>
       </div>
       <p class="foot__legal">© 2026 Almo’min on Decent Enterprises Oy:n aputoiminimi · Toimitus koko Suomeen · <a href="/">In English</a></p>
     </div>
@@ -154,7 +154,7 @@ def footer(lang="en"):
         <div><h4>Shop</h4>{cats}<a href="/#collection">All products</a></div>
         <div><h4>Guides</h4>{guides}<a href="/fi/">Suomeksi</a></div>
         <div><h4>Contact</h4><a href="https://wa.me/358417225258">WhatsApp · +358 41 722 5258</a><a href="mailto:almomin.eu@gmail.com">almomin.eu@gmail.com</a><a href="https://www.instagram.com/almomin.eu" rel="noopener">Instagram · @almomin.eu</a></div>
-        <div><h4>Company</h4><address>Decent Enterprises Oy<br>Kilonrinne 10 B<br>02610 Espoo, Finland</address><span>Y-tunnus 2800683-4</span><a href="/terms.html">Terms of sale</a><a href="/privacy.html">Privacy policy</a></div>
+        <div><h4>Company</h4><address>Decent Enterprises Oy<br>Kilonrinne 10 B<br>02610 Espoo, Finland</address><span>Y-tunnus 2800683-4</span><a href="/terms">Terms of sale</a><a href="/privacy">Privacy policy</a></div>
       </div>
       <p class="foot__legal">© 2026 Almo’min is a trading name of Decent Enterprises Oy · Delivery across Finland · Free pickup in Espoo</p>
     </div>
@@ -219,7 +219,7 @@ SHIP_EN = """<ul class="pp__perks">
   <li><b>Delivery across Finland</b> Matkahuolto €6.90 · Posti €7.90</li>
   <li><b>Free pickup in Espoo</b> We agree a time with you</li>
   <li><b>Pay securely</b> Card, MobilePay, Apple Pay, Google Pay</li>
-  <li><b>Sent in 1–3 working days</b> 14-day returns · <a href="/terms.html">Terms</a></li>
+  <li><b>Sent in 1–3 working days</b> 14-day returns · <a href="/terms">Terms</a></li>
 </ul>"""
 
 def product_page(it):
@@ -408,7 +408,7 @@ write("/guides/", f"""{head("Guides for Muslim Parents | Islamic Children's Book
 {footer()}""")
 
 # ---------------------------------------------------------------- sitemap
-urls = [("/", "1.0"), ("/terms.html", "0.3"), ("/privacy.html", "0.3")] + [(p, "0.9" if p.startswith(("/shop/", "/fi/")) and p.count("/") <= 3 else "0.7") for p in PAGES]
+urls = [("/", "1.0"), ("/terms", "0.3"), ("/privacy", "0.3")] + [(p, "0.9" if p.startswith(("/shop/", "/fi/")) and p.count("/") <= 3 else "0.7") for p in PAGES]
 sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
 sm += [f"  <url><loc>{SITE}{u}</loc><lastmod>{TODAY}</lastmod><priority>{p}</priority></url>" for u, p in urls]
 sm.append("</urlset>")

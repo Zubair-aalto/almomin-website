@@ -100,7 +100,7 @@ FI_HOME = dict(
  faq=[("Toimitatteko koko Suomeen?", "Kyllä. " + DELIVERY_FI + " Lähetämme tilaukset 1–3 arkipäivässä."),
       ("Miten voin maksaa?", "Kortilla, MobilePaylla, Apple Paylla tai Google Paylla turvallisella Stripe-maksusivulla. Noudettaessa Espoosta voit sopia myös käteismaksusta."),
       ("Ovatko kirjat suomenkielisiä?", "Kirjat ovat englanninkielisiä, ja osa on kaksikielisiä (arabia–englanti)."),
-      ("Voinko palauttaa tuotteen?", "Kyllä, sinulla on 14 päivän peruutusoikeus. Asiakas maksaa palautuksen postikulut. Lue lisää <a href=\"/terms.html\">toimitusehdoista</a>."),
+      ("Voinko palauttaa tuotteen?", "Kyllä, sinulla on 14 päivän peruutusoikeus. Asiakas maksaa palautuksen postikulut. Lue lisää <a href=\"/terms\">toimitusehdoista</a>."),
       ("Minkä ikäisille kirjat sopivat?", "Valikoimassa on kirjoja vauvoista noin 12-vuotiaisiin: kangas- ja kartonkikirjoja 0–3-vuotiaille, profeettatarinoita ja kuvakirjoja 4–10-vuotiaille sekä lukukirjoja ja puuhia isommille.")])
 
 GUIDES_EN = [

@@ -40,7 +40,7 @@ graph = {"@context": "https://schema.org", "@graph": [
    "hasMerchantReturnPolicy": {"@type": "MerchantReturnPolicy", "applicableCountry": "FI",
        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow", "merchantReturnDays": 14,
        "returnMethod": "https://schema.org/ReturnByMail", "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
-       "merchantReturnLink": SITE + "terms.html"}},
+       "merchantReturnLink": SITE + "terms"}},
   {"@type": "WebSite", "@id": SITE + "#site", "url": SITE, "name": "Almo’min", "inLanguage": "en", "publisher": {"@id": SITE + "#store"}},
   {"@type": "ItemList", "name": "Almo’min collection", "numberOfItems": len(products), "itemListElement": products}]}
 

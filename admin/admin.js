@@ -7,11 +7,11 @@
   const date = ts => new Date(ts * 1000).toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" });
   const STATUS = { new: "New", packed: "Packed", shipped: "Shipped", collected: "Collected", cancelled: "Cancelled" };
   const ERR = {
-    admin_not_configured: "The admin password isn’t set up yet (ADMIN_PASSWORD in Netlify, at least 12 characters).",
+    admin_not_configured: "The admin password isn’t set up yet. In Cloudflare → almomin → Settings → Variables and Secrets, add ADMIN_PASSWORD as a Secret (at least 12 characters).",
     login_required: "Your login has expired. Please log in again.",
     wrong_password: "Wrong password.",
-    stripe_not_configured: "Stripe key is missing in Netlify.",
-    github_not_configured: "Saving needs the GITHUB_TOKEN setting in Netlify (see the setup steps).",
+    stripe_not_configured: "The Stripe key (STRIPE_SECRET_KEY) is missing in Cloudflare.",
+    github_not_configured: "Saving needs GITHUB_TOKEN in Cloudflare → almomin → Settings → Variables and Secrets.",
     changed_elsewhere: "The products were changed somewhere else meanwhile. Reload the page and make your change again."
   };
   const errText = e => ERR[e] || (/permission|not have the required/i.test(e) ? "Stripe key needs more permissions: " + e : e) || "Something went wrong.";

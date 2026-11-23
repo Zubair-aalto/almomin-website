@@ -1,6 +1,5 @@
-// Lists paid orders from Stripe (Checkout Sessions), newest first.
-import { json, requireAdmin, stripe, fail } from "../../lib/admin.mjs";
-
+// GET /api/admin/orders: paid orders from Stripe (Checkout Sessions), newest first.
+import { json, requireAdmin, stripe, fail } from "../../../lib/server.js";
 const pick = s => {
   const ship = s.collected_information?.shipping_details || s.shipping_details || null;
   const rate = s.shipping_cost?.shipping_rate;
@@ -14,20 +13,19 @@ const pick = s => {
     status: s.metadata?.fulfil_status || "new", tracking: s.metadata?.tracking || "", note: s.metadata?.note || ""
   };
 };
-
-export default async (req) => {
-  const denied = requireAdmin(req); if (denied) return denied;
+export async function onRequestGet({ request, env }) {
+  const denied = await requireAdmin(request, env); if (denied) return denied;
   try {
     const orders = []; let after = "";
     for (let page = 0; page < 5; page++) {          // up to 500 most recent orders
       const q = new URLSearchParams({ limit: "100", status: "complete" });
       q.append("expand[]", "data.line_items"); q.append("expand[]", "data.shipping_cost.shipping_rate");
       if (after) q.set("starting_after", after);
-      const res = await stripe("checkout/sessions?" + q);
+      const res = await stripe(env, "checkout/sessions?" + q);
       res.data.filter(s => s.payment_status === "paid" || s.payment_status === "no_payment_required").forEach(s => orders.push(pick(s)));
       if (!res.has_more || !res.data.length) break;
       after = res.data[res.data.length - 1].id;
     }
     return json(200, { orders });
   } catch (e) { return fail(e); }
-};
+}

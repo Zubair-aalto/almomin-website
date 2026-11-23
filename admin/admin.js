@@ -19,7 +19,7 @@
   /* ---------------- API ---------------- */
   let token = sessionStorage.getItem("am-admin") || "";
   async function api(name, body) {
-    const r = await fetch("/.netlify/functions/" + name, {
+    const r = await fetch("/api/" + name.replace(/^admin-/, "admin/"), {
       method: body ? "POST" : "GET",
       headers: { "Content-Type": "application/json", Authorization: "Bearer " + token },
       body: body ? JSON.stringify(body) : undefined

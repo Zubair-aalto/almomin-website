@@ -1,17 +1,20 @@
-// Almo'min checkout: turns a basket into a Stripe Checkout page.
-// Settings live in Netlify → Site configuration → Environment variables (never in this file):
-//   STRIPE_SECRET_KEY          your Stripe secret key (sk_live_… or sk_test_…)
-//   SHIPPING_POSTI_EUR         optional: overrides the Posti price below (set "off" to hide Posti)
-//   SHIPPING_MATKAHUOLTO_EUR   optional: overrides the Matkahuolto price below (set "off" to hide it)
-//   PICKUP_ENABLED             "false" to hide free pickup in Espoo (shown by default)
-import { ITEMS } from "./catalog.mjs";
+// POST /api/checkout: turns a basket into a Stripe Checkout page.
+// Optional settings: SHIPPING_POSTI_EUR, SHIPPING_MATKAHUOLTO_EUR ("off" hides one), PICKUP_ENABLED ("false" hides pickup).
+import { ITEMS } from "../../lib/catalog.js";
+import { json } from "../../lib/server.js";
 
-// Delivery prices in EUR (shown on the website too: keep them in sync with index.html and js/shop.js)
-const DEFAULT_SHIPPING = { posti: "7.90", matkahuolto: "6.90" };
-
-const env = k => (globalThis.Netlify?.env?.get?.(k)) ?? (globalThis.process?.env?.[k]);
-const json = (status, body) => new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json" } });
+const DEFAULT_SHIPPING = { posti: "7.90", matkahuolto: "6.90" };   // keep in sync with the website text
 const cents = eur => Math.round(Number(eur) * 100);
+
+export function shippingOptions(env) {
+  const out = [];
+  const posti = env.SHIPPING_POSTI_EUR || DEFAULT_SHIPPING.posti;
+  const mh = env.SHIPPING_MATKAHUOLTO_EUR || DEFAULT_SHIPPING.matkahuolto;
+  if (mh !== "off") out.push({ name: "Matkahuolto", eur: mh });
+  if (posti !== "off") out.push({ name: "Posti", eur: posti });
+  if (env.PICKUP_ENABLED !== "false") out.push({ name: "Pickup in Espoo (free)", eur: 0 });
+  return out;
+}
 
 export function buildSession(items, origin, shipping) {
   const byId = Object.fromEntries(ITEMS.map(i => [i.id, i]));
@@ -30,11 +33,10 @@ export function buildSession(items, origin, shipping) {
   for (const [sku, q] of Object.entries(wanted)) {
     const [id, k] = String(sku).split("~"); const it = byId[id]; const o = it && it.options[Number(k) || 0];
     if (o && Number.isInteger(o.stock) && q > o.stock) {
-      const name = it.title + (o.label ? ` (${o.label})` : "");
-      throw new Error((o.stock <= 0 ? "sold_out:" : "not_enough:") + name);
+      throw new Error((o.stock <= 0 ? "sold_out:" : "not_enough:") + it.title + (o.label ? ` (${o.label})` : ""));
     }
   }
-  // What was bought, so the stock can be lowered after payment (see stripe-webhook)
+  // What was bought, so the stock can be lowered after payment (see /api/stripe-webhook)
   const cart = Object.entries(wanted).map(([sku, q]) => `${sku}*${q}`).join(",");
   for (let c = 0; c * 480 < cart.length && c < 20; c++) p.set(`metadata[cart_${c}]`, cart.slice(c * 480, c * 480 + 480));
   items.forEach(({ sku, qty }, i) => {
@@ -59,32 +61,20 @@ export function buildSession(items, origin, shipping) {
   return p;
 }
 
-export function shippingOptions() {
-  const out = [];
-  const posti = env("SHIPPING_POSTI_EUR") || DEFAULT_SHIPPING.posti;
-  const mh = env("SHIPPING_MATKAHUOLTO_EUR") || DEFAULT_SHIPPING.matkahuolto;
-  if (mh !== "off") out.push({ name: "Matkahuolto", eur: mh });
-  if (posti !== "off") out.push({ name: "Posti", eur: posti });
-  if (env("PICKUP_ENABLED") !== "false") out.push({ name: "Pickup in Espoo (free)", eur: 0 });
-  return out;
-}
-
-export default async (req) => {
-  if (req.method !== "POST") return json(405, { error: "method_not_allowed" });
-  const key = env("STRIPE_SECRET_KEY");
-  const shipping = shippingOptions();
-  if (!key || !shipping.some(s => s.eur > 0)) return json(503, { error: "not_configured" });
+export async function onRequestPost({ request, env }) {
+  const shipping = shippingOptions(env);
+  if (!env.STRIPE_SECRET_KEY || !shipping.some(s => s.eur > 0)) return json(503, { error: "not_configured" });
   let body;
-  try { body = await req.json(); } catch { return json(400, { error: "bad_json" }); }
-  const origin = env("URL") || new URL(req.url).origin;
+  try { body = await request.json(); } catch { return json(400, { error: "bad_json" }); }
+  const origin = new URL(request.url).origin;
   let params;
   try { params = buildSession(body.items, origin, shipping); } catch (e) { return json(400, { error: e.message }); }
   const r = await fetch("https://api.stripe.com/v1/checkout/sessions", {
     method: "POST",
-    headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/x-www-form-urlencoded" },
+    headers: { Authorization: `Bearer ${env.STRIPE_SECRET_KEY}`, "Content-Type": "application/x-www-form-urlencoded" },
     body: params
   });
   const data = await r.json();
   if (!r.ok) { console.error("Stripe error", data?.error?.message); return json(502, { error: "stripe_error" }); }
   return json(200, { url: data.url });
-};
+}

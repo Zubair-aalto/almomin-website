@@ -1,5 +1,5 @@
 /* Almo’min shop catalogue. Prices in EUR; options[].price is what customers pay.
-   This file is also copied to netlify/functions/checkout/catalog.mjs so the checkout can verify prices. */
+   Checkout prices and stock (lib/catalog.js) and the product pages are generated from this file on every deploy. */
 window.SHOP = {
  "categories": [
   {

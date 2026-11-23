@@ -280,7 +280,7 @@
     const btn = $("bagCheckout"), msg = $("bagMsg");
     btn.disabled = true; btn.textContent = "Opening secure checkout…"; msg.textContent = "";
     try {
-      const r = await fetch("/.netlify/functions/checkout", {
+      const r = await fetch("/api/checkout", {
         method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ items: bag.map(l => ({ sku: l.sku, qty: l.qty })) })
       });

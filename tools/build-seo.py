@@ -5,7 +5,7 @@ root = pathlib.Path(__file__).resolve().parent.parent
 SITE = "https://almomin.eu/"
 shop = (root / "js/shop-data.js").read_text()
 data = json.loads(shop[shop.index("{"): shop.rindex("}") + 1])
-cat = (root / "netlify/functions/checkout/catalog.mjs").read_text()
+cat = (root / "lib/catalog.js").read_text()
 images = {i["id"]: i["image"] for i in json.loads(cat[cat.index("["): cat.rindex("]") + 1])}
 cats = {c["id"]: c["label"] for c in data["categories"]}
 

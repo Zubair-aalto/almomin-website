@@ -1,6 +1,7 @@
 (function () {
   const SHOP = window.SHOP, C = window.ALMOMIN || {};
   if (!SHOP) return;
+  SHOP.items = SHOP.items.filter(it => !it.hidden); // hidden in the admin (e.g. out of stock)
   const $ = id => document.getElementById(id);
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const rich = s => esc(s).replace(/ﷺ/g, '<span class="saw">ﷺ</span>');

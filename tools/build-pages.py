@@ -22,7 +22,7 @@ shop = (ROOT / "js/shop-data.js").read_text()
 DATA = json.loads(shop[shop.index("{"): shop.rindex("}") + 1])
 cat_src = (ROOT / "netlify/functions/checkout/catalog.mjs").read_text()
 JPG = {i["id"]: i["image"] for i in json.loads(cat_src[cat_src.index("["): cat_src.rindex("]") + 1])}
-ITEMS = DATA["items"]
+ITEMS = [i for i in DATA["items"] if not i.get("hidden")]  # hidden in the admin
 BY_ID = {i["id"]: i for i in ITEMS}
 
 esc = lambda s: html.escape(str(s), quote=True)

@@ -15,7 +15,7 @@ def offer(price, ITEM_ID):
             "url": SITE + "books/" + ITEM_ID + "/", "seller": {"@id": SITE + "#store"}}
 
 products = []
-for i, it in enumerate(data["items"], 1):
+for i, it in enumerate([x for x in data["items"] if not x.get("hidden")], 1):
     prices = sorted(o["price"] for o in it["options"])
     p = {"@type": "Product", "name": it["title"], "url": SITE + "books/" + it["id"] + "/", "category": cats.get(it["cat"], ""),
          "description": re.sub(r"\s+", " ", it.get("desc", ""))[:500],

@@ -7,10 +7,15 @@
 
   const waHref = msg => "https://wa.me/" + (C.whatsapp || "") + "?text=" + encodeURIComponent(msg);
   const byBundle = id => C.books.filter(b => b.bundle === id);
+  // Prices and visibility come from the shop data (edited in the admin), falling back to catalog.js
+  const SHOP_BY = Object.fromEntries(((window.SHOP || {}).items || []).map(i => [i.id, i]));
+  const fmt = n => Number.isInteger(n) ? String(n) : n.toFixed(2);
+  const priceOf = b => { const it = SHOP_BY["bundle-" + b.id]; return it ? it.options[0].price : b.price; };
+  const shown = C.bundles.filter(b => !(SHOP_BY["bundle-" + b.id] || {}).hidden);
 
   /* ---------- Bundles ---------- */
   const list = $("#bundleList");
-  list.innerHTML = C.bundles.map(b => {
+  list.innerHTML = shown.map(b => {
     const books = byBundle(b.id);
     const n = books.length, mid = (n - 1) / 2;
     const fan = books.map((bk, i) => {
@@ -33,17 +38,18 @@
         <div class="bundle__body">
           <div class="bundle__top">
             <h3 class="bundle__title"><button type="button" class="bundle__link" data-open="bundle-${b.id}">${esc(b.title)}</button></h3>
-            <p class="bundle__price">${C.currency}${b.price}<small>${n} books</small></p>
+            <p class="bundle__price">${C.currency}${fmt(priceOf(b))}<small>${n} books</small></p>
           </div>
           <p class="bundle__blurb">${rich(b.blurb)}</p>
           <ul class="bundle__list" aria-label="Books in this bundle">${items}</ul>
-          <div class="bundle__btns"><button class="btn btn--gold" type="button" data-add="bundle-${b.id}">Add to basket · ${C.currency}${b.price}</button><button class="btn btn--line" type="button" data-open="bundle-${b.id}">See the books</button></div>
+          <div class="bundle__btns"><button class="btn btn--gold" type="button" data-add="bundle-${b.id}">Add to basket · ${C.currency}${fmt(priceOf(b))}</button><button class="btn btn--line" type="button" data-open="bundle-${b.id}">See the books</button></div>
         </div>
       </article>`;
   }).join("");
 
-  const total = C.bundles.reduce((s, b) => s + b.price, 0);
-  $("#setTotal").textContent = C.currency + total;
+  const complete = SHOP_BY["bundle-complete"];
+  const total = complete ? complete.options[0].price : C.bundles.reduce((s, b) => s + b.price, 0);
+  $("#setTotal").textContent = C.currency + fmt(total);
 
   // Books slide apart when the card comes into view, and a little more on hover
   const spread = (card, k) => card.querySelectorAll(".fan > *").forEach(el => {

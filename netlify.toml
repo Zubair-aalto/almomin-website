@@ -1,3 +1,13 @@
 [build]
   publish = "."
   functions = "netlify/functions"
+  # Regenerates product pages, sitemap, Google data and checkout prices from js/shop-data.js
+  command = "python3 tools/build-all.py"
+
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-store"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "no-referrer"

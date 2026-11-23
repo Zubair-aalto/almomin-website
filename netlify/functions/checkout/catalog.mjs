@@ -1,4 +1,4 @@
-// Generated from js/shop-data.js. Prices here are what the checkout charges.
+// Generated from js/shop-data.js by tools/build-catalog.py. Prices here are what the checkout charges.
 export const ITEMS = [
  {
   "id": "bundle-beginning",
@@ -58,7 +58,7 @@ export const ITEMS = [
  {
   "id": "set-of-10-prophet-stories-for-children",
   "title": "Prophet Stories: Complete Set of 10",
-  "image": "assets/shop/set-of-10-prophet-stories-for-children.jpg",
+  "image": "assets/shop/prophet-adam.jpg",
   "options": [
    {
     "label": null,

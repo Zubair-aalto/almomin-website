@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Almo’min Admin</title>
+  <link rel="icon" href="/assets/own/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/admin/admin.css?v=1">
+</head>
+<body>
+  <!-- Login -->
+  <main class="login" id="login" hidden>
+    <form class="login__card" id="loginForm">
+      <img src="/assets/own/full-gold.png" alt="Almo’min" width="96" height="133">
+      <h1>Admin</h1>
+      <label for="pw">Password</label>
+      <input id="pw" type="password" autocomplete="current-password" required>
+      <button class="btn btn--gold" type="submit">Log in</button>
+      <p class="login__msg" id="loginMsg" role="alert"></p>
+    </form>
+  </main>
+
+  <!-- App -->
+  <div class="app" id="app" hidden>
+    <header class="top">
+      <div class="top__in">
+        <a class="top__brand" href="/" target="_blank" rel="noopener"><img src="/assets/own/mark-gold.png" alt="" width="28" height="35"><span>Almo’min <small>Admin</small></span></a>
+        <nav class="tabs" role="tablist" aria-label="Sections">
+          <button role="tab" type="button" data-tab="orders" aria-selected="true">Orders</button>
+          <button role="tab" type="button" data-tab="customers" aria-selected="false">Customers</button>
+          <button role="tab" type="button" data-tab="products" aria-selected="false">Products</button>
+        </nav>
+        <button class="top__out" type="button" id="logout">Log out</button>
+      </div>
+    </header>
+
+    <!-- Orders -->
+    <section class="pane" id="pane-orders" role="tabpanel">
+      <div class="stats" id="stats"></div>
+      <div class="bar">
+        <input type="search" id="orderSearch" placeholder="Search name, email, city, book…" aria-label="Search orders">
+        <select id="orderFilter" aria-label="Filter by status">
+          <option value="open">To do (new + packed)</option><option value="all">All orders</option>
+          <option value="new">New</option><option value="packed">Packed</option><option value="shipped">Shipped</option>
+          <option value="collected">Collected</option><option value="cancelled">Cancelled</option>
+        </select>
+        <button class="btn btn--line" type="button" id="orderReload">Refresh</button>
+        <button class="btn btn--line" type="button" id="orderCsv">Export CSV</button>
+      </div>
+      <p class="msg" id="orderMsg" role="status"></p>
+      <div class="orders" id="orders"></div>
+    </section>
+
+    <!-- Customers -->
+    <section class="pane" id="pane-customers" role="tabpanel" hidden>
+      <div class="bar">
+        <input type="search" id="custSearch" placeholder="Search customers…" aria-label="Search customers">
+        <button class="btn btn--line" type="button" id="custCsv">Export CSV</button>
+      </div>
+      <div class="tablewrap"><table class="table" id="custTable">
+        <thead><tr><th>Customer</th><th>Contact</th><th>City</th><th class="num">Orders</th><th class="num">Spent</th><th>Last order</th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+      <p class="hint">Customers come from paid orders in Stripe. Click a customer to see their orders.</p>
+    </section>
+
+    <!-- Products -->
+    <section class="pane" id="pane-products" role="tabpanel" hidden>
+      <div class="bar">
+        <input type="search" id="prodSearch" placeholder="Search products…" aria-label="Search products">
+        <select id="prodCat" aria-label="Category"><option value="">All categories</option></select>
+        <button class="btn btn--gold" type="button" id="prodNew">+ New product</button>
+      </div>
+      <p class="msg" id="prodMsg" role="status"></p>
+      <div class="plist" id="plist"></div>
+    </section>
+  </div>
+
+  <!-- Product editor -->
+  <dialog class="ed" id="ed" aria-labelledby="edTitle">
+    <form method="dialog" class="ed__x"><button aria-label="Close">&times;</button></form>
+    <h2 id="edTitle">Edit product</h2>
+    <form id="edForm" class="ed__form">
+      <label>Title<input name="title" required maxlength="120"></label>
+      <div class="ed__row">
+        <label>Category<select name="cat" id="edCat"></select></label>
+        <label class="ed__check"><input type="checkbox" name="isNew"> Show “New” badge</label>
+        <label class="ed__check"><input type="checkbox" name="hidden"> Hidden (out of stock)</label>
+      </div>
+      <fieldset class="ed__opts"><legend>Price (€)</legend>
+        <div id="edOpts"></div>
+        <button type="button" class="link" id="edAddOpt">+ Add an option (e.g. Girls / Boys)</button>
+      </fieldset>
+      <label>Description<textarea name="desc" rows="5" maxlength="1500"></textarea></label>
+      <label>Details <small>(shown under the description, e.g. “Board book · 16 pages · Ages 0–3”)</small><input name="specs" maxlength="200"></label>
+      <fieldset class="ed__photos"><legend>Photos <small>The first photo is the cover. Drag the arrows to reorder.</small></legend>
+        <ul id="edPhotos"></ul>
+        <label class="btn btn--line ed__add">+ Add photos<input type="file" id="edFile" accept="image/*" multiple hidden></label>
+      </fieldset>
+      <p class="msg" id="edMsg" role="status"></p>
+      <div class="ed__btns">
+        <button class="btn btn--gold" type="submit" id="edSave">Save &amp; publish</button>
+        <button class="btn btn--line" type="button" id="edCancel">Cancel</button>
+        <button class="btn btn--danger" type="button" id="edDelete">Delete product</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="/admin/admin.js?v=1"></script>
+</body>
+</html>

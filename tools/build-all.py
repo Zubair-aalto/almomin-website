@@ -1,6 +1,6 @@
 """Rebuild everything generated from js/shop-data.js, then copy the public website into dist/.
-Cloudflare Pages runs this on every deploy: build command `python3 tools/build-all.py`, output directory `dist`.
-The /functions folder (checkout, admin, Stripe webhook) is deployed by Cloudflare separately."""
+Cloudflare runs this on every deploy (build command `python3 tools/build-all.py`), then `npx wrangler deploy`
+publishes dist/ together with the Worker in server/ (checkout, admin, Stripe webhook). See wrangler.jsonc."""
 import pathlib, runpy, shutil
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 T = ROOT / "tools"

@@ -410,7 +410,7 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 7.4,
+    "price": 8.49,
     "stock": 5
    }
   ]
@@ -422,7 +422,7 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 6.0,
+    "price": 6.99,
     "stock": 5
    }
   ]
@@ -494,7 +494,7 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 7.8,
+    "price": 9.49,
     "stock": 5
    }
   ]
@@ -506,7 +506,7 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 8.4,
+    "price": 9.79,
     "stock": 5
    }
   ]
@@ -518,7 +518,7 @@ export const ITEMS = [
   "options": [
    {
     "label": null,
-    "price": 7.3,
+    "price": 9.49,
     "stock": 5
    }
   ]

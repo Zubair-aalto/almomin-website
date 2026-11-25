@@ -199,3 +199,10 @@ HEROES = dict(
  intro="""<p>Ten bright, square picture books, one for each prophet: <b>Adam, Nuh, Salih, Ibrahim, Ismail, Yusuf, Musa, Sulaiman and Yunus (peace be upon them) and Muhammad ﷺ</b>. Each story is told simply for ages 4–8 and includes the prophet’s dua, names of Allah and fun facts.</p>
 <p>Choose the prophets your child loves at <b>€6.95 each</b>, or save with <b>a set of 5 for €30</b> or <b>all 10 for €50</b>.</p>""",
  singles_note="Listed in order, from the first prophet to the final Messenger ﷺ.")
+
+QURAN = dict(
+ title="Stories from the Holy Quran – 22 Single Prophet Books €2.35 | Almo’min",
+ desc="22 illustrated Quran stories for kids, from Adam (AS) to Muhammad ﷺ: buy single books for €2.35 each or save with a bundle. Delivery across Finland.",
+ h1="Stories from the Holy Quran",
+ intro="""<p>Our four story bundles, now also as <b>single books for €2.35 each</b>. Pick the prophets your child loves, fill gaps in your collection, or try one before buying a whole bundle.</p>
+<p>Each bundle is cheaper than buying its books one by one, and the <b>complete set of 22</b> saves the most.</p>""")

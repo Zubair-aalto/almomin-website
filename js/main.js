@@ -42,7 +42,7 @@
           </div>
           <p class="bundle__blurb">${rich(b.blurb)}</p>
           <ul class="bundle__list" aria-label="Books in this bundle">${items}</ul>
-          <div class="bundle__btns"><button class="btn btn--gold" type="button" data-add="bundle-${b.id}">Add to basket · ${C.currency}${fmt(priceOf(b))}</button><button class="btn btn--line" type="button" data-open="bundle-${b.id}">See the books</button></div>
+          <div class="bundle__btns"><button class="btn btn--gold" type="button" data-add="bundle-${b.id}">Add to basket · ${C.currency}${fmt(priceOf(b))}</button><button class="btn btn--line" type="button" data-open="bundle-${b.id}">See the books</button>${(SHOP_BY["bundle-" + b.id] || {}).explore ? `<a class="btn btn--line" href="${SHOP_BY["bundle-" + b.id].explore}">Buy books separately · €2.35</a>` : ""}</div>
         </div>
       </article>`;
   }).join("");

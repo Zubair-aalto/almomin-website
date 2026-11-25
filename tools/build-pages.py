@@ -176,8 +176,8 @@ def card(it, lang="en"):
 GROUPS = DATA.get("groups", {})
 def group_card(gid, lang="en"):
     g = GROUPS[gid]
-    sub = "10 profeettakirjaa yksittäin" if lang == "fi" else g["sub"]
-    price = "6,95 € / kirja" if lang == "fi" else g["price"]
+    sub = g.get("fi_sub", g["sub"]) if lang == "fi" else g["sub"]
+    price = g.get("fi_price", g["price"]) if lang == "fi" else g["price"]
     cat = "Profeettatarinat" if lang == "fi" else "Prophet stories"
     return f"""<li><a class="pc pc--bundle pc--group" href="{g['url']}">
   <span class="pc__stage"><img src="{ab(g['cover'])}" alt="{esc(g['title'])}" loading="lazy" width="300" height="300"></span>
@@ -243,7 +243,10 @@ def product_page(it):
         f'<li><button type="button" data-src="{ab(s)}" aria-label="Photo {i + 1} of {len(gal)}" aria-current="{str(i == 0).lower()}"><img src="{ab(s)}" alt="" loading="lazy" width="80" height="80"></button></li>' for i, s in enumerate(gal)) + "</ul>"
     explore = ""
     if it.get("explore"):
-        explore = '<a class="btn btn--line pp__explore" href="/shop/our-prophets-our-heroes/">Explore each book separately →</a>'
+        ex = it["explore"] if isinstance(it["explore"], str) else "/shop/our-prophets-our-heroes/"
+        explore = f'<a class="btn btn--line pp__explore" href="{ex}">Explore each book separately →</a>'
+    elif it.get("group") == "quran":
+        explore = f'<a class="pp__series" href="/shop/stories-from-the-quran/">See all 22 books in this series, and save with a bundle →</a>'
     elif it.get("group"):
         explore = '<a class="pp__series" href="/shop/our-prophets-our-heroes/">See all 10 books in this series, and the sets of 5 and 10 →</a>'
     same = (lambda i: i.get("group") == it.get("group")) if it.get("group") else (lambda i: not i.get("group"))
@@ -346,6 +349,26 @@ write(hp, f"""{head(H['title'], H['desc'], hp, image="/assets/shop/prophet-set-1
     <section id="sets" class="pg__sec"><h2 class="pg__h2">Buy as a set</h2>{grid(sets)}</section>
     <section id="singles" class="pg__more"><h2 class="pg__h2">Each book separately · €6.95</h2><p class="pg__lede pg__lede--s">{H['singles_note']}</p>{grid(singles)}</section>
     <nav class="pg__chips" aria-label="More"><a class="chip" href="/shop/prophet-stories/">All prophet stories</a><a class="chip" href="/guides/prophet-stories-for-kids-in-order/">Reading guide: prophets in order</a></nav>
+  </main>
+{footer()}""")
+
+# ---------------------------------------------------------------- series page: Stories from the Holy Quran
+Q = C.QURAN
+qp = "/shop/stories-from-the-quran/"
+qsingles = [i for i in ITEMS if i.get("group") == "quran"]
+qbundles = [BY_ID[b] for b in ["bundle-beginning", "bundle-ibrahim", "bundle-trials", "bundle-light"]]
+secs = ""
+for n, b in zip(["i", "ii", "iii", "iv"], qbundles):
+    books = [i for i in qsingles if i.get("bundle") == b["id"]]
+    save = len(books) * 2.35 - b["options"][0]["price"]
+    secs += f"""<section id="bundle-{n}" class="pg__more"><h2 class="pg__h2">{esc(b['title'])}</h2><p class="pg__lede pg__lede--s">{len(books)} books · €2.35 each, or the whole bundle for {money(b['options'][0]['price'])}{f" (save {money(save)})" if save > 0.004 else ""}.</p>{grid([b] + books)}</section>"""
+write(qp, f"""{head(Q['title'], Q['desc'], qp, image="/assets/shop/bundle-complete.webp", extra=ld([itemlist(qbundles + qsingles), {"@context": "https://schema.org", **crumbs([("Home", "/"), (CATS['bundles']['en_h1'], "/shop/prophet-stories/"), ("Stories from the Holy Quran", qp)])}]))}{header()}
+  <main id="main" class="wrap pg__main">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/shop/prophet-stories/">{esc(CATS['bundles']['en_h1'])}</a><span>›</span><span aria-current="page">Stories from the Holy Quran</span></nav>
+    <header class="pg__head"><p class="eyebrow">Prophet stories · 22 books</p><h1 class="h1">{esc(Q['h1'])}</h1><div class="pg__intro">{Q['intro']}</div>
+      <div class="pg__cta"><a class="btn btn--gold" href="#bundle-i">Explore each book separately</a><a class="btn btn--line" href="/books/bundle-complete/">Complete set of 22 · {money(BY_ID['bundle-complete']['options'][0]['price'])}</a></div></header>
+    {secs}
+    <nav class="pg__chips" aria-label="More"><a class="chip" href="/shop/prophet-stories/">All prophet stories</a><a class="chip" href="/shop/our-prophets-our-heroes/">Our Prophets: Our Heroes</a><a class="chip" href="/guides/prophet-stories-for-kids-in-order/">Reading guide: prophets in order</a></nav>
   </main>
 {footer()}""")
 

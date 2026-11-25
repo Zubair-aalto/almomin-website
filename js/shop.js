@@ -166,6 +166,7 @@
     $("pd-specs").textContent = cur.specs || "";
     $("pd-page").href = `/books/${cur.id}/`;
     $("pd-explore").hidden = !cur.explore;
+    $("pd-explore").href = typeof cur.explore === "string" ? cur.explore : "/shop/our-prophets-our-heroes/";
     const op = $("pd-opts");
     op.hidden = cur.options.length < 2;
     op.innerHTML = cur.options.length < 2 ? "" : cur.options.map((o, k) => `<button type="button" role="radio" data-k="${k}">${esc(o.label)} <span>${money(o.price)}</span></button>`).join("");

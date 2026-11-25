@@ -68,7 +68,8 @@ window.SHOP = {
     "assets/shop/gallery/book-noah.webp",
     "assets/shop/gallery/book-hud.webp",
     "assets/shop/gallery/book-salih.webp"
-   ]
+   ],
+   "explore": "/shop/stories-from-the-quran/#bundle-i"
   },
   {
    "id": "bundle-ibrahim",
@@ -118,7 +119,8 @@ window.SHOP = {
     "assets/shop/gallery/book-yaqub.webp",
     "assets/shop/gallery/book-yusuf-brothers.webp",
     "assets/shop/gallery/book-yusuf-kings-dream.webp"
-   ]
+   ],
+   "explore": "/shop/stories-from-the-quran/#bundle-ii"
   },
   {
    "id": "bundle-trials",
@@ -174,7 +176,8 @@ window.SHOP = {
     "assets/shop/gallery/book-moses-qaroon.webp",
     "assets/shop/gallery/book-dawud.webp",
     "assets/shop/gallery/book-sulaiman.webp"
-   ]
+   ],
+   "explore": "/shop/stories-from-the-quran/#bundle-iii"
   },
   {
    "id": "bundle-light",
@@ -230,7 +233,8 @@ window.SHOP = {
     "assets/shop/gallery/book-isa.webp",
     "assets/shop/gallery/book-companions-cave.webp",
     "assets/shop/gallery/book-muhammad.webp"
-   ]
+   ],
+   "explore": "/shop/stories-from-the-quran/#bundle-iv"
   },
   {
    "id": "bundle-complete",
@@ -382,7 +386,448 @@ window.SHOP = {
     "assets/shop/gallery/book-isa.webp",
     "assets/shop/gallery/book-companions-cave.webp",
     "assets/shop/gallery/book-muhammad.webp"
-   ]
+   ],
+   "explore": "/shop/stories-from-the-quran/"
+  },
+  {
+   "id": "quran-story-adam-eve",
+   "title": "Adam and Eve",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "How Allah created Adam (AS) and Hawwa, the angels’ bow, Iblis’s pride and the first lesson in saying sorry to Allah.",
+   "specs": "Illustrated storybook · Stories from the Holy Quran · from Bundle I",
+   "cover": "assets/books/adam-eve.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 2.35
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/book-adam-eve.webp"
+   ],
+   "group": "quran",
+   "bundle": "bundle-beginning"
+  },
+  {
+   "id": "quran-story-cain-abel",
+   "title": "Cain and Abel",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "The story of Adam’s (AS) two sons: jealousy, the first wrong on earth, and why Allah loves those who are sincere.",
+   "specs": "Illustrated storybook · Stories from the Holy Quran · from Bundle I",
+   "cover": "assets/books/cain-abel.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 2.35
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/book-cain-abel.webp"
+   ],
+   "group": "quran",
+   "bundle": "bundle-beginning"
+  },
+  {
+   "id": "quran-story-noah",
+   "title": "Noah’s Ark",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "Nuh (AS) calls his people to Allah for many years, builds the Ark, and the believers are saved from the great flood.",
+   "specs": "Illustrated storybook · Stories from the Holy Quran · from Bundle I",
+   "cover": "assets/books/noah.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 2.35
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/book-noah.webp"
+   ],
+   "group": "quran",
+   "bundle": "bundle-beginning"
+  },
+  {
+   "id": "quran-story-hud",
+   "title": "Hud and the Terrible Storm",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "Hud (AS) warns the mighty people of ‘Ad, who trust their strength instead of Allah, until the terrible storm comes.",
+   "specs": "Illustrated storybook · Stories from the Holy Quran · from Bundle I",
+   "cover": "assets/books/hud.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 2.35
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/book-hud.webp"
+   ],
+   "group": "quran",
+   "bundle": "bundle-beginning"
+  },
+  {
+   "id": "quran-story-salih",
+   "title": "Salih and the She-Camel",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "Salih (AS) and the miraculous she-camel of Thamud: a story about keeping promises and caring for Allah’s creatures.",
+   "specs": "Illustrated storybook · Stories from the Holy Quran · from Bundle I",
+   "cover": "assets/books/salih.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 2.35
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/book-salih.webp"
+   ],
+   "group": "quran",
+   "bundle": "bundle-beginning"
+  },
+  {
+   "id": "quran-story-lot",
+   "title": "Lot and the Nation of Sodom",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "Lut (AS) stays patient and faithful among a wicked people, and Allah saves him and his believing family.",
+   "specs": "Illustrated storybook · Stories from the Holy Quran · from Bundle II",
+   "cover": "assets/books/lot.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 2.35
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/book-lot.webp"
+   ],
+   "group": "quran",
+   "bundle": "bundle-ibrahim"
+  },
+  {
+   "id": "quran-story-ismail",
+   "title": "Ismail’s Great Sacrifice",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "Ibrahim (AS) and his son Ismail (AS) show perfect trust in Allah, the story behind Eid al-Adha.",
+   "specs": "Illustrated storybook · Stories from the Holy Quran · from Bundle II",
+   "cover": "assets/books/ismail.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 2.35
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/book-ismail.webp"
+   ],
+   "group": "quran",
+   "bundle": "bundle-ibrahim"
+  },
+  {
+   "id": "quran-story-yaqub",
+   "title": "Yaqub and His Sons",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "Yaqub (AS) and his twelve sons: a father’s patience, love and trust in Allah through difficult times.",
+   "specs": "Illustrated storybook · Stories from the Holy Quran · from Bundle II",
+   "cover": "assets/books/yaqub.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 2.35
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/book-yaqub.webp"
+   ],
+   "group": "quran",
+   "bundle": "bundle-ibrahim"
+  },
+  {
+   "id": "quran-story-yusuf-brothers",
+   "title": "Yusuf and His Brothers",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "Young Yusuf (AS) is thrown into the well by his jealous brothers, but Allah has a beautiful plan for him.",
+   "specs": "Illustrated storybook · Stories from the Holy Quran · from Bundle II",
+   "cover": "assets/books/yusuf-brothers.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 2.35
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/book-yusuf-brothers.webp"
+   ],
+   "group": "quran",
+   "bundle": "bundle-ibrahim"
+  },
+  {
+   "id": "quran-story-yusuf-kings-dream",
+   "title": "Yusuf and the King’s Dream",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "Yusuf (AS) explains the king’s dream, saves Egypt from famine and forgives his brothers.",
+   "specs": "Illustrated storybook · Stories from the Holy Quran · from Bundle II",
+   "cover": "assets/books/yusuf-kings-dream.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 2.35
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/book-yusuf-kings-dream.webp"
+   ],
+   "group": "quran",
+   "bundle": "bundle-ibrahim"
+  },
+  {
+   "id": "quran-story-ayub",
+   "title": "Ayub’s Patience",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "Ayub (AS) loses his health and wealth yet never stops thanking Allah: the best example of patience.",
+   "specs": "Illustrated storybook · Stories from the Holy Quran · from Bundle III",
+   "cover": "assets/books/ayub.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 2.35
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/book-ayub.webp"
+   ],
+   "group": "quran",
+   "bundle": "bundle-trials"
+  },
+  {
+   "id": "quran-story-shuaib",
+   "title": "Shuaib and the People of Madyan",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "Shuaib (AS) teaches the people of Madyan to be honest in trade and fair to everyone.",
+   "specs": "Illustrated storybook · Stories from the Holy Quran · from Bundle III",
+   "cover": "assets/books/shuaib.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 2.35
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/book-shuaib.webp"
+   ],
+   "group": "quran",
+   "bundle": "bundle-trials"
+  },
+  {
+   "id": "quran-story-moses-pharaoh",
+   "title": "Moses and the Evil Pharaoh",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "Musa (AS) stands up to the cruel Pharaoh, and Allah parts the sea to save the Children of Israel.",
+   "specs": "Illustrated storybook · Stories from the Holy Quran · from Bundle III",
+   "cover": "assets/books/moses-pharaoh.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 2.35
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/book-moses-pharaoh.webp"
+   ],
+   "group": "quran",
+   "bundle": "bundle-trials"
+  },
+  {
+   "id": "quran-story-moses-qaroon",
+   "title": "Moses and the Miser Qaroon",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "Qaroon boasts about his treasure and forgets Allah: a lesson about greed, gratitude and sharing.",
+   "specs": "Illustrated storybook · Stories from the Holy Quran · from Bundle III",
+   "cover": "assets/books/moses-qaroon.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 2.35
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/book-moses-qaroon.webp"
+   ],
+   "group": "quran",
+   "bundle": "bundle-trials"
+  },
+  {
+   "id": "quran-story-dawud",
+   "title": "Dawud and King Talut",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "Young Dawud (AS) faces the giant Jalut in King Talut’s army, trusting Allah instead of his own size.",
+   "specs": "Illustrated storybook · Stories from the Holy Quran · from Bundle III",
+   "cover": "assets/books/dawud.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 2.35
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/book-dawud.webp"
+   ],
+   "group": "quran",
+   "bundle": "bundle-trials"
+  },
+  {
+   "id": "quran-story-sulaiman",
+   "title": "Sulaiman and the Hoopoe Bird",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "Sulaiman (AS), who could speak to the birds, and the hoopoe that brought news of the Queen of Sheba.",
+   "specs": "Illustrated storybook · Stories from the Holy Quran · from Bundle III",
+   "cover": "assets/books/sulaiman.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 2.35
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/book-sulaiman.webp"
+   ],
+   "group": "quran",
+   "bundle": "bundle-trials"
+  },
+  {
+   "id": "quran-story-yunus",
+   "title": "Yunus in the Whale’s Belly",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "Yunus (AS) is swallowed by the whale and calls on Allah from the darkness with his famous dua.",
+   "specs": "Illustrated storybook · Stories from the Holy Quran · from Bundle IV",
+   "cover": "assets/books/yunus.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 2.35
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/book-yunus.webp"
+   ],
+   "group": "quran",
+   "bundle": "bundle-light"
+  },
+  {
+   "id": "quran-story-zakariyah",
+   "title": "Life of Hazrat Zakariyah",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "Zakariya (AS) makes dua for a child in his old age, and Allah answers with the gift of Yahya (AS).",
+   "specs": "Illustrated storybook · Stories from the Holy Quran · from Bundle IV",
+   "cover": "assets/books/zakariyah.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 2.35
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/book-zakariyah.webp"
+   ],
+   "group": "quran",
+   "bundle": "bundle-light"
+  },
+  {
+   "id": "quran-story-yahya",
+   "title": "Yahya and King Herod",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "Yahya (AS), kind to his parents and brave in speaking the truth before King Herod.",
+   "specs": "Illustrated storybook · Stories from the Holy Quran · from Bundle IV",
+   "cover": "assets/books/yahya.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 2.35
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/book-yahya.webp"
+   ],
+   "group": "quran",
+   "bundle": "bundle-light"
+  },
+  {
+   "id": "quran-story-isa",
+   "title": "Isa’s Miraculous Life",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "The miraculous birth of Isa (AS) to Maryam, his miracles by Allah’s permission, and how Allah raised him up.",
+   "specs": "Illustrated storybook · Stories from the Holy Quran · from Bundle IV",
+   "cover": "assets/books/isa.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 2.35
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/book-isa.webp"
+   ],
+   "group": "quran",
+   "bundle": "bundle-light"
+  },
+  {
+   "id": "quran-story-companions-cave",
+   "title": "Companions of the Cave",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "Young believers flee to a cave to protect their faith, and Allah makes them sleep for over 300 years.",
+   "specs": "Illustrated storybook · Stories from the Holy Quran · from Bundle IV",
+   "cover": "assets/books/companions-cave.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 2.35
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/book-companions-cave.webp"
+   ],
+   "group": "quran",
+   "bundle": "bundle-light"
+  },
+  {
+   "id": "quran-story-muhammad",
+   "title": "Life of Hazrat Muhammad ﷺ",
+   "cat": "bundles",
+   "isNew": true,
+   "desc": "The life of the final Messenger ﷺ, from his birth in Makkah to the message of Islam, told simply for children.",
+   "specs": "Illustrated storybook · Stories from the Holy Quran · from Bundle IV",
+   "cover": "assets/books/muhammad.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 2.35
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/book-muhammad.webp"
+   ],
+   "group": "quran",
+   "bundle": "bundle-light"
   },
   {
    "id": "set-of-10-prophet-stories-for-children",
@@ -1653,7 +2098,18 @@ window.SHOP = {
    "sub": "10 single prophet books",
    "price": "€6.95 each",
    "url": "/shop/our-prophets-our-heroes/",
-   "cover": "assets/shop/prophet-singles.webp"
+   "cover": "assets/shop/prophet-singles.webp",
+   "fi_sub": "10 profeettakirjaa yksittäin",
+   "fi_price": "6,95 € / kirja"
+  },
+  "quran": {
+   "title": "Stories from the Holy Quran",
+   "sub": "22 single books",
+   "price": "€2.35 each",
+   "fi_sub": "22 kirjaa yksittäin",
+   "fi_price": "2,35 € / kirja",
+   "url": "/shop/stories-from-the-quran/",
+   "cover": "assets/shop/bundle-complete.webp"
   }
  }
 };

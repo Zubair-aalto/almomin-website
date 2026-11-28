@@ -1317,6 +1317,86 @@ window.SHOP = {
    ]
   },
   {
+   "id": "asaan-qurani-kahaniyan-for-children-urdu",
+   "title": "Asaan Qurani Kahaniyan: Quran Stories for Children (Urdu)",
+   "cat": "story",
+   "isNew": true,
+   "desc": "Stories from the Holy Quran told as exciting tales in simple Urdu, with illustrations. 20 chapters, from the sons of Adam (AS) and the Ark of Nuh (AS) to stories from the time of Prophet Muhammad ﷺ, including the Hijrah and the Battle of Badr. A lovely way to bring Quranic teachings to life for children and adults. By Dr. Abdur Rauf.",
+   "specs": "Urdu · 130 pages · Illustrated",
+   "cover": "assets/shop/asaan-qurani-kahaniyan-for-children-urdu.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 10.0
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/asaan-qurani-kahaniyan-for-children-urdu-1.webp",
+    "assets/shop/gallery/asaan-qurani-kahaniyan-for-children-urdu-2.webp",
+    "assets/shop/gallery/asaan-qurani-kahaniyan-for-children-urdu-3.webp"
+   ]
+  },
+  {
+   "id": "khulafa-e-rashideen-ki-kahaniyan-for-children-urdu",
+   "title": "Khulafa-e-Rashideen ki Kahaniyan: Stories of the Four Caliphs (Urdu)",
+   "cat": "story",
+   "isNew": true,
+   "desc": "Twenty true stories from the lives of the four Rightly Guided Caliphs, Abu Bakr, Umar, Uthman and Ali (may Allah be pleased with them), in simple Urdu with illustrations. From the Cave of Thawr to Ali’s (RA) famous case before the judge, each story teaches a lesson for life. By Dr. Abdur Rauf.",
+   "specs": "Urdu · 122 pages · Illustrated",
+   "cover": "assets/shop/khulafa-e-rashideen-ki-kahaniyan-for-children-urdu.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 10.0
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/khulafa-e-rashideen-ki-kahaniyan-for-children-urdu-1.webp",
+    "assets/shop/gallery/khulafa-e-rashideen-ki-kahaniyan-for-children-urdu-2.webp",
+    "assets/shop/gallery/khulafa-e-rashideen-ki-kahaniyan-for-children-urdu-3.webp"
+   ]
+  },
+  {
+   "id": "asaan-islami-duain-urdu",
+   "title": "Asaan Islami Duain: Everyday Duas (Urdu)",
+   "cat": "story",
+   "isNew": true,
+   "desc": "A well-organised collection of short, authentic duas from the Quran and Hadith for every part of life, with an Urdu introduction to the manners and best times of dua. Duas for a good life, good character, patience, travel, parents, love of Allah and His Messenger ﷺ and much more. For children and the whole family. By Dr. Abdur Rauf.",
+   "specs": "Urdu · Illustrated cover",
+   "cover": "assets/shop/asaan-islami-duain-urdu.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 8.0
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/asaan-islami-duain-urdu-1.webp",
+    "assets/shop/gallery/asaan-islami-duain-urdu-2.webp",
+    "assets/shop/gallery/asaan-islami-duain-urdu-3.webp"
+   ]
+  },
+  {
+   "id": "asaan-kahaniyan-moral-stories-for-children-urdu",
+   "title": "Asaan Kahaniyan: Moral Stories for Children (Urdu)",
+   "cat": "story",
+   "isNew": true,
+   "desc": "Thirteen short, fun stories in simple Urdu, adapted from Aesop’s Fables, each with a clear lesson about good and bad behaviour: the greedy dog, the two thirsty crows, the stork and the fox and more. Illustrated, and ideal for young readers. By Dr. Abdur Rauf.",
+   "specs": "Urdu · Illustrated",
+   "cover": "assets/shop/asaan-kahaniyan-moral-stories-for-children-urdu.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 8.0
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/asaan-kahaniyan-moral-stories-for-children-urdu-1.webp",
+    "assets/shop/gallery/asaan-kahaniyan-moral-stories-for-children-urdu-2.webp",
+    "assets/shop/gallery/asaan-kahaniyan-moral-stories-for-children-urdu-3.webp"
+   ]
+  },
+  {
    "id": "our-ummah-across-continents",
    "title": "Our Ummah Across Continents",
    "cat": "story",

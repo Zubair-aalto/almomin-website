@@ -1237,6 +1237,86 @@ window.SHOP = {
    ]
   },
   {
+   "id": "seerat-un-nabi-for-children-urdu",
+   "title": "Seerat-un-Nabi ﷺ for Children (Urdu)",
+   "cat": "story",
+   "isNew": true,
+   "desc": "The life of Prophet Muhammad ﷺ in simple Urdu, with illustrations. 23 chapters take children from Arabia before Islam, the blessed birth and early life, through prophethood and Madinah, to the Prophet ﷺ as the best example for all humanity, his family and his Companions. By Dr. Abdur Rauf.",
+   "specs": "Urdu · 216 pages · Illustrated",
+   "cover": "assets/shop/seerat-un-nabi-for-children-urdu.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 12.0
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/seerat-un-nabi-for-children-urdu-1.webp",
+    "assets/shop/gallery/seerat-un-nabi-for-children-urdu-2.webp",
+    "assets/shop/gallery/seerat-un-nabi-for-children-urdu-3.webp"
+   ]
+  },
+  {
+   "id": "hazrat-abu-bakr-siddiq-for-children-urdu",
+   "title": "Hazrat Abu Bakr Siddiq (RA) for Children (Urdu)",
+   "cat": "story",
+   "isNew": true,
+   "desc": "The life of the first Caliph in easy words and simple Urdu, with illustrations: his family and early life, his honour and virtues, his caliphate, his generosity, courage and simple way of living. By Zakia Jahangir.",
+   "specs": "Urdu · 152 pages · Illustrated",
+   "cover": "assets/shop/hazrat-abu-bakr-siddiq-for-children-urdu.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 10.0
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/hazrat-abu-bakr-siddiq-for-children-urdu-1.webp",
+    "assets/shop/gallery/hazrat-abu-bakr-siddiq-for-children-urdu-2.webp",
+    "assets/shop/gallery/hazrat-abu-bakr-siddiq-for-children-urdu-3.webp"
+   ]
+  },
+  {
+   "id": "hazrat-umar-farooq-for-children-urdu",
+   "title": "Hazrat Umar Farooq (RA) for Children (Urdu)",
+   "cat": "story",
+   "isNew": true,
+   "desc": "The life of the second Caliph in easy words and simple Urdu, with illustrations: his family and youth, his caliphate, his famous justice and care for the people, his simple life and the sayings of the Prophet ﷺ about him. By Zakia Jahangir.",
+   "specs": "Urdu · 175 pages · Illustrated",
+   "cover": "assets/shop/hazrat-umar-farooq-for-children-urdu.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 10.0
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/hazrat-umar-farooq-for-children-urdu-1.webp",
+    "assets/shop/gallery/hazrat-umar-farooq-for-children-urdu-2.webp",
+    "assets/shop/gallery/hazrat-umar-farooq-for-children-urdu-3.webp"
+   ]
+  },
+  {
+   "id": "asaan-namaz-for-children-urdu",
+   "title": "Asaan Namaz: Easy Salah for Children (Urdu)",
+   "cat": "story",
+   "isNew": true,
+   "desc": "A simple guide to learning Salah in Urdu, with pictures: the benefits of prayer, the names and times of the five prayers, adhan and iqamah, wudu and how to pray step by step. The Arabic words are given with easy Urdu translation, plus Jumu’ah, Tarawih, Eid, Tahajjud and Janazah prayers and a short glossary. By Dr. Abdur Rauf.",
+   "specs": "Urdu · 66 pages · Illustrated",
+   "cover": "assets/shop/asaan-namaz-for-children-urdu.jpg",
+   "options": [
+    {
+     "label": null,
+     "price": 8.0
+    }
+   ],
+   "gallery": [
+    "assets/shop/gallery/asaan-namaz-for-children-urdu-1.webp",
+    "assets/shop/gallery/asaan-namaz-for-children-urdu-2.webp",
+    "assets/shop/gallery/asaan-namaz-for-children-urdu-3.webp"
+   ]
+  },
+  {
    "id": "our-ummah-across-continents",
    "title": "Our Ummah Across Continents",
    "cat": "story",
